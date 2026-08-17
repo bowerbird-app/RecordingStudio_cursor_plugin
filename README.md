@@ -31,7 +31,7 @@ Workflows Cursor can apply in the current chat:
 | `add-recordable` | Adding a Recording Studio content type |
 | `write-through-recording-studio` | Creating, revising, or logging history |
 | `flatpack-ui` | Building or changing UI |
-| `setup-admin-screens` | Admin sections/screens with Accessible |
+| `setup-admin-screens` | Admin root + Accessible-gated screens |
 | `recording-studio-accessible` | Hierarchy access grants for any actor |
 | `recording-studio-api` | Capability actions, AI access, user vs admin APIs |
 | `minitest-workflow` | Adding or reviewing gem and dummy-app tests |

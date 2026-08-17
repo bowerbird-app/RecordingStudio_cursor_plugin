@@ -131,7 +131,7 @@ Early designs tried to keep things like access highly pluggable. In practice the
 
 Prefer the standard stack over inventing alternate access, admin, API, or design systems. If Accessible (or another standard dependency) cannot support the requirement, ask how to proceed instead of building a one-off replacement.
 
-When building admin UI, follow the `setup-admin-screens` skill: install Accessible, mount an admin surface, resolve an access recording, enable sections on the recordable, then define screens/widgets in `app/admin`.
+When building admin UI, follow the `setup-admin-screens` skill: create an **admin root**, mount admin screens under it, grant Accessible access to that root (do not nominate special admin users), enable sections on the recordable, then define screens/widgets in `app/admin`.
 
 ## Fast start, then configure and override
 

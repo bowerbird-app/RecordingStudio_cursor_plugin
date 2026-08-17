@@ -1,15 +1,29 @@
 ---
 name: setup-admin-screens
-description: Set up Recording Studio Admin screens gated by Recording Studio Accessible. Use when installing admin, mounting an admin surface, defining sections/screens/widgets, or wiring access for admin UI.
+description: Set up Recording Studio Admin via an admin root and Accessible grants (not nominated admin users). Use when installing admin, mounting screens under a root, defining sections/widgets, or wiring access.
 ---
 
 # Set up admin screens
 
 Use **Recording Studio Admin** for reusable admin and reporting screens. Use **Recording Studio Accessible** to grant actors access and to gate those screens.
 
-Admin does not invent its own auth model. Mounted screens authenticate through the host app, then authorize against a mandatory **access recording** with `RecordingStudioAccessible.authorized?`.
+## Admin approach: roots, not nominated admins
 
-For Accessible itself — hierarchy grants, actors, and effective roles — follow `recording-studio-accessible`. Do not invent custom access for admin gating. If Accessible cannot cover the case, ask how to proceed.
+Recording Studio does **not** nominate special “admin users” as a separate identity class.
+
+Instead:
+
+1. Create an **admin root** (a normal root recording/recordable — for example `AdminRoot`).
+2. Mount admin screens and functionality **under that root**.
+3. Grant actors access to the admin root with the **standard Accessible** model (`grant_access`, roles, hierarchy).
+
+Whoever can access the admin root can use the admin UI, subject to Accessible roles on that recording (and any tighter checks on section/screen blast radius). The same actors model applies: users, API clients, AI agents, and future types.
+
+Do **not** invent `is_admin?` flags, parallel admin ACL tables, or a second permission system for staff. If Accessible cannot express the policy, ask how to proceed.
+
+Admin does not invent its own auth model. Mounted screens authenticate through the host app, then authorize against a mandatory **access recording** (typically the admin root recording) with `RecordingStudioAccessible.authorized?`.
+
+For Accessible itself — hierarchy grants, actors, and effective roles — follow `recording-studio-accessible`. Do not invent custom access for admin gating.
 
 ## What each gem does
 
@@ -93,7 +107,7 @@ mount RecordingStudioAccessible::Engine, at: "/admin/access"
 recording_studio_admin_for :admin, at: "/admin", root_section: :root
 ```
 
-Configure auth, actor lookup, and the mandatory access recording:
+Configure auth, actor lookup, and the mandatory access recording — usually the **admin root** recording:
 
 ```ruby
 RecordingStudioAdmin.configure do |config|
@@ -101,10 +115,13 @@ RecordingStudioAdmin.configure do |config|
   config.authentication_method = :authenticate_user!
   config.current_actor_method = :current_user
   config.access_recording_resolver = ->(context) {
-    context.controller.current_root_recording
+    # Resolve the admin root recording (or other access recording for this surface)
+    context.controller.current_admin_root_recording
   }
 end
 ```
+
+Actors become “admins” by receiving Accessible access on that root — not by a separate nomination system.
 
 Fail-closed behavior:
 
@@ -200,7 +217,8 @@ context.admin_section_path("root")
 - Keep queries in screen/section definitions or app services, not controllers or ERB.
 - Use **logs** for admin audit trails when the data is caused-but-unowned operational history.
 - Host controllers that mutate through resources should authorize with `RecordingStudioAdmin.authorize_resource!` and wrap changes with `perform_recording_studio_admin_action!`.
-- Do not grant broad root access just to unlock one admin page — grant access on the correct access recording and enable only the needed sections.
+- Do not nominate special admin users — grant Accessible access on the admin root instead.
+- Do not grant broad workspace-root access just to unlock one admin page — grant access on the admin root (or the correct access recording) and enable only the needed sections.
 
 ## Canonical references
 

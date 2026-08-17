@@ -17,7 +17,7 @@ Keep addon gems focused and reusable across apps. Prefer extracting shared behav
 
 Get Recording Studio working with defaults first. Prefer gem-owned views and controllers for easy upgrades; let host apps choose routes and override views/controllers only when needed. Keep domain logic in core methods that gem UI, API, and customizations can share. Keep screens simple and one primary action per page, using Flatpack and the core default layout.
 
-For admin UI, use Recording Studio Admin plus Recording Studio Accessible: authenticate in the host app, authorize against an access recording, enable sections on the recordable, and define screens in `app/admin`.
+For admin UI, use Recording Studio Admin plus Recording Studio Accessible: create an admin root, mount screens under it, and grant Accessible access to that root instead of nominating special admin users. Authenticate in the host app, authorize against the admin root access recording, enable sections on the recordable, and define screens in `app/admin`.
 
 For JSON APIs, use Recording Studio API: register capability actions once, enable them on recordable endpoints, and authorize with Accessible. Do not duplicate UI action logic in custom API controllers.
 

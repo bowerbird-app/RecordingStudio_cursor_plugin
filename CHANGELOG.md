@@ -19,3 +19,4 @@
 - Add a `recording-studio-api` skill for capability actions, endpoint enablement, and UI/API parity.
 - Document AI-agent API access and multiple named APIs for user vs restricted admin surfaces.
 - Document gem-owned UI with app-owned routes and targeted view/controller overrides.
+- Clarify admin access via an admin root and Accessible, not nominated admin users.
