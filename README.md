@@ -82,6 +82,8 @@ How loading works: [docs/how-it-works.md](docs/how-it-works.md).
 node scripts/validate-plugin.mjs
 ```
 
+The same command runs in GitHub Actions on pull requests.
+
 ## License
 
 MIT

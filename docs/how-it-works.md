@@ -54,7 +54,7 @@ Marketplace install uses the public git repo instead of a local symlink. The fil
 - referenced paths exist and stay inside the repo
 - skills, agents, commands, and rules have the required YAML frontmatter
 
-Run it after adding or renaming a component.
+Run it after adding or renaming a component. GitHub Actions runs the same script on pull requests.
 
 ## Related docs
 

@@ -7,3 +7,4 @@
 - Add skills for saving new skills/agents, writing through Recording Studio, Flatpack UI, and Minitest.
 - Add slash commands for creating a new skill or agent in this plugin.
 - Document local install, how the plugin works, and marketplace publishing.
+- Add `node scripts/validate-plugin.mjs` and a GitHub Action that runs it on pull requests.
