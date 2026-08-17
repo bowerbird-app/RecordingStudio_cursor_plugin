@@ -11,6 +11,8 @@ Declare every configured recordable with `recording_studio_recordable`, includin
 
 Roots are the content and billing buckets. Users and other actors get access to roots; they do not own the tree. Prefer actors over user-only designs, and use Recording Studio Accessible for access.
 
+Put owned tree content in recordings/recordables, recording history in events, and caused-but-unowned operational trails (such as webhook logs) in separate log tables so they do not clog recordings.
+
 Keep addon gems focused and reusable across apps. Prefer extracting shared behavior into `recording-studio-*` gems over one-off app code. Capability mixins are opt-in and do not come for free from type registration.
 
 Get Recording Studio working with defaults first; host apps configure settings and override views when needed. Keep screens simple and one primary action per page, using Flatpack and the core default layout.

@@ -12,3 +12,4 @@
 - Update the Minitest skill and agent to require both gem and dummy-app suites, and to treat ~94% coverage as the usual working target.
 - Add a `recording-studio-approach` skill covering Basecamp-style delegation, reusable gem composition, UI slices, and defaults-first configuration.
 - Expand `recording-studio-approach` with roots-as-buckets, actors vs users, root-scoped billing, and hierarchy.
+- Distinguish logs from recordings and events for caused-but-unowned operational data.

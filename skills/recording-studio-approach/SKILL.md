@@ -9,39 +9,59 @@ Recording Studio is an ecosystem of Rails gems built on **Recording Studio core*
 
 ## Core model: Basecamp-style delegation
 
-Core follows a Basecamp-style **Recordings / Recordables / Events** model using Rails `delegated_type`:
+Core follows a Basecamp-style **Recordings / Recordables / Events** model using Rails `delegated_type`, plus **logs** for high-volume caused-but-unowned data:
 
 | Layer | Role |
 | --- | --- |
 | **Recording** | Stable identity and capability surface |
 | **Recordable** | Immutable snapshot of state (delegated type) |
-| **Event** | Append-only history |
+| **Event** | Append-only history for a recording |
+| **Log** | Separate operational history that must not clog recordings |
 
-That split keeps mixins and lifecycle operations on the recording, state versioned on the recordable, and history append-only. Prefer public helpers on `RecordingStudio` and `RecordingStudio::Recording` over private registrar internals.
+That split keeps mixins and lifecycle operations on the recording, state versioned on the recordable, and recording history append-only. Prefer public helpers on `RecordingStudio` and `RecordingStudio::Recording` over private registrar internals.
 
-When writing data, use the root recording API (`record`, `revise`, `log_event!`). Do not invent parallel write paths.
+When writing owned content, use the root recording API (`record`, `revise`, `log_event!`). Do not invent parallel write paths for content that belongs in the recording tree.
 
-## Database approach: recordings, recordables, and roots
+## Database approach: recordings, recordables, roots, and logs
 
-The main database concepts are **recordings** and **recordables**.
+The main content concepts are **recordings** and **recordables**.
 
 - A **recording** is the durable identity row and mixin surface.
 - A **recordable** is the immutable state snapshot the recording currently points at.
-- Changing content creates a new recordable and repoints the recording; history stays on events.
+- Changing content creates a new recordable and repoints the recording; history for that content stays on **events**.
 
 **Roots** are recordings/recordables that act as the top-level **bucket**. A root is still the same recording/recordable model — it is just declared as a root and owns the tree beneath it.
 
 Think in this order:
 
 1. Create or find the **root** (the bucket).
-2. Put content under that root through the recording hierarchy.
+2. Put owned content under that root through the recording hierarchy.
 3. Grant people and systems access to the root.
+4. Keep high-volume caused-but-unowned data in **logs**, not recordings.
 
 Do **not** treat users as the main holder of content. Roots hold content. Users are people with access to a bucket.
 
 The same rule applies to billing: **roots hold billing**, not users. That keeps Recording Studio **team-first by default** — a workspace, site, or other root can have many people, shared content, and shared billing without redesigning the data model around a single account owner.
 
 One benefit of this design is a **natural hierarchy**. Recordings nest under parents, so folders, pages, comments, and other content inherit the bucket and tree without a separate ownership system.
+
+### Logs vs recordings and events
+
+Use **logs** for data an actor may have caused, but that they do not own as content, and that should not fill the recordings table.
+
+Examples:
+
+- webhook delivery logs
+- inbound request or processing logs
+- similar operational trails tied to a root or integration
+
+Guidelines:
+
+- If the user should treat it as first-class content in the tree, it is a **recording/recordable**.
+- If it is history of a recording's lifecycle or capability action, it is an **event**.
+- If it is caused activity that must stay queryable without becoming owned tree content, it is a **log**.
+
+Logs keep the recordings table focused on the hierarchy people navigate and collaborate on.
 
 ## Actors, not only users
 
@@ -102,11 +122,12 @@ Do not require deep customization before the basics run. Defaults should be usef
 When adding a feature, ask:
 
 1. Does ownership belong on a **root** (content, billing, access bucket) rather than a user?
-2. Are we modeling the actor as an **actor**, not only a user?
-3. Does this belong in core, an existing addon, or a new reusable gem?
-4. Can another app reuse it, or is it truly one-product logic?
-5. Does the UI stay a single-purpose page that fits the default layout?
-6. Are we using Flatpack and Recording Studio Accessible instead of a one-off approach?
-7. Will a host app work out of the box, then configure or override views only as needed?
+2. Should this data be a **recording**, an **event**, or a **log**?
+3. Are we modeling the actor as an **actor**, not only a user?
+4. Does this belong in core, an existing addon, or a new reusable gem?
+5. Can another app reuse it, or is it truly one-product logic?
+6. Does the UI stay a single-purpose page that fits the default layout?
+7. Are we using Flatpack and Recording Studio Accessible instead of a one-off approach?
+8. Will a host app work out of the box, then configure or override views only as needed?
 
 If the answer points to root-scoped data, reusable gems, simple UI, and defaults first, you are aligned with Recording Studio.
