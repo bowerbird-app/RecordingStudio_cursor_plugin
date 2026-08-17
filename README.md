@@ -27,7 +27,7 @@ Workflows Cursor can apply in the current chat:
 | Skill | Use when |
 | --- | --- |
 | `add-skill-or-agent` | Saving a new skill or agent into this plugin |
-| `recording-studio-approach` | Overall architecture and gem/UI philosophy |
+| `recording-studio-approach` | Architecture, roots/actors, and gem/UI philosophy |
 | `add-recordable` | Adding a Recording Studio content type |
 | `write-through-recording-studio` | Creating, revising, or logging history |
 | `flatpack-ui` | Building or changing UI |
