@@ -18,3 +18,4 @@
 - Require Recording Studio Accessible for access control; ask before inventing custom access.
 - Add a `recording-studio-api` skill for capability actions, endpoint enablement, and UI/API parity.
 - Document AI-agent API access and multiple named APIs for user vs restricted admin surfaces.
+- Document gem-owned UI with app-owned routes and targeted view/controller overrides.

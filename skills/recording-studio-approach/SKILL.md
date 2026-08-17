@@ -84,7 +84,27 @@ Assume **most of any app is reusable**. Prefer extracting shared behavior into g
 - Avoid custom gems that only serve one application when the same capability can be abstracted for reuse.
 - Capability mixins are opt-in: installing a gem does not silently enable behavior for every recordable type.
 
-Gems are meant to provide a **UI slice** and an **API slice**, so setup stays fast: mount the gem, configure, override only what must differ. Register domain actions once, enable them on the right API endpoints, and authorize with Recording Studio Accessible — do not duplicate action logic for JSON. Prefer rich APIs that AI agents can use on a user’s behalf, and separate user vs admin data with multiple named APIs. Follow `recording-studio-api` when exposing APIs.
+Gems are meant to provide a **UI slice** and an **API slice**, so setup stays fast. Prefer gem-owned views and controllers (easy to upgrade), app-owned route choices, and overrides only when the product truly needs them. Register domain actions once, enable them on the right API endpoints, and authorize with Recording Studio Accessible — do not duplicate action logic for JSON. Prefer rich APIs that AI agents can use on a user’s behalf, and separate user vs admin data with multiple named APIs. Follow `recording-studio-api` when exposing APIs.
+
+## Gem-owned UI, app-owned routes
+
+Ship features in three layers so gems stay upgradable and apps stay in control:
+
+| Layer | Owner | Purpose |
+| --- | --- | --- |
+| **Core methods / services** | Gem (or core) | Stable domain API that UI, API, and custom host code can call |
+| **Controllers and views** | Gem | Fast default implementation; upgrades improve every host app |
+| **Routes and overrides** | Host app | Choose mount paths / route helpers; replace views or controllers only when needed |
+
+Guidelines:
+
+- Put business rules in **core methods** (and capability APIs), not only in controllers.
+- Prefer **gem-owned controllers and views** so bugfixes and UI improvements ship with the gem.
+- Let the **host app decide routes** (where the feature is mounted, path helpers, which surfaces appear).
+- Allow the host to **override views and controllers** when product-specific behavior is required — without forking the gem’s domain logic.
+- Custom host controllers should call the same core methods the gem controllers use, so behavior stays consistent with the UI and API slices.
+
+Avoid copying gem controllers into the host “just in case.” Start with the gem implementation, mount the routes the app wants, and override only the pieces that must differ.
 
 ## UI strategy
 
@@ -117,11 +137,11 @@ When building admin UI, follow the `setup-admin-screens` skill: install Accessib
 
 The default path should be:
 
-1. Get Recording Studio working immediately with defaults.
-2. Let the host app configure settings.
-3. Let the host app override views where product-specific UI is required.
+1. Get Recording Studio working immediately with gem defaults (core methods + gem UI/API slices).
+2. Let the host app choose routes and configuration.
+3. Let the host app override views or controllers only where product-specific UI or flow is required.
 
-Do not require deep customization before the basics run. Defaults should be useful; configuration and view overrides are the escape hatches.
+Do not require deep customization before the basics run. Defaults should be useful; routing choices and targeted overrides are the escape hatches — not a rewrite of the gem.
 
 ## Decision checklist
 
@@ -133,8 +153,10 @@ When adding a feature, ask:
 4. Does this belong in core, an existing addon, or a new reusable gem?
 5. Can another app reuse it, or is it truly one-product logic?
 6. Does the UI stay a single-purpose page that fits the default layout?
-7. Are we using Flatpack and Recording Studio Accessible instead of a one-off approach?
-8. If Accessible seems insufficient, have we asked how to proceed instead of inventing custom access?
-9. Will a host app work out of the box, then configure or override views only as needed?
+7. Are core methods reusable by gem UI, API, and host customizations?
+8. Is the gem keeping views/controllers while the app owns routes (and overrides only when needed)?
+9. Are we using Flatpack and Recording Studio Accessible instead of a one-off approach?
+10. If Accessible seems insufficient, have we asked how to proceed instead of inventing custom access?
+11. Will a host app work out of the box, then configure or override only what must differ?
 
 If the answer points to root-scoped data, reusable gems, simple UI, and defaults first, you are aligned with Recording Studio.
