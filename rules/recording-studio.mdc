@@ -1,0 +1,14 @@
+---
+description: Recording Studio data and API conventions for gems and host apps
+alwaysApply: true
+---
+
+Prefer Recording Studio public helpers over private registrar internals.
+
+Recordables are immutable snapshots. Use `revise` to change state and `log_event!` for history. Do not write `Event` rows directly.
+
+Declare every configured recordable with `recording_studio_recordable`, including `root` and `allowed_parent_types`. Validate declarations in tests.
+
+Keep addon gems focused. Capability mixins are opt-in and do not come for free from type registration.
+
+Preserve public APIs unless the user asks for a breaking change. Use Conventional Commits when a version bump is required.

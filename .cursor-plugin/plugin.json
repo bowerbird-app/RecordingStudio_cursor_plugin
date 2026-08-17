@@ -22,5 +22,6 @@
     "rails",
     "recording-studio",
     "flatpack"
-  ]
+  ],
+  "logo": "assets/logo.svg"
 }

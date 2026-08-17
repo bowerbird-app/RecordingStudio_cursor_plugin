@@ -1,0 +1,15 @@
+---
+description: Use Flatpack components for Recording Studio UI
+globs: "**/*.{erb,html,css,js}"
+alwaysApply: false
+---
+
+Use Flatpack ViewComponents for new UI whenever an appropriate component exists.
+
+Do not recreate buttons, forms, alerts, cards, modals, or navigation with custom markup or CSS.
+
+Check https://flatpack.bowerbird.io/ and existing repo usage before adding UI.
+
+Semantic layout markup is acceptable when Flatpack does not provide the structure.
+
+If Flatpack cannot support a requirement, explain the gap before introducing custom UI.

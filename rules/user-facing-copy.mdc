@@ -1,0 +1,9 @@
+---
+description: Keep user-facing copy free of backend jargon
+globs: "**/*.{erb,html,md}"
+alwaysApply: false
+---
+
+Text that end users will see should not use backend terms they will not understand.
+
+Developer words such as recording and recordable belong in code and maintainer docs, not product screens.

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Recording Studio">
+  <rect width="128" height="128" rx="28" fill="#0F766E"/>
+  <rect x="28" y="30" width="72" height="68" rx="12" fill="#ECFDF5"/>
+  <path d="M44 78 V50 M56 78 V42 M68 78 V54 M84 78 V38" stroke="#0F766E" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="96" cy="96" r="18" fill="#134E4A"/>
+  <path d="M90 96h12M96 90v12" stroke="#ECFDF5" stroke-width="4" stroke-linecap="round"/>
+</svg>
