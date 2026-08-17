@@ -9,6 +9,8 @@ Use **Recording Studio Admin** for reusable admin and reporting screens. Use **R
 
 Admin does not invent its own auth model. Mounted screens authenticate through the host app, then authorize against a mandatory **access recording** with `RecordingStudioAccessible.authorized?`.
 
+For Accessible itself — hierarchy grants, actors, and effective roles — follow `recording-studio-accessible`.
+
 ## What each gem does
 
 | Gem | Job |

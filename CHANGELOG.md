@@ -14,3 +14,4 @@
 - Expand `recording-studio-approach` with roots-as-buckets, actors vs users, root-scoped billing, and hierarchy.
 - Distinguish logs from recordings and events for caused-but-unowned operational data.
 - Add a `setup-admin-screens` skill for Recording Studio Admin plus Accessible setup.
+- Add a `recording-studio-accessible` skill for hierarchy-based access grants to any actor type.

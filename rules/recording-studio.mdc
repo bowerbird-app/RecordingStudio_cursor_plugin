@@ -9,7 +9,7 @@ Recordables are immutable snapshots. Use `revise` to change state and `log_event
 
 Declare every configured recordable with `recording_studio_recordable`, including `root` and `allowed_parent_types`. Validate declarations in tests.
 
-Roots are the content and billing buckets. Users and other actors get access to roots; they do not own the tree. Prefer actors over user-only designs, and use Recording Studio Accessible for access.
+Roots are the content and billing buckets. Users and other actors get access to roots; they do not own the tree. Prefer actors over user-only designs, and use Recording Studio Accessible for access. Grants attach to recordings in the hierarchy and resolve the same way for every actor type.
 
 Put owned tree content in recordings/recordables, recording history in events, and caused-but-unowned operational trails (such as webhook logs) in separate log tables so they do not clog recordings.
 

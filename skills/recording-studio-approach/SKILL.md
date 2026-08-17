@@ -68,10 +68,12 @@ Logs keep the recordings table focused on the hierarchy people navigate and coll
 When thinking about who can act in the system, think **actors**.
 
 - A **user** is one kind of actor.
-- Other actors can include API clients, AI agents, or similar service identities.
-- Access still goes through the same **Recording Studio Accessible** concept.
+- Other actors can include API clients, AI agents, workspaces, or future identities.
+- Access still goes through the same **Recording Studio Accessible** concept: grants on recordings in the hierarchy under a root, with the same predictable checks for every actor type.
 
 Design features against actors and root-scoped access. Do not hard-code "only Devise users own everything."
+
+For grant/check details, follow the `recording-studio-accessible` skill.
 
 ## Ecosystem of reusable gems
 
