@@ -34,6 +34,12 @@ Cursor discovers these folders automatically. The manifest does not list each fi
 - **Command**: a slash-command shortcut that starts a known prompt.
 - **Rule**: standing guidance that should not have to be re-explained.
 
+## Using the Recording Studio skills
+
+For a new app or gem, start with `getting-started-recording-studio`. It maps first decisions (root, actors, content types), core install, Accessible, and the usual addons.
+
+Use `recording-studio-approach` for the philosophy behind those choices. Then use the focused skills for recordables, writes, access, admin, API, Flatpack UI, and tests.
+
 ## Local load path
 
 For day-to-day authoring, symlink this repo into Cursor's local plugin directory:

@@ -3,6 +3,8 @@ description: Recording Studio data and API conventions for gems and host apps
 alwaysApply: true
 ---
 
+For a new Recording Studio app or gem, follow `getting-started-recording-studio`: decide the root and actors, install core, add Accessible, then add only the addons the product needs.
+
 Prefer Recording Studio public helpers over private registrar internals.
 
 Recordables are immutable snapshots. Use `revise` to change state and `log_event!` for history. Do not write `Event` rows directly.

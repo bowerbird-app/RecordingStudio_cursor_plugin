@@ -5,7 +5,7 @@ description: Explain and use Recording Studio Accessible for hierarchy-based acc
 
 # Recording Studio Accessible
 
-**Recording Studio Accessible** is the access-control addon for Recording Studio. Access is always about a **recording in the hierarchy under a root**, granted to an **actor**.
+**Recording Studio Accessible** is the access-control addon for Recording Studio. Add it right after core on a new product (`getting-started-recording-studio`). Access is always about a **recording in the hierarchy under a root**, granted to an **actor**.
 
 The same grant and check path applies whether the actor is a user, an API credential, an AI agent, a workspace, or a future actor type. Predictable results come from treating every actor the same way against recordings — not inventing separate permission systems per actor kind.
 

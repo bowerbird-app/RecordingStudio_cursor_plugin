@@ -7,6 +7,8 @@ description: Explain the overall Recording Studio architecture and product philo
 
 Recording Studio is an ecosystem of Rails gems built on **Recording Studio core**. The goal is to ship most of an app as reusable, contained gems so new products come together quickly.
 
+For a new app or gem, start with `getting-started-recording-studio`. That skill maps the setup order and the usual addons. This skill is the philosophy behind those choices.
+
 ## Core model: Basecamp-style delegation
 
 Core follows a Basecamp-style **Recordings / Recordables / Events** model using Rails `delegated_type`, plus **logs** for high-volume caused-but-unowned data:
@@ -160,3 +162,13 @@ When adding a feature, ask:
 11. Will a host app work out of the box, then configure or override only what must differ?
 
 If the answer points to root-scoped data, reusable gems, simple UI, and defaults first, you are aligned with Recording Studio.
+
+## Related skills
+
+| Need | Skill |
+|---|---|
+| Setup order and addon map | `getting-started-recording-studio` |
+| Access grants | `recording-studio-accessible` |
+| Admin root | `setup-admin-screens` |
+| HTTP API | `recording-studio-api` |
+| UI | `flatpack-ui` |

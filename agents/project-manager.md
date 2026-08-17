@@ -13,6 +13,8 @@ Triage the request, delegate to the smallest useful specialist, then synthesize 
 
 | Request | Delegate to |
 | --- | --- |
+| New app, which gems to add, setup order | `getting-started-recording-studio` skill |
+| Architecture and product philosophy | `recording-studio-approach` skill |
 | Feature implementation, bug fixes, architecture | `rails-expert` |
 | Security, auth, input handling, data isolation | `rails-security-expert` |
 | Rails quality, conventions, duplication | `rails-refactoring-specialist` |

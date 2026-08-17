@@ -26,6 +26,7 @@ Workflows Cursor can apply in the current chat:
 
 | Skill | Use when |
 | --- | --- |
+| `getting-started-recording-studio` | Mapping a new app: setup order and common addons |
 | `add-skill-or-agent` | Saving a new skill or agent into this plugin |
 | `recording-studio-approach` | Architecture, roots/actors, and gem/UI philosophy |
 | `add-recordable` | Adding a Recording Studio content type |

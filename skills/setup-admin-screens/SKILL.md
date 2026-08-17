@@ -7,6 +7,8 @@ description: Set up Recording Studio Admin via an admin root and Accessible gran
 
 Use **Recording Studio Admin** for reusable admin and reporting screens. Use **Recording Studio Accessible** to grant actors access and to gate those screens.
 
+Admin comes after core and Accessible are in place. For the full setup map, see `getting-started-recording-studio`.
+
 ## Admin approach: roots, not nominated admins
 
 Recording Studio does **not** nominate special “admin users” as a separate identity class.
