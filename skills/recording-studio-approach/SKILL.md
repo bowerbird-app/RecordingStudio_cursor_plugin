@@ -104,11 +104,11 @@ Build UI with **Flatpack** ViewComponents. Prefer existing Flatpack pieces over 
 
 Early designs tried to keep things like access highly pluggable. In practice the ecosystem leans on known dependencies:
 
-- **Recording Studio Accessible** for access control across actors
+- **Recording Studio Accessible** for access control across actors — **required; do not invent custom access**
 - **Recording Studio Admin** for admin sections, screens, and reporting UI gated by Accessible
 - **Flatpack** for UI
 
-Prefer the standard stack over inventing alternate access, admin, or design systems unless there is a clear product requirement.
+Prefer the standard stack over inventing alternate access, admin, or design systems. If Accessible (or another standard dependency) cannot support the requirement, ask how to proceed instead of building a one-off replacement.
 
 When building admin UI, follow the `setup-admin-screens` skill: install Accessible, mount an admin surface, resolve an access recording, enable sections on the recordable, then define screens/widgets in `app/admin`.
 
@@ -133,6 +133,7 @@ When adding a feature, ask:
 5. Can another app reuse it, or is it truly one-product logic?
 6. Does the UI stay a single-purpose page that fits the default layout?
 7. Are we using Flatpack and Recording Studio Accessible instead of a one-off approach?
-8. Will a host app work out of the box, then configure or override views only as needed?
+8. If Accessible seems insufficient, have we asked how to proceed instead of inventing custom access?
+9. Will a host app work out of the box, then configure or override views only as needed?
 
 If the answer points to root-scoped data, reusable gems, simple UI, and defaults first, you are aligned with Recording Studio.

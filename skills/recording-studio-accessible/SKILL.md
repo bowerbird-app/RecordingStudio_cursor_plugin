@@ -1,6 +1,6 @@
 ---
 name: recording-studio-accessible
-description: Explain and use Recording Studio Accessible for hierarchy-based access grants to actors. Use when granting, checking, or designing access for users, API clients, AI agents, or other actor types.
+description: Explain and use Recording Studio Accessible for hierarchy-based access grants to actors. Use when granting, checking, or designing access for users, API clients, AI agents, or other actor types. Do not invent custom access; ask if Accessible is lacking.
 ---
 
 # Recording Studio Accessible
@@ -8,6 +8,20 @@ description: Explain and use Recording Studio Accessible for hierarchy-based acc
 **Recording Studio Accessible** is the access-control addon for Recording Studio. Access is always about a **recording in the hierarchy under a root**, granted to an **actor**.
 
 The same grant and check path applies whether the actor is a user, an API credential, an AI agent, a workspace, or a future actor type. Predictable results come from treating every actor the same way against recordings — not inventing separate permission systems per actor kind.
+
+## Do not invent custom access
+
+**Recording Studio Accessible is the required approach for access control in this ecosystem.**
+
+Do **not** create:
+
+- custom permission tables or ACL gems for one app
+- Devise-only or user-only authorization that bypasses recordings
+- parallel "can_access?" helpers that ignore the recording hierarchy
+- hand-built `RecordingStudio::Access` rows outside `grant_access`
+- admin or API auth that reimplements roles instead of calling Accessible
+
+If Accessible appears to lack a capability for the scenario (for example a new actor pattern, through-access rule, named action, or grant shape), **stop and ask how to proceed**. Do not paper over the gap with custom access code. Prefer extending Accessible, using named actions / through-actors, or confirming product intent before writing anything else.
 
 ## Core idea
 
@@ -174,6 +188,8 @@ For admin screens that rely on Accessible, also follow `setup-admin-screens`.
 
 ## Guardrails
 
+- Use Recording Studio Accessible for access. Do not invent custom access systems.
+- If Accessible cannot cover the case, ask how to proceed before coding an alternative.
 - Access subjects are actors; content owners are roots.
 - Keep grants on recordings; do not invent parallel permission tables for users only.
 - Prefer hierarchy inheritance over copying the same grant onto every child.
