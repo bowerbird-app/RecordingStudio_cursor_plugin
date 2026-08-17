@@ -56,6 +56,10 @@ Marketplace install uses the public git repo instead of a local symlink. The fil
 
 Run it after adding or renaming a component. GitHub Actions runs the same script on pull requests.
 
+## Cloud Agents
+
+`.cursor/environment.json` is the environment source for Cloud Agents. This plugin has no gem, npm packages, or running app, so install only confirms Node is available. Use `node scripts/validate-plugin.mjs` after checkout to check the plugin itself.
+
 ## Related docs
 
 - [Adding skills and agents](adding-skills-and-agents.md)

@@ -1,0 +1,4 @@
+{
+  "name": "Recording Studio Cursor plugin",
+  "install": "node -v"
+}

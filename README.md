@@ -65,6 +65,7 @@ Details: [docs/publishing.md](docs/publishing.md).
 
 ```text
 .cursor-plugin/plugin.json   # required manifest
+.cursor/environment.json     # Cloud Agent environment
 agents/                      # specialist subagents
 skills/                      # reusable workflows
 commands/                    # slash commands
@@ -83,6 +84,8 @@ node scripts/validate-plugin.mjs
 ```
 
 The same command runs in GitHub Actions on pull requests.
+
+Cloud Agents use `.cursor/environment.json`. The default image already includes Node 22, which is enough to run the validator. There is no package install, database, or dev server.
 
 ## License
 
