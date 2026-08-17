@@ -1,13 +1,15 @@
 ---
 name: recording-studio-api
-description: Build Recording Studio APIs by registering capability actions and enabling them on endpoints. Use when exposing JSON APIs, adding member actions, wiring API access with Accessible, or avoiding duplicate UI/API logic.
+description: Build Recording Studio APIs by registering capability actions and enabling them on endpoints. Use when exposing JSON APIs for users or AI agents, adding member actions, separating user vs admin named APIs, wiring Accessible, or avoiding duplicate UI/API logic.
 ---
 
 # Recording Studio API
 
 **Recording Studio API** (`recording_studio_api`) is the mountable engine for authenticated JSON APIs over Recording Studio.
 
-The product idea is simple: **every gem should provide both a UI slice and an API slice**. Register the domain action once, enable it where it belongs, and let Accessible authorize the same way for people and API clients.
+The product idea is simple: **every gem should provide both a UI slice and an API slice**. Register the domain action once, enable it where it belongs, and let Accessible authorize the same way for people, API clients, and AI agents.
+
+In an AI-heavy product world, agents need **broad, structured API access** to act on a user’s behalf. Prefer exposing the real domain actions over the API instead of forcing agents through brittle UI automation or one-off endpoints. Keep sensitive or privileged data on separate **named APIs** (for example a user/workspace API vs an admin/operations API) so agents and clients only receive the surface they are meant to use.
 
 Do not rebuild the same “move folder / publish page / …” logic in a separate API controller. If the UI can do it, expose it as an API capability action and enable it on the relevant resource endpoint.
 
@@ -20,6 +22,52 @@ Do not rebuild the same “move folder / publish page / …” logic in a separa
 5. Handlers authorize through **Recording Studio Accessible** via the request’s `AccessGrant`.
 
 That keeps one action path for UI and API, with predictable access results for any actor.
+
+## AI agents as first-class API actors
+
+Treat AI agents like other actors that need to operate through the API:
+
+- Give them credentials scoped to the right root / access recording.
+- Expose the same capability actions the product already supports in the UI.
+- Prefer extensive, well-documented endpoints (Scalar/OpenAPI) so agents can discover and call real operations.
+- Still authorize every call with Accessible — extensive access does not mean bypassing roles or inventing a parallel ACL.
+
+Design for agents that act **on behalf of** a person or workspace, not as a special snowflake stack. The API client is the credential principal; the Accessible actor on the access recording remains the authorization subject.
+
+## Multiple APIs: user surfaces vs restricted admin surfaces
+
+`RecordingStudioApi` supports **multiple named APIs**, not only the legacy `public` API. Use that to separate:
+
+| Surface | Typical purpose |
+| --- | --- |
+| User / workspace API (`public` or similar) | Day-to-day content and actions an end user or their AI agent may perform in a root |
+| Admin / operations API (`operations`, etc.) | Restricted diagnostics, site-wide credentials, privileged reporting, or other admin-only data |
+
+Each named API can have its own versions, registries, OpenAPI metadata, enablement, logging, rate limits, and clients. An API client is bound to **exactly one** API — a public token does not work on an admin API and vice versa.
+
+```ruby
+RecordingStudioApi.configure do |config|
+  config.api :operations do |api|
+    api.openapi_title = "Operations API"
+    api.api_versions = %w[v1]
+    api.default_access = :read_only
+    api.api_management_authorization_required = true
+  end
+end
+
+RecordingStudioApi.register_recordable_type_api(
+  "AdminRoot",
+  api: :operations,
+  operations: %i[index show]
+)
+```
+
+Guidelines:
+
+- Put user-facing resources and actions on the user API.
+- Put restricted or site-admin information on a separate admin/operations API.
+- Mount admin API screens only under admin roots when the data must stay off the user surface.
+- Keep Accessible grants and management roles aligned so AI agents and humans get the same predictable boundaries.
 
 ## Prefer enablement over duplicate controllers
 
@@ -154,6 +202,8 @@ For Accessible details, follow `recording-studio-accessible`. For admin API scre
 ## Guardrails
 
 - One domain action → UI + API. Do not duplicate business logic in API-only controllers.
+- Design APIs so AI agents can act extensively through real capability actions, still gated by Accessible.
+- Use multiple named APIs to separate user access from restricted admin/operations information.
 - Enable actions explicitly with `capability_actions`; do not assume registration alone exposes them.
 - Authorize with Accessible / `AccessGrant`, never a parallel ACL.
 - Keep responses flat (`id`, `type`, `root_id`, `parent_id`, serializer keys). No legacy `attributes` / `relationships` wrappers.

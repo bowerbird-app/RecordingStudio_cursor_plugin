@@ -84,7 +84,7 @@ Assume **most of any app is reusable**. Prefer extracting shared behavior into g
 - Avoid custom gems that only serve one application when the same capability can be abstracted for reuse.
 - Capability mixins are opt-in: installing a gem does not silently enable behavior for every recordable type.
 
-Gems are meant to provide a **UI slice** and an **API slice**, so setup stays fast: mount the gem, configure, override only what must differ. Register domain actions once, enable them on the right API endpoints, and authorize with Recording Studio Accessible — do not duplicate action logic for JSON. Follow `recording-studio-api` when exposing APIs.
+Gems are meant to provide a **UI slice** and an **API slice**, so setup stays fast: mount the gem, configure, override only what must differ. Register domain actions once, enable them on the right API endpoints, and authorize with Recording Studio Accessible — do not duplicate action logic for JSON. Prefer rich APIs that AI agents can use on a user’s behalf, and separate user vs admin data with multiple named APIs. Follow `recording-studio-api` when exposing APIs.
 
 ## UI strategy
 
