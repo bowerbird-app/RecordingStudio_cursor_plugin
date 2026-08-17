@@ -13,3 +13,4 @@
 - Add a `recording-studio-approach` skill covering Basecamp-style delegation, reusable gem composition, UI slices, and defaults-first configuration.
 - Expand `recording-studio-approach` with roots-as-buckets, actors vs users, root-scoped billing, and hierarchy.
 - Distinguish logs from recordings and events for caused-but-unowned operational data.
+- Add a `setup-admin-screens` skill for Recording Studio Admin plus Accessible setup.

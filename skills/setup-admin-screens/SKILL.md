@@ -1,0 +1,207 @@
+---
+name: setup-admin-screens
+description: Set up Recording Studio Admin screens gated by Recording Studio Accessible. Use when installing admin, mounting an admin surface, defining sections/screens/widgets, or wiring access for admin UI.
+---
+
+# Set up admin screens
+
+Use **Recording Studio Admin** for reusable admin and reporting screens. Use **Recording Studio Accessible** to grant actors access and to gate those screens.
+
+Admin does not invent its own auth model. Mounted screens authenticate through the host app, then authorize against a mandatory **access recording** with `RecordingStudioAccessible.authorized?`.
+
+## What each gem does
+
+| Gem | Job |
+| --- | --- |
+| `recording_studio_accessible` | Grants and checks actor access on recordings; mounts access-management UI |
+| `recording_studio_admin` | Code-defined sections, screens, widgets, charts, tables; mounts admin surfaces |
+
+Keep three admin concerns separate:
+
+1. **Access recording** — which `RecordingStudio::Recording` gates the mounted admin UI
+2. **Enabled sections** — which registered sections appear for the current recordable type
+3. **Section recordable** — optional Recording Studio object created/resolved after a section opens
+
+## Install Accessible first
+
+```ruby
+gem "recording_studio", "~> 3.0"
+gem "recording_studio_accessible"
+gem "recording_studio_admin"
+```
+
+```bash
+bundle install
+bin/rails generate recording_studio:install
+bin/rails generate recording_studio:migrations
+bin/rails generate recording_studio_accessible:install
+bin/rails generate recording_studio_accessible:migrations
+bin/rails db:migrate
+```
+
+Configure actor types that may receive grants, and enable `:accessible` on recordables that should hold access children:
+
+```ruby
+RecordingStudioAccessible.configure do |config|
+  config.access_actor_types = ["User", "Workspace"]
+end
+
+class Workspace < ApplicationRecord
+  recording_studio_recordable label: "Workspace", root: true
+  RecordingStudio.enable_capability(:accessible, on: self)
+end
+```
+
+Grant and check access through the public API:
+
+```ruby
+RecordingStudioAccessible.grant_access(
+  recording: recording,
+  actor: user,
+  role: :view,
+  manager_actor: current_actor
+)
+
+RecordingStudioAccessible.authorized?(
+  actor: user,
+  recording: recording,
+  role: :view
+)
+```
+
+Effective access is the strongest role on the target recording or an applicable ancestor. Think **actors**, not only users.
+
+Optional mounted access UI:
+
+```bash
+bin/rails generate recording_studio_accessible:access_management --link-helper
+```
+
+## Install Admin
+
+```bash
+bin/rails generate recording_studio_admin:install
+bin/rails generate recording_studio_admin:admin_root   # optional host-owned admin root scaffolding
+```
+
+Mount Accessible and an admin surface together:
+
+```ruby
+mount RecordingStudioAccessible::Engine, at: "/admin/access"
+recording_studio_admin_for :admin, at: "/admin", root_section: :root
+```
+
+Configure auth, actor lookup, and the mandatory access recording:
+
+```ruby
+RecordingStudioAdmin.configure do |config|
+  config.default_mount_path = "/admin"
+  config.authentication_method = :authenticate_user!
+  config.current_actor_method = :current_user
+  config.access_recording_resolver = ->(context) {
+    context.controller.current_root_recording
+  }
+end
+```
+
+Fail-closed behavior:
+
+- missing auth method → `401`
+- missing access recording or Accessible denial → `403`
+
+By default admin checks `RecordingStudioAccessible.authorized?` with role `:view` before resolving sections, widgets, or screen queries.
+
+## Enable sections on a recordable
+
+Registering a section defines the capability. Enabling it on a recordable decides where it appears.
+
+```ruby
+class AdminRoot < ApplicationRecord
+  include RecordingStudio::Recordable
+  include RecordingStudioAccessible::AllowsAccessibleChildren
+  include RecordingStudioAdmin::AllowsAdminSections
+
+  recording_studio_recordable label: "Admin", root: true
+  recording_studio_accessible_children :access
+
+  recording_studio_admin_sections do
+    section :root
+    section :api
+    section :users
+  end
+end
+```
+
+## Define screens, sections, and widgets
+
+Keep definitions in `app/admin` capability folders and register them from `to_prepare` so development reloads stay correct.
+
+Typical layout:
+
+```text
+app/admin/
+  manifest.rb
+  root/
+    manifest.rb
+    section.rb
+  api/
+    manifest.rb
+    section.rb
+    api_requests/
+      screen.rb
+      chart.rb
+      table.rb
+      widgets/
+        api_activity.rb
+```
+
+```ruby
+Rails.application.config.to_prepare do
+  load Rails.root.join("app/admin/manifest.rb")
+  AdminScreens.load!
+  AdminScreens.register!
+end
+```
+
+If `app/admin` is manifest-loaded rather than Zeitwerk-named:
+
+```ruby
+Rails.autoloaders.main.ignore(root.join("app/admin"))
+```
+
+Definition roles:
+
+- **Section** — summary page with links and widgets
+- **Screen** — detail page with query, filters, chart, table, widgets
+- **Widget** — reusable card (`number`, `list`, `chart`, `progress`)
+- **Resource** — registered admin actions linked from tables; host app owns the mutation controller
+
+Link with context helpers:
+
+```ruby
+context.admin_screen_path("api_requests")
+context.admin_section_path("root")
+```
+
+## Access wiring checklist
+
+1. Actor can authenticate (`authentication_method`).
+2. Current actor resolves (`current_actor_method` / `Current.actor`).
+3. `access_recording_resolver` returns a real `RecordingStudio::Recording`.
+4. That recording's recordable enables the needed admin sections.
+5. Actor has Accessible access on that recording (usually at least `:view`).
+6. For site-wide blast radius screens, configure `site_admin_recording_resolver`.
+
+## Guardrails
+
+- Prefer Flatpack rendering shipped by Admin; do not invent a second admin UI system.
+- Keep queries in screen/section definitions or app services, not controllers or ERB.
+- Use **logs** for admin audit trails when the data is caused-but-unowned operational history.
+- Host controllers that mutate through resources should authorize with `RecordingStudioAdmin.authorize_resource!` and wrap changes with `perform_recording_studio_admin_action!`.
+- Do not grant broad root access just to unlock one admin page — grant access on the correct access recording and enable only the needed sections.
+
+## Canonical references
+
+- Admin README and `docs/gem_template/ADMIN_SCREENS.md` in `RecordingStudio_admin`
+- Dummy app under `RecordingStudio_admin/test/dummy/app/admin`
+- Accessible README and grant/check APIs in `RecordingStudio_accessible`

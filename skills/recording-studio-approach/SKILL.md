@@ -103,9 +103,12 @@ Build UI with **Flatpack** ViewComponents. Prefer existing Flatpack pieces over 
 Early designs tried to keep things like access highly pluggable. In practice the ecosystem leans on known dependencies:
 
 - **Recording Studio Accessible** for access control across actors
+- **Recording Studio Admin** for admin sections, screens, and reporting UI gated by Accessible
 - **Flatpack** for UI
 
-Prefer the standard stack over inventing alternate access or design systems unless there is a clear product requirement.
+Prefer the standard stack over inventing alternate access, admin, or design systems unless there is a clear product requirement.
+
+When building admin UI, follow the `setup-admin-screens` skill: install Accessible, mount an admin surface, resolve an access recording, enable sections on the recordable, then define screens/widgets in `app/admin`.
 
 ## Fast start, then configure and override
 
