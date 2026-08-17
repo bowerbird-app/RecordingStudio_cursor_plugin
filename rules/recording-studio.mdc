@@ -9,6 +9,8 @@ Recordables are immutable snapshots. Use `revise` to change state and `log_event
 
 Declare every configured recordable with `recording_studio_recordable`, including `root` and `allowed_parent_types`. Validate declarations in tests.
 
-Keep addon gems focused. Capability mixins are opt-in and do not come for free from type registration.
+Keep addon gems focused and reusable across apps. Prefer extracting shared behavior into `recording-studio-*` gems over one-off app code. Capability mixins are opt-in and do not come for free from type registration.
+
+Get Recording Studio working with defaults first; host apps configure settings and override views when needed. Keep screens simple and one primary action per page, using Flatpack and the core default layout.
 
 Preserve public APIs unless the user asks for a breaking change. Use Conventional Commits when a version bump is required.
