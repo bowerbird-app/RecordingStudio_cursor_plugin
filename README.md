@@ -30,7 +30,7 @@ Workflows Cursor can apply in the current chat:
 | `add-recordable` | Adding a Recording Studio content type |
 | `write-through-recording-studio` | Creating, revising, or logging history |
 | `flatpack-ui` | Building or changing UI |
-| `minitest-workflow` | Adding or reviewing tests |
+| `minitest-workflow` | Adding or reviewing gem and dummy-app tests |
 
 ### Commands
 
