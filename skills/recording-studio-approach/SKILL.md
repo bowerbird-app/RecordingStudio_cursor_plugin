@@ -84,7 +84,7 @@ Assume **most of any app is reusable**. Prefer extracting shared behavior into g
 - Avoid custom gems that only serve one application when the same capability can be abstracted for reuse.
 - Capability mixins are opt-in: installing a gem does not silently enable behavior for every recordable type.
 
-Gems are meant to provide a **UI slice** as well as domain behavior, so setup stays fast: mount the gem, configure, override only what must differ.
+Gems are meant to provide a **UI slice** and an **API slice**, so setup stays fast: mount the gem, configure, override only what must differ. Register domain actions once, enable them on the right API endpoints, and authorize with Recording Studio Accessible — do not duplicate action logic for JSON. Follow `recording-studio-api` when exposing APIs.
 
 ## UI strategy
 
@@ -106,9 +106,10 @@ Early designs tried to keep things like access highly pluggable. In practice the
 
 - **Recording Studio Accessible** for access control across actors — **required; do not invent custom access**
 - **Recording Studio Admin** for admin sections, screens, and reporting UI gated by Accessible
+- **Recording Studio API** for JSON APIs that reuse the same capability actions as the UI
 - **Flatpack** for UI
 
-Prefer the standard stack over inventing alternate access, admin, or design systems. If Accessible (or another standard dependency) cannot support the requirement, ask how to proceed instead of building a one-off replacement.
+Prefer the standard stack over inventing alternate access, admin, API, or design systems. If Accessible (or another standard dependency) cannot support the requirement, ask how to proceed instead of building a one-off replacement.
 
 When building admin UI, follow the `setup-admin-screens` skill: install Accessible, mount an admin surface, resolve an access recording, enable sections on the recordable, then define screens/widgets in `app/admin`.
 

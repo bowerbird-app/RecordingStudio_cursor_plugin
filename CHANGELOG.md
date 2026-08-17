@@ -16,3 +16,4 @@
 - Add a `setup-admin-screens` skill for Recording Studio Admin plus Accessible setup.
 - Add a `recording-studio-accessible` skill for hierarchy-based access grants to any actor type.
 - Require Recording Studio Accessible for access control; ask before inventing custom access.
+- Add a `recording-studio-api` skill for capability actions, endpoint enablement, and UI/API parity.

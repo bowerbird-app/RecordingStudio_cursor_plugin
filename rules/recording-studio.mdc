@@ -19,4 +19,6 @@ Get Recording Studio working with defaults first; host apps configure settings a
 
 For admin UI, use Recording Studio Admin plus Recording Studio Accessible: authenticate in the host app, authorize against an access recording, enable sections on the recordable, and define screens in `app/admin`.
 
+For JSON APIs, use Recording Studio API: register capability actions once, enable them on recordable endpoints, and authorize with Accessible. Do not duplicate UI action logic in custom API controllers.
+
 Preserve public APIs unless the user asks for a breaking change. Use Conventional Commits when a version bump is required.

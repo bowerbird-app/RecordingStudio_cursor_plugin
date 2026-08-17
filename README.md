@@ -33,6 +33,7 @@ Workflows Cursor can apply in the current chat:
 | `flatpack-ui` | Building or changing UI |
 | `setup-admin-screens` | Admin sections/screens with Accessible |
 | `recording-studio-accessible` | Hierarchy access grants for any actor |
+| `recording-studio-api` | Capability actions and API endpoints |
 | `minitest-workflow` | Adding or reviewing gem and dummy-app tests |
 
 ### Commands
