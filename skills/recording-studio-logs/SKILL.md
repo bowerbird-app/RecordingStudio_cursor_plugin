@@ -31,11 +31,7 @@ Logs stay queryable (admin tables, retries, debugging) without becoming folders 
 
 ## Writes
 
-- Create and change owned content with `record` / `revise` (`write-through-recording-studio`).
-- Append recording history with `log_event!`. Never insert `Event` rows by hand.
-- Write caused-but-unowned trails through the gem’s **log** API or tables — not `root.record(Delivery)`.
-
-User-facing copy still must not say “recording,” “recordable,” or “log table.” Say delivery, history, activity (`recording-studio-copy`).
+Owned content: `write-through-recording-studio`. Exhaust: the gem’s log API — not `root.record(Delivery)`. Product words: `recording-studio-copy`.
 
 ## Do not
 
@@ -43,11 +39,6 @@ User-facing copy still must not say “recording,” “recordable,” or “log
 - Put billing invoices, deliveries, or request dumps in the tree to reuse Accessible by accident. Access stays on the **endpoint** or root; the log rows hang off that.
 - Duplicate the same fact as an event *and* a log unless they answer different questions (lifecycle vs exhaust).
 
-## Related skills
+## Related
 
-| Need | Skill |
-|---|---|
-| New types | `add-recordable` |
-| Write path | `write-through-recording-studio` |
-| Philosophy | `recording-studio-approach` |
-| Admin of exhaust | `setup-admin-screens` |
+`write-through-recording-studio`, `add-recordable`, `setup-admin-screens`.

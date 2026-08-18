@@ -7,7 +7,7 @@ description: Create, revise, or log Recording Studio content through public help
 
 Owned content goes through the public write path. Do not insert `Recording` or `Event` rows by hand, and do not `save!` a recordable to “update” it in place.
 
-If the data is caused activity that does not belong in the tree (deliveries, request traces), it is a **log**, not a `record` (`recording-studio-logs`).
+If the data is caused activity that does not belong in the tree (deliveries, request traces), it is a **log**, not a `record`. Layers: `recording-studio-logs`.
 
 ## Checklist
 
@@ -17,15 +17,6 @@ If the data is caused activity that does not belong in the tree (deliveries, req
 4. If the child is capability-owned, inspect `RecordingStudio.recordable_parent_allowances_for(...)` and `RecordingStudio.parent_capabilities_for(child_type:, parent_recording:)` to explain why the parent is valid.
 5. Prefer `record`, `revise`, and `log_event!` on `RecordingStudio::Recording`. Drop to `RecordingStudio.record!` only when you need the returned event.
 6. For retriable jobs (webhooks, imports), pass an `idempotency_key` so a retry does not create a second recording or event.
-
-## Identity vs state vs history vs exhaust
-
-| Layer | Model | Responsibility |
-| --- | --- | --- |
-| Identity | Recording | Stable handle and mixin surface |
-| State | Recordable | Immutable snapshot — `revise` creates a new row |
-| History | Event | Append-only timeline via `log_event!` |
-| Exhaust | Log | Caused-but-unowned trails that must not clog the tree |
 
 ## Tests
 

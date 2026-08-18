@@ -23,7 +23,7 @@ Personality lives in **short lines** — a title, an empty state, a flash. It do
 
 Do not pad a page to make it look finished. White space is fine. A clear form beats a wall of help text.
 
-If something is hard to understand, **fix the design first**: one action, a better label, a sensible default. Copy is the backup, not the product.
+If something is hard to understand, **fix the design first** (`recording-studio-ui`): one action, a better label, a sensible default. Copy is the backup, not the product.
 
 When you really must explain something complex:
 
@@ -72,4 +72,4 @@ A playful empty state is great: “Nothing here yet. Add a page to get going.”
 - Repeat the title in the subtitle.
 - Write a different voice in each gem. Same spark, same shortness.
 
-Page shape and Flatpack: `recording-studio-ui`, `flatpack-ui`. Use `Tooltip` and `Popover` from Flatpack, not custom hover hacks.
+Page shape: `recording-studio-ui`. Components: `flatpack-ui` (`Tooltip`, `Popover` — not custom hover hacks).

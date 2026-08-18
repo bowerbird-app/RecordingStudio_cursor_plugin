@@ -56,7 +56,7 @@ Accessible, Admin, API, Billing, Users, Webhooks, and similar are **addons**, bu
 
 ## UI and API
 
-The mixin should expose the **same action** the screen uses (`move_to!`, trash, …). The default UI lives in the gem. Distinctive controls (a destination picker) ship as helpers or ViewComponents so a host can reuse them. Register the action on the API; do not add a one-off `relocate` controller.
+The mixin should expose the **same domain action** the screen uses. UI pieces: `recording-studio-ui`. API: `recording-studio-api`.
 
 ## Do not
 
@@ -65,12 +65,6 @@ The mixin should expose the **same action** the screen uses (`move_to!`, trash, 
 - Hand-roll move/trash/comments because the host wants slightly different copy — change the view or extra-info, not the domain.
 - Put destination/parent rules only in the mixin when they belong in `allowed_parent_types`.
 
-## Related skills
+## Related
 
-| Need | Skill |
-|---|---|
-| New types | `add-recordable` |
-| Writes | `write-through-recording-studio` |
-| New gem | `build-recording-studio-gem` |
-| API actions | `recording-studio-api` |
-| Access | `recording-studio-accessible` |
+`add-recordable`, `recording-studio-api`, `recording-studio-accessible`.

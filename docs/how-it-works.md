@@ -38,7 +38,7 @@ Cursor discovers these folders automatically. The manifest does not list each fi
 
 For a new app or gem, start with `getting-started-recording-studio`. For a new addon, start with `build-recording-studio-gem`.
 
-Use `recording-studio-approach` for the philosophy, `recording-studio-ui` for page shape (not `flatpack-ui` — that one is which component to render), and `recording-studio-copy` for the words on the screen. Then use the focused skills for recordables, logs, writes, mixins, access, admin, API, and tests.
+Each skill owns one topic (setup map, philosophy, UI shape, Flatpack components, copy, access, admin, API, and so on). Follow the matching skill instead of copying doctrine between them.
 
 ## Local load path
 

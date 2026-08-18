@@ -29,3 +29,4 @@
 - Steer admin sections toward a few high-signal widgets (exceptions, queues, health) instead of vanity totals and a screen per model.
 - Add `build-recording-studio-gem`, `recording-studio-capabilities`, and `recording-studio-logs` skills.
 - Tighten write-through, add-recordable, rails-expert, the always-on rule, and the admin file-tree example so they match those skills.
+- DRY the skills: one owner per topic, recaps replaced with pointers, admin no longer duplicates Accessible install.

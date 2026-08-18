@@ -7,7 +7,7 @@ description: Add or register a Recording Studio recordable type with hierarchy d
 
 Follow Recording Studio's public API. Do not invent private registrar internals.
 
-First decide whether this is a **recordable at all**. Caused activity (deliveries, inbound traces) is a **log**, not a new type (`recording-studio-logs`). Capability mixins (move, trash, comments) are **opt-in** on types that already exist (`recording-studio-capabilities`). Registering a type does not enable them.
+First decide whether this is a **recordable at all** (`recording-studio-logs`). Mixins are opt-in later (`recording-studio-capabilities`).
 
 ## When to use
 
@@ -54,12 +54,11 @@ root = RecordingStudio.root_recording_for(workspace)
 root.record(Page) { |page| page.title = "Getting started" }
 ```
 
-6. Enable only the mixins this type needs (`recording-studio-capabilities`). Installing Moveable or Commentable does not attach them here for free.
+6. Enable only the mixins this type needs (`recording-studio-capabilities`).
 
 ## Guardrails
 
-- Recordables are immutable snapshots. Use `revise` to change state (`write-through-recording-studio`).
-- Put activity on `Event` through `log_event!`, never by writing `Event` rows directly.
+- Writes: `write-through-recording-studio`.
 - Prefer public helpers such as `RecordingStudio.root_allowed?` and `RecordingStudio.parent_allowed?`.
-- Cover declaration, root rejection, and parent rejection paths in Minitest.
-- Screens use `recording-studio-copy`. Labels and empty states say folder, page, workspace — not the class name internals.
+- Cover declaration, root rejection, and parent rejection in Minitest.
+- `label` is product language (`recording-studio-copy`) — never “Recordable.”

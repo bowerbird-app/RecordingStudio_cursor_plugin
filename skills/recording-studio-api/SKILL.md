@@ -7,7 +7,7 @@ description: Build Recording Studio APIs by registering capability actions and e
 
 **Recording Studio API** (`recording_studio_api`) is the mountable engine for authenticated JSON APIs over Recording Studio. Add it after core and Accessible when integrations or AI agents need the same actions as the UI (`getting-started-recording-studio`).
 
-The product idea is simple: **every gem should provide both a UI slice and an API slice**. Register the domain action once, enable it where it belongs, and let Accessible authorize the same way for people, API clients, and AI agents.
+The product idea is simple: **if the gem has UI or API, they share one domain action**. Register it once, enable it where it belongs, authorize with Accessible. Do not invent a JSON surface (or a dashboard) “for completeness.”
 
 In an AI-heavy product world, agents need **broad, structured API access** to act on a user’s behalf. Prefer exposing the real domain actions over the API instead of forcing agents through brittle UI automation or one-off endpoints. Keep sensitive or privileged data on separate **named APIs** (for example a user/workspace API vs an admin/operations API) so agents and clients only receive the surface they are meant to use.
 

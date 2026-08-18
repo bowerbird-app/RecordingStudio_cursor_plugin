@@ -1,153 +1,44 @@
 ---
 name: recording-studio-approach
-description: Explain the overall Recording Studio architecture and product philosophy. Use when designing features, data models, access, billing ownership, deciding whether to extract a gem, choosing UI shape, or onboarding to the ecosystem.
+description: Explain Recording Studio philosophy: roots as buckets, actors not only users, recordings vs events vs logs, and reusable gems. Use when designing the data model or deciding where behaviour belongs. For setup order use getting-started-recording-studio.
 ---
 
 # Recording Studio approach
 
-Recording Studio is an ecosystem of Rails gems built on **Recording Studio core**. The goal is to ship most of an app as reusable, contained gems so new products come together quickly.
+Most of an app should be **reusable gems** on **Recording Studio core**, assembled by a thin host. Setup order and addons: `getting-started-recording-studio`.
 
-For a new app or gem, start with `getting-started-recording-studio`. That skill maps the setup order and the usual addons. This skill is the philosophy behind those choices.
+## Recordings, recordables, events, logs
 
-## Core model: Basecamp-style delegation
-
-Core follows a Basecamp-style **Recordings / Recordables / Events** model using Rails `delegated_type`, plus **logs** for high-volume caused-but-unowned data:
+Core is a Basecamp-style `delegated_type` model:
 
 | Layer | Role |
-| --- | --- |
-| **Recording** | Stable identity and capability surface |
-| **Recordable** | Immutable snapshot of state (delegated type) |
-| **Event** | Append-only history for a recording |
-| **Log** | Separate operational history that must not clog recordings |
+|---|---|
+| **Recording** | Stable identity and mixin surface |
+| **Recordable** | Immutable snapshot of state |
+| **Event** | Append-only history of that recording |
+| **Log** | Caused-but-unowned exhaust that must not clog the tree |
 
-That split keeps mixins and lifecycle operations on the recording, state versioned on the recordable, and recording history append-only. Prefer public helpers on `RecordingStudio` and `RecordingStudio::Recording` over private registrar internals.
+Prefer public helpers on `RecordingStudio` and `RecordingStudio::Recording`. Writes: `write-through-recording-studio`. Which layer: `recording-studio-logs`.
 
-When writing owned content, use the root recording API (`record`, `revise`, `log_event!`). Do not invent parallel write paths for content that belongs in the recording tree.
-
-## Database approach: recordings, recordables, roots, and logs
-
-The main content concepts are **recordings** and **recordables**.
-
-- A **recording** is the durable identity row and mixin surface.
-- A **recordable** is the immutable state snapshot the recording currently points at.
-- Changing content creates a new recordable and repoints the recording; history for that content stays on **events**.
-
-**Roots** are recordings/recordables that act as the top-level **bucket**. A root is still the same recording/recordable model — it is just declared as a root and owns the tree beneath it.
-
-Think in this order:
-
-1. Create or find the **root** (the bucket).
-2. Put owned content under that root through the recording hierarchy.
-3. Grant people and systems access to the root.
-4. Keep high-volume caused-but-unowned data in **logs**, not recordings.
-
-Do **not** treat users as the main holder of content. Roots hold content. Users are people with access to a bucket.
-
-The same rule applies to billing: **roots hold billing**, not users. That keeps Recording Studio **team-first by default** — a workspace, site, or other root can have many people, shared content, and shared billing without redesigning the data model around a single account owner.
-
-One benefit of this design is a **natural hierarchy**. Recordings nest under parents, so folders, pages, comments, and other content inherit the bucket and tree without a separate ownership system.
-
-### Logs vs recordings and events
-
-Caused-but-unowned exhaust (webhook deliveries, inbound traces) belongs in **logs**, not the tree. Lifecycle of a folder or page is an **event**. Follow `recording-studio-logs`.
+**Roots** are recordings declared as the top-level **bucket**. Content, settings, and **billing** live on the root — not on the user. People and systems get **access** to the bucket (`recording-studio-accessible`). Hierarchy is natural: nested recordings inherit the bucket.
 
 ## Actors, not only users
 
-When thinking about who can act in the system, think **actors**.
+A user is one actor. API clients, AI agents, and later types are actors too. Same Accessible path for all of them. Do not hard-code “only Devise users own everything.”
 
-- A **user** is one kind of actor.
-- Other actors can include API clients, AI agents, workspaces, or future identities.
-- Access still goes through the same **Recording Studio Accessible** concept: grants on recordings in the hierarchy under a root, with the same predictable checks for every actor type.
+## Reusable gems
 
-Design features against actors and root-scoped access. Do not hard-code "only Devise users own everything."
+Assume **most of the product is reusable**. Extract a `recording-studio-*` addon instead of one-app code (`build-recording-studio-gem`). Mixins are opt-in per type (`recording-studio-capabilities`).
 
-For grant/check details, follow the `recording-studio-accessible` skill.
+If the gem has UI or API, they share **one domain action** (`recording-studio-ui`, `recording-studio-api`). Do not invent a second action for JSON.
 
-## Ecosystem of reusable gems
+Standard stack — do not replace these:
 
-Assume **most of any app is reusable**. Prefer extracting shared behavior into gems over building one-off app code. New addons start from the gem template (`build-recording-studio-gem`). Capability mixins are opt-in (`recording-studio-capabilities`).
+- Access: Accessible (ask if it cannot cover the case)
+- Staff UI: Admin
+- JSON: API
+- Components: Flatpack
 
-Gems are meant to provide a **UI slice** and an **API slice**, so setup stays fast. Prefer gem-owned views and controllers (easy to upgrade), app-owned route choices, and overrides only when the product truly needs them. Register domain actions once, enable them on the right API endpoints, and authorize with Recording Studio Accessible — do not duplicate action logic for JSON. Prefer rich APIs that AI agents can use on a user’s behalf, and separate user vs admin data with multiple named APIs. Follow `recording-studio-api` when exposing APIs.
+## Related
 
-## Gem-owned UI, app-owned routes
-
-Ship features in three layers so gems stay upgradable and apps stay in control:
-
-| Layer | Owner | Purpose |
-| --- | --- | --- |
-| **Core methods / services** | Gem (or core) | Stable domain API that UI, API, and custom host code can call |
-| **Controllers and views** | Gem | Fast default implementation; upgrades improve every host app |
-| **Routes and overrides** | Host app | Choose mount paths; replace views or controllers; reuse gem helpers/components |
-
-Guidelines:
-
-- Put business rules in **core methods** (and capability APIs), not only in controllers.
-- Prefer **gem-owned controllers and views** so bugfixes and UI improvements ship with the gem.
-- Let the **host app decide routes** (where the feature is mounted, path helpers, which surfaces appear).
-- Allow the host to **override or replace views and controllers** — without forking the gem’s domain logic. Default screens are a working slice, not a locked-in UI.
-- Extract distinctive UI (a root switcher, a grant widget, a picker) as a **helper or ViewComponent** so host layouts and custom screens can reuse it. Do not hide it only inside a gem template.
-- Custom host controllers should call the same core methods the gem controllers use, so behavior stays consistent with the UI and API slices.
-
-Avoid copying gem controllers into the host “just in case.” Start with the gem implementation, mount the routes the app wants, and override only the pieces that must differ. Follow `recording-studio-ui`.
-
-## UI strategy
-
-Follow `recording-studio-ui`. Gems ship **working UI slices** the host can mount — often more than one (user screens and a separate admin section). Each **mount point** navigates like a small app (section, child screens, back/close). Default views stay in the gem, but hosts can replace them; distinctive controls ship as helpers or ViewComponents. Screens stay **one primary action**, use Recording Studio core’s default layout, and compose with **Flatpack** — not custom CSS, JavaScript, or a competing shell.
-
-That keeps the ecosystem mobile-first and stops addons colliding on chrome. For which component to render, use `flatpack-ui`.
-
-## Dependencies and realism
-
-Early designs tried to keep things like access highly pluggable. In practice the ecosystem leans on known dependencies:
-
-- **Recording Studio Accessible** for access control across actors — **required; do not invent custom access**
-- **Recording Studio Admin** for admin sections, screens, and reporting UI gated by Accessible
-- **Recording Studio API** for JSON APIs that reuse the same capability actions as the UI
-- **Flatpack** for UI
-
-Prefer the standard stack over inventing alternate access, admin, API, or design systems. If Accessible (or another standard dependency) cannot support the requirement, ask how to proceed instead of building a one-off replacement.
-
-When building admin UI, follow the `setup-admin-screens` skill: create an **admin root**, mount admin screens under it, grant Accessible access to that root (do not nominate special admin users), enable sections on the recordable, then define screens/widgets in `app/admin`.
-
-## Fast start, then configure and override
-
-The default path should be:
-
-1. Get Recording Studio working immediately with gem defaults (core methods + gem UI/API slices).
-2. Let the host app choose routes and configuration.
-3. Let the host app override views or controllers only where product-specific UI or flow is required.
-
-Do not require deep customization before the basics run. Defaults should be useful; routing choices and targeted overrides are the escape hatches — not a rewrite of the gem.
-
-## Decision checklist
-
-When adding a feature, ask:
-
-1. Does ownership belong on a **root** (content, billing, access bucket) rather than a user?
-2. Should this data be a **recording**, an **event**, or a **log**?
-3. Are we modeling the actor as an **actor**, not only a user?
-4. Does this belong in core, an existing addon, or a new reusable gem?
-5. Can another app reuse it, or is it truly one-product logic?
-6. Does the UI stay a single-purpose page that fits the default layout?
-7. Are core methods reusable by gem UI, API, and host customizations?
-8. Is distinctive UI available as a helper or ViewComponent, not only inside a gem template?
-9. Are we using Flatpack and Recording Studio Accessible instead of a one-off approach?
-10. If Accessible seems insufficient, have we asked how to proceed instead of inventing custom access?
-11. Will a host app work out of the box, then replace views only where they must differ?
-
-If the answer points to root-scoped data, reusable gems, simple UI, and defaults first, you are aligned with Recording Studio.
-
-## Related skills
-
-| Need | Skill |
-|---|---|
-| Setup order and addon map | `getting-started-recording-studio` |
-| New addon gem | `build-recording-studio-gem` |
-| Mixins | `recording-studio-capabilities` |
-| Logs vs recordings | `recording-studio-logs` |
-| Access grants | `recording-studio-accessible` |
-| Admin root | `setup-admin-screens` |
-| HTTP API | `recording-studio-api` |
-| UI slices and page shape | `recording-studio-ui` |
-| Product copy | `recording-studio-copy` |
-| Flatpack components | `flatpack-ui` |
+`getting-started-recording-studio`, `recording-studio-logs`, `recording-studio-accessible`, `build-recording-studio-gem`.
