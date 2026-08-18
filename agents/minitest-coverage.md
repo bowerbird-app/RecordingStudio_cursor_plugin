@@ -34,4 +34,5 @@ Aim for high coverage. The usual working target is about **94%** — a chosen ba
 - Assert a new recordable row is created on `revise`.
 - Assert `Event` actions and counts for write paths.
 - Cover root and parent rejection paths for recordable declarations.
+- Dummy-app tests should prove the engine mounts and Accessible (when used) gates the action.
 - Use `idempotency_key` for retriable flows.

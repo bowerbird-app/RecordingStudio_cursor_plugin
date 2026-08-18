@@ -49,21 +49,7 @@ One benefit of this design is a **natural hierarchy**. Recordings nest under par
 
 ### Logs vs recordings and events
 
-Use **logs** for data an actor may have caused, but that they do not own as content, and that should not fill the recordings table.
-
-Examples:
-
-- webhook delivery logs
-- inbound request or processing logs
-- similar operational trails tied to a root or integration
-
-Guidelines:
-
-- If the user should treat it as first-class content in the tree, it is a **recording/recordable**.
-- If it is history of a recording's lifecycle or capability action, it is an **event**.
-- If it is caused activity that must stay queryable without becoming owned tree content, it is a **log**.
-
-Logs keep the recordings table focused on the hierarchy people navigate and collaborate on.
+Caused-but-unowned exhaust (webhook deliveries, inbound traces) belongs in **logs**, not the tree. Lifecycle of a folder or page is an **event**. Follow `recording-studio-logs`.
 
 ## Actors, not only users
 
@@ -79,12 +65,7 @@ For grant/check details, follow the `recording-studio-accessible` skill.
 
 ## Ecosystem of reusable gems
 
-Assume **most of any app is reusable**. Prefer extracting shared behavior into gems over building one-off app code.
-
-- Recording Studio core is the foundation.
-- Addon gems are small, focused blocks (`recording-studio-*`) that compose into products.
-- Avoid custom gems that only serve one application when the same capability can be abstracted for reuse.
-- Capability mixins are opt-in: installing a gem does not silently enable behavior for every recordable type.
+Assume **most of any app is reusable**. Prefer extracting shared behavior into gems over building one-off app code. New addons start from the gem template (`build-recording-studio-gem`). Capability mixins are opt-in (`recording-studio-capabilities`).
 
 Gems are meant to provide a **UI slice** and an **API slice**, so setup stays fast. Prefer gem-owned views and controllers (easy to upgrade), app-owned route choices, and overrides only when the product truly needs them. Register domain actions once, enable them on the right API endpoints, and authorize with Recording Studio Accessible — do not duplicate action logic for JSON. Prefer rich APIs that AI agents can use on a user’s behalf, and separate user vs admin data with multiple named APIs. Follow `recording-studio-api` when exposing APIs.
 
@@ -161,6 +142,9 @@ If the answer points to root-scoped data, reusable gems, simple UI, and defaults
 | Need | Skill |
 |---|---|
 | Setup order and addon map | `getting-started-recording-studio` |
+| New addon gem | `build-recording-studio-gem` |
+| Mixins | `recording-studio-capabilities` |
+| Logs vs recordings | `recording-studio-logs` |
 | Access grants | `recording-studio-accessible` |
 | Admin root | `setup-admin-screens` |
 | HTTP API | `recording-studio-api` |

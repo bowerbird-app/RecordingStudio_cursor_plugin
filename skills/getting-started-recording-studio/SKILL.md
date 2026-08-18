@@ -33,9 +33,9 @@ If two recordable types can both sit at the top of the tree, that is a **shared-
 
 ### What are the recordables?
 
-List the **types of content** in the tree (folders, pages, messages, jobs). Those become Recording Studio recordable types. Caused data that the tree should not own (webhook deliveries, audit trails) belongs in **logs**, not as extra recordables.
+List the **types of content** in the tree (folders, pages, messages, jobs). Those become Recording Studio recordable types (`add-recordable`). Caused data that the tree should not own (webhook deliveries, audit trails) belongs in **logs** (`recording-studio-logs`).
 
-User-facing copy must not say "recording" or "recordable". Use product words: workspace, folder, page, site.
+User-facing copy must not say "recording" or "recordable". Use product words: workspace, folder, page, site (`recording-studio-copy`).
 
 ## 2. Install Recording Studio core
 
@@ -50,7 +50,7 @@ In a host app:
 
 Core gives you **recordings, recordables, events, logs, and the write path**. It does **not** give you access control. Do not paper over that with a custom `admin?` flag or a home-grown ACL.
 
-For a **new reusable gem** instead of a host app, start from **recording_studio-gem_template** so the dummy app, Flatpack, and test layout already match the ecosystem.
+For a **new reusable gem** instead of a host app, start from **[RecordingStudio_gem_template](https://github.com/bowerbird-app/RecordingStudio_gem_template)**, run `bin/rename_gem`, and strip leftover template identity. Follow `build-recording-studio-gem`.
 
 ## 3. Add Accessible next (almost always)
 
@@ -76,26 +76,30 @@ Add gems because the product needs the **capability**, not because the catalogue
 |---|---|---|
 | Sign-in, invitations, profiles | **Users** (or the host's auth) | Auth identifies the actor. Accessible still decides what they can do. |
 | Grants, roles, hierarchy | **Accessible** | Required for multi-actor products. |
-| Switch current root | **Root switchable** | The host chooses the current root; this gem helps users move between buckets they can access. |
+| Switch current root | **Root switchable** | The **host** chooses the current root. This gem helps people move between buckets they can access. Ship the switcher as a **helper or ViewComponent** so a host layout can render it — do not trap it in one gem screen (`recording-studio-ui`). Accessible still decides which roots they may open. |
 
 ### Operating the product
 
 | Need | Addon | Notes |
 |---|---|---|
-| Staff / operations UI | **Admin** | Create an **admin root**, mount screens there, grant Accessible access to that root. Never `user.admin = true`. |
+| Staff / operations UI | **Admin** | Create an **admin root**, mount screens there, grant Accessible access to that root. Never `user.admin = true`. Few high-signal widgets (`setup-admin-screens`). |
 | HTTP API, tokens, AI agents | **API** | Same actions as the UI. Register capability actions; enable them per named API (`user`, `admin`, …). |
-| Plans, subscription, usage | **Billing** | Belongs on the **root**, not the user. |
+| Plans, subscription, usage | **Billing** | Charge the **root**, never the user record. A workspace can have many people and one bill. Do not put `plan_id` on `User`. |
 
 ### Product navigation and chrome
 
+Keep the host shell thin. Do not invent a second navbar in each gem.
+
 | Need | Addon | Notes |
 |---|---|---|
-| App nav, menus, wayfinding | **Navigation** | Keep host layout thin; let gems contribute nav items. |
-| Icons for recordable types | **Icons** | Shared visual language across gems. |
+| App nav, menus, wayfinding | **Navigation** | Gems **register** items; the host (or Navigation) renders one menu. Contribute links to your mount points — do not ship a competing sidebar. |
+| Icons for recordable types | **Icons** | Shared icons for folder, page, and similar types. Reuse them; do not hand-roll a per-gem icon set. |
+
+Page shape and Flatpack stay in `recording-studio-ui` and `flatpack-ui` — those remain separate skills (architecture vs which component).
 
 ### Recordable capabilities (mixins)
 
-These usually land on folders, pages, and similar types once the tree exists:
+These usually land on folders, pages, and similar types once the tree exists. They are **opt-in per type** — follow `recording-studio-capabilities`. Do not hand-roll move, trash, or comments.
 
 | Need | Addon |
 |---|---|
@@ -113,7 +117,7 @@ These usually land on folders, pages, and similar types once the tree exists:
 
 | Need | Addon |
 |---|---|
-| Signed webhooks | **Webhooks** (deliveries often belong in **logs**) |
+| Signed webhooks | **Webhooks** (endpoints are recordings; deliveries are **logs** — `recording-studio-logs`) |
 | In-app or email notices | **Notifications** |
 | Threads / inbox | **Messages** |
 
@@ -156,8 +160,8 @@ Use this as the default path for a new app:
 7. Add **API** when integrations or AI agents need the same actions.
 8. Add **Admin** only when staff need operations UI — as an admin root plus Accessible, not a nominated admin user. Ship a few high-signal widgets (`setup-admin-screens`), not a vanity dashboard.
 9. Add **Billing** on the root when the product charges for the bucket.
-10. Add capability mixins (move, trash, attach, …) as the tree needs them.
-11. Keep domain logic in gem core methods; host stays thin.
+10. Add capability mixins (move, trash, attach, …) as the tree needs them (`recording-studio-capabilities`).
+11. Keep domain logic in gem core methods; host stays thin. New addons start from the gem template (`build-recording-studio-gem`).
 
 ## Do not
 
@@ -166,6 +170,8 @@ Use this as the default path for a new app:
 - Build admin as "this person is an admin" instead of an admin root.
 - Expose UI actions that the API cannot perform (or the reverse) without a deliberate reason.
 - Hand-roll buttons, forms, and nav when Flatpack already has them.
+- Hand-roll move, trash, or comments when a capability mixin exists (`recording-studio-capabilities`).
+- Invent a competing sidebar when **Navigation** can register the gem’s links.
 - Invent a competing layout or dashboard inside a slice instead of a mount point with back/close (`recording-studio-ui`).
 - Skip Accessible because "it's only one workspace for now" if more than one actor will ever share it.
 
@@ -174,8 +180,11 @@ Use this as the default path for a new app:
 | Next | Skill |
 |---|---|
 | Philosophy and constraints | `recording-studio-approach` |
+| New addon gem | `build-recording-studio-gem` |
 | Recordable types | `add-recordable` |
+| Logs vs recordings | `recording-studio-logs` |
 | Writes | `write-through-recording-studio` |
+| Mixins | `recording-studio-capabilities` |
 | Access | `recording-studio-accessible` |
 | Admin root | `setup-admin-screens` |
 | HTTP API | `recording-studio-api` |

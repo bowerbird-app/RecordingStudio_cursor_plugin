@@ -44,4 +44,5 @@ Aim for high coverage. The usual working target is about **94%**, but that numbe
 - Cover configuration defaults and overrides.
 - Cover hook ordering, arguments, and error isolation.
 - Assert immutable recordables and event history on write paths.
+- Dummy-app tests should cover engine **mount**, initializer/route wiring, and **Accessible** (or the mixin under test) — not only a unit of library code.
 - Keep tests fast, deterministic, and scoped to the change.

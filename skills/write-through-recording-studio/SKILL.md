@@ -1,11 +1,13 @@
 ---
 name: write-through-recording-studio
-description: Use Recording Studio public write helpers instead of guessing internals. Use when creating, revising, or logging history for recorded content.
+description: Create, revise, or log Recording Studio content through public helpers. Use when writing tree content, appending history, or when tempted to insert Recording or Event rows directly. For webhook deliveries and similar exhaust, use recording-studio-logs instead.
 ---
 
 # Write through Recording Studio
 
-Use this sequence before guessing.
+Owned content goes through the public write path. Do not insert `Recording` or `Event` rows by hand, and do not `save!` a recordable to “update” it in place.
+
+If the data is caused activity that does not belong in the tree (deliveries, request traces), it is a **log**, not a `record` (`recording-studio-logs`).
 
 ## Checklist
 
@@ -14,19 +16,21 @@ Use this sequence before guessing.
 3. If the write is for a child, resolve `parent_recording` first and verify `RecordingStudio.parent_allowed?(child_type:, parent_recording:)`.
 4. If the child is capability-owned, inspect `RecordingStudio.recordable_parent_allowances_for(...)` and `RecordingStudio.parent_capabilities_for(child_type:, parent_recording:)` to explain why the parent is valid.
 5. Prefer `record`, `revise`, and `log_event!` on `RecordingStudio::Recording`. Drop to `RecordingStudio.record!` only when you need the returned event.
+6. For retriable jobs (webhooks, imports), pass an `idempotency_key` so a retry does not create a second recording or event.
 
-## Identity vs state vs history
+## Identity vs state vs history vs exhaust
 
 | Layer | Model | Responsibility |
 | --- | --- | --- |
 | Identity | Recording | Stable handle and mixin surface |
-| State | Recordable | Immutable snapshot |
-| History | Event | Append-only timeline |
+| State | Recordable | Immutable snapshot — `revise` creates a new row |
+| History | Event | Append-only timeline via `log_event!` |
+| Exhaust | Log | Caused-but-unowned trails that must not clog the tree |
 
 ## Tests
 
-- Assert a new recordable row on `revise`.
-- Assert event action and count, not in-place mutation.
-- Use `idempotency_key` for retriable flows.
+- Assert a new recordable row on `revise`, not in-place mutation.
+- Assert event action and count.
+- Cover the idempotent retry when you use `idempotency_key`.
 
 For the full method surface, read `docs/API_REFERENCE.md` in the Recording Studio gem.

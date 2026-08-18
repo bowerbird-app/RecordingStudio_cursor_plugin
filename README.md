@@ -27,10 +27,13 @@ Workflows Cursor can apply in the current chat:
 | Skill | Use when |
 | --- | --- |
 | `getting-started-recording-studio` | Mapping a new app: setup order and common addons |
+| `build-recording-studio-gem` | New addon from the gem template, then rename it |
 | `add-skill-or-agent` | Saving a new skill or agent into this plugin |
 | `recording-studio-approach` | Architecture, roots/actors, and gem/UI philosophy |
 | `add-recordable` | Adding a Recording Studio content type |
+| `recording-studio-logs` | Recordings vs events vs logs |
 | `write-through-recording-studio` | Creating, revising, or logging history |
+| `recording-studio-capabilities` | Opt-in mixins (move, trash, attach, …) |
 | `recording-studio-ui` | UI slices, mount points, and replaceable gem views |
 | `recording-studio-copy` | Fun, short product text with a human voice |
 | `flatpack-ui` | Which Flatpack components to render |

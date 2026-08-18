@@ -157,23 +157,17 @@ end
 
 Keep definitions in `app/admin` capability folders and register them from `to_prepare` so development reloads stay correct.
 
-Typical layout:
+Typical layout — a hub plus **one job** screen, not a widget kit:
 
 ```text
 app/admin/
   manifest.rb
-  root/
+  webhooks/
     manifest.rb
-    section.rb
-  api/
-    manifest.rb
-    section.rb
-    api_requests/
+    section.rb                    # links + maybe “failed last 24h” list
+    failed_deliveries/
       screen.rb
-      chart.rb
       table.rb
-      widgets/
-        api_activity.rb
 ```
 
 ```ruby

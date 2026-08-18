@@ -27,3 +27,5 @@
 - Refine copy voice: playful and clear, little on-screen text, no expert or AI-speak.
 - Prefer Flatpack tooltips, popovers, and admin widget extra info for details that would puzzle a newcomer, not walls of on-page help.
 - Steer admin sections toward a few high-signal widgets (exceptions, queues, health) instead of vanity totals and a screen per model.
+- Add `build-recording-studio-gem`, `recording-studio-capabilities`, and `recording-studio-logs` skills.
+- Tighten write-through, add-recordable, rails-expert, the always-on rule, and the admin file-tree example so they match those skills.

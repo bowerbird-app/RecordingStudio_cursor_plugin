@@ -14,6 +14,9 @@ Triage the request, delegate to the smallest useful specialist, then synthesize 
 | Request | Delegate to |
 | --- | --- |
 | New app, which gems to add, setup order | `getting-started-recording-studio` skill |
+| New addon gem from the template | `build-recording-studio-gem` skill |
+| Mixins (move, trash, attach, …) | `recording-studio-capabilities` skill |
+| Recording vs event vs log | `recording-studio-logs` skill |
 | Architecture and product philosophy | `recording-studio-approach` skill |
 | Feature implementation, bug fixes, architecture | `rails-expert` |
 | Security, auth, input handling, data isolation | `rails-security-expert` |

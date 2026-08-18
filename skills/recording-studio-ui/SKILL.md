@@ -124,5 +124,7 @@ Rules:
 | Titles, buttons, and other copy | `recording-studio-copy` |
 | Setup order | `getting-started-recording-studio` |
 | Philosophy and gem ownership | `recording-studio-approach` |
+| New addon gem | `build-recording-studio-gem` |
+| Mixins | `recording-studio-capabilities` |
 | Admin sections and screens | `setup-admin-screens` |
 | Same actions over HTTP | `recording-studio-api` |

@@ -1,26 +1,20 @@
 ---
-description: Recording Studio data and API conventions for gems and host apps
+description: Recording Studio hard constraints for gems and host apps
 alwaysApply: true
 ---
 
-For a new Recording Studio app or gem, follow `getting-started-recording-studio`: decide the root and actors, install core, add Accessible, then add only the addons the product needs.
+Follow `getting-started-recording-studio` for a new app. Follow `build-recording-studio-gem` for a new addon (start from the gem template, then strip template identity).
 
 Prefer Recording Studio public helpers over private registrar internals.
 
-Recordables are immutable snapshots. Use `revise` to change state and `log_event!` for history. Do not write `Event` rows directly.
+Recordables are immutable snapshots. Use `revise` to change state and `log_event!` for history. Do not write `Recording` or `Event` rows directly. Use `idempotency_key` on retriable writes. See `write-through-recording-studio` and `recording-studio-logs`.
 
 Declare every configured recordable with `recording_studio_recordable`, including `root` and `allowed_parent_types`. Validate declarations in tests.
 
-Roots are the content and billing buckets. Users and other actors get access to roots; they do not own the tree. Prefer actors over user-only designs. Use Recording Studio Accessible for access — do not invent custom access systems. Grants attach to recordings in the hierarchy and resolve the same way for every actor type. If Accessible cannot cover a scenario, ask how to proceed before writing an alternative.
+Roots are the content and billing buckets. Users and other actors get access to roots; they do not own the tree. Use Recording Studio Accessible for access — do not invent custom access. If Accessible cannot cover a scenario, ask how to proceed.
 
-Put owned tree content in recordings/recordables, recording history in events, and caused-but-unowned operational trails (such as webhook logs) in separate log tables so they do not clog recordings.
+Capability mixins are opt-in and do not come for free from installing a gem or registering a type (`recording-studio-capabilities`).
 
-Keep addon gems focused and reusable across apps. Prefer extracting shared behavior into `recording-studio-*` gems over one-off app code. Capability mixins are opt-in and do not come for free from type registration.
-
-Get Recording Studio working with defaults first. Prefer gem-owned views and controllers for easy upgrades, but design them so hosts can replace views and controllers and still call the same core methods. Ship distinctive UI (for example a root switcher) as a helper or ViewComponent, not only inside a gem template. A gem may have several mount points (user screens and a separate admin section); each mount point navigates like a small app: section, one-action child screens, back/close. Use Flatpack ViewComponents and the core default layout. Avoid custom CSS and JavaScript unless Flatpack cannot do the job. Follow `recording-studio-ui`. Keep on-screen words fun, short, and clear (`recording-studio-copy`).
-
-For admin UI, use Recording Studio Admin plus Recording Studio Accessible: create an admin root, mount screens under it, and grant Accessible access to that root instead of nominating special admin users. Authenticate in the host app, authorize against the admin root access recording, enable sections on the recordable, and define screens in `app/admin`.
-
-For JSON APIs, use Recording Studio API: register capability actions once, enable them on recordable endpoints, and authorize with Accessible. Do not duplicate UI action logic in custom API controllers.
+For screens, copy, admin taste, and APIs, follow `recording-studio-ui`, `recording-studio-copy`, `setup-admin-screens`, and `recording-studio-api`. Do not restate those skills here.
 
 Preserve public APIs unless the user asks for a breaking change. Use Conventional Commits when a version bump is required.
