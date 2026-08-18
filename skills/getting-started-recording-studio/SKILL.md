@@ -131,7 +131,7 @@ Follow `recording-studio-ui` for the screen shape:
 - **Pages do one job.** Prefer a screen that moves a folder over a dashboard of unrelated actions.
 - Use Recording Studio core’s **default layout** (back and close). A typical page is title, subtitle, optional buttons, then a form.
 - Use **Flatpack** ViewComponents (`flatpack-ui`). Avoid custom CSS and JavaScript unless there is no other path.
-- Keep titles and buttons short and plain (`recording-studio-copy`).
+- Keep titles and buttons fun, short, and clear (`recording-studio-copy`).
 - Put behaviour in **core methods** on the recordable. The UI calls them. The API calls them. Overrides call them.
 - The **host app owns routes** and mounts engines.
 

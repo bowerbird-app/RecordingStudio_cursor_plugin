@@ -1,50 +1,64 @@
 ---
 name: recording-studio-copy
-description: Write short, plain product text for Recording Studio screens, buttons, flashes, and mail. Use when adding titles, labels, empty states, errors, or any copy people will read. Prefer this skill over putting long explanations into the UI.
+description: Write fun, clear, short product text for Recording Studio screens, buttons, flashes, and mail. Use when adding titles, labels, empty states, errors, or any copy people will read. Give the app personality without filling the screen or using expert/AI jargon.
 ---
 
 # Recording Studio copy
 
-Write for a person using the product, not for a developer reading the gem.
+Write like a sharp marketer: **personality, then clarity**. The product should feel human and a little playful. It should never feel like a whitepaper or a chatbot.
 
-Keep it **short**. One idea. Everyday words. If a title, button, or flash needs a paragraph, the screen is doing too much (`recording-studio-ui`).
+People came to do a job. Help them do it. Do not fill the screen with words.
 
 ## Voice
 
-- Simple and readable. Prefer “Move this folder” over “Relocate the selected recordable in the hierarchy.”
-- Minimal. Cut words that do not help someone act.
-- Direct. Say what the page is, then the action.
-- Calm. No hype, no jokes that need explaining, no error text that blames the user.
+Warm, light, and plain. A short wink is fine. A lecture is not.
 
-Titles name the job. Subtitles add one line of context, or they stay empty. Buttons are verbs: Save, Move, Invite, Close.
+Think “Move this folder” or “Invite your team” — not “Relocate the selected recordable in the hierarchy.” The first is friendly. The second is a gem talking to itself.
 
-## Product words, not gem words
+Titles name the job. Subtitles add one spark of context, or they stay empty. Buttons are verbs: Save, Move, Invite, Close.
 
-Developer names stay in code and maintainer docs.
+Personality lives in **short lines** — a title, an empty state, a flash. It does not live in paragraphs of brand voice.
 
-| Do not say | Say |
-|---|---|
-| recording, recordable | folder, page, workspace, site — the thing it is |
-| root | workspace, site, or whatever the product calls the bucket |
-| actor, grant, capability | person, access, or the action they can take |
-| revise, event, log | only if the person must see history; then say “history” or “activity” |
+## Little text, better design
 
-Staff admin screens can be a little more precise. They still should not say “recordable.”
+Do not pad a page to make it look finished. White space is fine. A clear form beats a wall of help text.
+
+If something is hard to understand, **fix the design first**: one action, a better label, a sensible default. Copy is the backup, not the product.
+
+When you really must explain something complex:
+
+1. Split it into parts.
+2. Use scannable headings.
+3. Put **one short paragraph** under each heading (a blog post, not a brochure).
+
+Even then, ask whether a simpler screen would make the explanation unnecessary.
+
+## Everyday words, not expert talk
+
+If only a domain expert would say it, do not put it on the screen. Same for AI-speak: words that sound smart and mean little.
+
+Skip filler like *leverage, utilize, robust, seamless, unlock, empower, streamline, holistic, delve*. Skip gem talk like *recording, recordable, actor, root, capability, grant*.
+
+Say workspace, folder, page, site, people, access — the words a teammate would use at lunch.
+
+Staff admin screens can be a little more precise. They still should not say “recordable,” and they still should not drone.
 
 ## Errors and empty states
 
-- What happened, in plain language.
-- What to do next, if there is something to do.
-- No stack traces, class names, or “unauthorized for this recording.”
+Be human. Say what happened. Say what to do next. Do not blame. Do not dump class names.
 
-Good: “You don’t have access to this workspace.”  
-Poor: “Accessible role check failed on the root recording.”
+Good: “You don’t have access to this workspace. Ask someone to invite you.”  
+Poor: “Accessible role check failed on the root recording.”  
+Also poor: a three-paragraph apology.
+
+A playful empty state is great: “Nothing here yet. Add a page to get going.” Keep it to a line or two.
 
 ## Do not
 
-- Explain the architecture on the screen.
+- Cover the page in explanation when a simpler layout would do.
+- Stack witty intros on top of the actual action.
+- Use expert or AI phrasing to sound more serious.
 - Repeat the title in the subtitle.
-- Use help text to paper over a confusing form. Fix the form.
-- Write different voice in each gem. Stay this short everywhere.
+- Write a different voice in each gem. Same spark, same shortness.
 
 Page shape and Flatpack: `recording-studio-ui`, `flatpack-ui`.

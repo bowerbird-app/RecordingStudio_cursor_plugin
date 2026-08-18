@@ -1,9 +1,9 @@
 ---
-description: Keep product copy short, plain, and free of backend jargon
+description: Keep product copy fun, short, and free of jargon
 globs: "**/*.{erb,html,md}"
 alwaysApply: false
 ---
 
-Write short, everyday words for anything a person will read. Follow `recording-studio-copy`.
+Write like a marketer who keeps things simple: a little personality, very little text. Follow `recording-studio-copy`.
 
-Do not use developer terms such as recording, recordable, actor, or root on product screens.
+Do not fill the screen. Do not use developer terms (recording, recordable, actor, root) or AI-speak.

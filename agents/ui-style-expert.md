@@ -25,7 +25,7 @@ Ship distinctive controls as helpers or ViewComponents so a host can replace the
 
 ## User-facing copy
 
-Follow `recording-studio-copy`. Short, plain, product words. No developer terms on screens people will see.
+Follow `recording-studio-copy`. Fun, short, and clear. Personality in a line, not a lecture. No developer terms or AI-speak.
 
 ## Examples
 

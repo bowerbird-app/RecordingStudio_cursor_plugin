@@ -8,7 +8,7 @@ Use Flatpack ViewComponents for new UI whenever an appropriate component exists.
 
 Do not recreate buttons, forms, alerts, cards, modals, or navigation with custom markup or CSS.
 
-Prefer the Recording Studio core default layout and one primary action per page (`recording-studio-ui`). Keep titles and buttons short and plain (`recording-studio-copy`).
+Prefer the Recording Studio core default layout and one primary action per page (`recording-studio-ui`). Keep titles and buttons fun, short, and clear (`recording-studio-copy`).
 
 Check https://flatpack.bowerbird.io/ and existing repo usage before adding UI.
 
