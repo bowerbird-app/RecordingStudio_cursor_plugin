@@ -110,17 +110,9 @@ Avoid copying gem controllers into the host “just in case.” Start with the g
 
 ## UI strategy
 
-Keep screens simple and **one primary action per page**.
+Follow `recording-studio-ui`. Gems ship **UI slices** the host can mount as small, independent mini-apps. Screens stay **one primary action**, use Recording Studio core’s default layout (back and close), and compose with **Flatpack** ViewComponents — not custom CSS, JavaScript, or a competing shell.
 
-That supports:
-
-- modular gem composition (fewer layout and UX collisions between addons)
-- a **mobile-first** ecosystem
-- faster onboarding for new apps
-
-The default layout from Recording Studio core is deliberately **minimal and focused on the immediate action**. Use it as the shared shell. Do not invent competing page chrome in addon gems unless the host app explicitly needs it.
-
-Build UI with **Flatpack** ViewComponents. Prefer existing Flatpack pieces over custom markup.
+That keeps the ecosystem mobile-first and stops addons colliding on chrome. For which component to render, use `flatpack-ui`.
 
 ## Dependencies and realism
 
@@ -171,4 +163,5 @@ If the answer points to root-scoped data, reusable gems, simple UI, and defaults
 | Access grants | `recording-studio-accessible` |
 | Admin root | `setup-admin-screens` |
 | HTTP API | `recording-studio-api` |
-| UI | `flatpack-ui` |
+| UI slices and page shape | `recording-studio-ui` |
+| Flatpack components | `flatpack-ui` |

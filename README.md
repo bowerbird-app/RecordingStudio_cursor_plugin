@@ -31,7 +31,8 @@ Workflows Cursor can apply in the current chat:
 | `recording-studio-approach` | Architecture, roots/actors, and gem/UI philosophy |
 | `add-recordable` | Adding a Recording Studio content type |
 | `write-through-recording-studio` | Creating, revising, or logging history |
-| `flatpack-ui` | Building or changing UI |
+| `recording-studio-ui` | UI slices, mini-apps, and one-action screens |
+| `flatpack-ui` | Which Flatpack components to render |
 | `setup-admin-screens` | Admin root + Accessible-gated screens |
 | `recording-studio-accessible` | Hierarchy access grants for any actor |
 | `recording-studio-api` | Capability actions, AI access, user vs admin APIs |

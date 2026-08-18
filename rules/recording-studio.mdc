@@ -17,7 +17,7 @@ Put owned tree content in recordings/recordables, recording history in events, a
 
 Keep addon gems focused and reusable across apps. Prefer extracting shared behavior into `recording-studio-*` gems over one-off app code. Capability mixins are opt-in and do not come for free from type registration.
 
-Get Recording Studio working with defaults first. Prefer gem-owned views and controllers for easy upgrades; let host apps choose routes and override views/controllers only when needed. Keep domain logic in core methods that gem UI, API, and customizations can share. Keep screens simple and one primary action per page, using Flatpack and the core default layout.
+Get Recording Studio working with defaults first. Prefer gem-owned views and controllers for easy upgrades; let host apps choose routes and override views/controllers only when needed. Keep domain logic in core methods that gem UI, API, and customizations can share. Treat each gem UI as a mini-app: mount a section, then one-action child screens. Use Flatpack ViewComponents and the core default layout (back and close). Avoid custom CSS and JavaScript unless Flatpack cannot do the job. Follow `recording-studio-ui`.
 
 For admin UI, use Recording Studio Admin plus Recording Studio Accessible: create an admin root, mount screens under it, and grant Accessible access to that root instead of nominating special admin users. Authenticate in the host app, authorize against the admin root access recording, enable sections on the recordable, and define screens in `app/admin`.
 

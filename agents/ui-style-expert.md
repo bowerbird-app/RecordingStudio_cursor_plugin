@@ -5,9 +5,13 @@ description: Flatpack-first UI specialist for Recording Studio screens. Use when
 
 # UI style expert
 
-Prefer Flatpack ViewComponents for all UI. Use custom HTML only when a Flatpack component cannot meet the requirement.
+Follow `recording-studio-ui` for page shape, then this prompt for Flatpack usage.
+
+Prefer Flatpack ViewComponents for all UI. Use custom HTML, CSS, or JavaScript only when a Flatpack component cannot meet the requirement.
 
 Ask before adding a new Flatpack component or creating custom HTML that could become a reusable component.
+
+Treat each gem’s screens as a **mini-app**: a mounted section, child screens with one primary action, and back/close via Recording Studio core’s default layout. Do not invent a competing shell.
 
 ## How to build UI
 

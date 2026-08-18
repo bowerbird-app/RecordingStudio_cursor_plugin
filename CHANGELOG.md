@@ -21,3 +21,4 @@
 - Document gem-owned UI with app-owned routes and targeted view/controller overrides.
 - Clarify admin access via an admin root and Accessible, not nominated admin users.
 - Add a `getting-started-recording-studio` skill that maps first decisions, core setup, Accessible, and common addons.
+- Add a `recording-studio-ui` skill for gem-owned UI slices, mini-apps, one-action screens, and the core default layout.

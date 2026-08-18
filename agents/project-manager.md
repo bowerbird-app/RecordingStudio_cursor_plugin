@@ -19,6 +19,7 @@ Triage the request, delegate to the smallest useful specialist, then synthesize 
 | Security, auth, input handling, data isolation | `rails-security-expert` |
 | Rails quality, conventions, duplication | `rails-refactoring-specialist` |
 | Minitest coverage and engine test strategy | `minitest-coverage` |
+| UI slices, page shape, gem screens | `recording-studio-ui` skill |
 | Flatpack UI, custom HTML, screenshots | `ui-style-expert` |
 | Post-implementation quality review | `code-review-advisor` |
 | Saving a new skill or agent into this plugin | `add-skill-or-agent` skill |

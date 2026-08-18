@@ -7,6 +7,8 @@ description: Build Recording Studio screens with Flatpack ViewComponents instead
 
 Flatpack is the Recording Studio UI library. Search for an existing component before writing markup.
 
+For **page shape** — UI slices, mini-apps, one-action screens, and the core default layout — follow `recording-studio-ui` first. This skill is which Flatpack component to render.
+
 ## When to use
 
 - Adding or changing a screen, form, alert, card, table, modal, or navigation
