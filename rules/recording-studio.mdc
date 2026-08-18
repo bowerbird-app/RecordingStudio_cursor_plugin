@@ -3,7 +3,7 @@ description: Recording Studio hard constraints for gems and host apps
 alwaysApply: true
 ---
 
-Follow `recording-studio-getting-started` for a new app. Follow `recording-studio-new-gem` for a new addon (start from the gem template, then strip template identity).
+Follow `recording-studio-getting-started` for a new app. Follow `recording-studio-gems` when choosing a Gemfile dependency — prefer Recording Studio addons over third-party equivalents; stop and ask if the need is not on that list. Follow `recording-studio-new-gem` for a new addon (start from the gem template, then strip template identity).
 
 Prefer Recording Studio public helpers over private registrar internals.
 

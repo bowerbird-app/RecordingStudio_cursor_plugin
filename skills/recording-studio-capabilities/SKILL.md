@@ -52,7 +52,7 @@ Use these instead of writing the same feature in the host:
 | Export | **Exportable** |
 | Embed | **Embeddable** |
 
-Accessible, Admin, API, Billing, Users, Webhooks, and similar are **addons**, but they are not “enable this on Folder” mixins in the same way. Getting started maps those. This skill is the recordable mixins.
+Accessible, Admin, API, Billing, Users, Webhooks, and similar are **addons**, but they are not “enable this on Folder” mixins in the same way. Approved kit: `recording-studio-gems`. This skill is the recordable mixins.
 
 ## UI and API
 
@@ -67,4 +67,4 @@ The mixin should expose the **same domain action** the screen uses. UI pieces: `
 
 ## Related
 
-`recording-studio-new-recordable`, `recording-studio-api`, `recording-studio-access`.
+`recording-studio-new-recordable`, `recording-studio-api`, `recording-studio-access`, `recording-studio-gems`.

@@ -31,3 +31,4 @@
 - Tighten `recording-studio-saving`, `recording-studio-new-recordable`, rails-expert, the always-on rule, and the admin file-tree example so they match those skills.
 - DRY the skills: one owner per topic, recaps replaced with pointers, admin no longer duplicates Accessible install.
 - Rename product skills to `recording-studio-<topic>` (`text`, `access`, `flatpack`, `admin`, `saving`, `data-shape`, `new-recordable`, and the rest). `add-skill-or-agent` stays — it is this plugin, not the Rails product.
+- Add a `recording-studio-gems` skill that lists approved ecosystem gems (webhooks, billing, access, mixins, …) and forbids third-party substitutes.

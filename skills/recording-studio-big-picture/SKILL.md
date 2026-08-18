@@ -28,7 +28,7 @@ A user is one actor. API clients, AI agents, and later types are actors too. Sam
 
 ## Reusable gems
 
-Assume **most of the product is reusable**. Extract a `recording-studio-*` addon instead of one-app code (`recording-studio-new-gem`). Mixins are opt-in per type (`recording-studio-capabilities`).
+Assume **most of the product is reusable**. Extract a `recording-studio-*` addon instead of one-app code (`recording-studio-new-gem`). Prefer approved ecosystem gems over third-party substitutes (`recording-studio-gems`). Mixins are opt-in per type (`recording-studio-capabilities`).
 
 If the gem has UI or API, they share **one domain action** (`recording-studio-ui`, `recording-studio-api`). Do not invent a second action for JSON.
 
@@ -41,4 +41,4 @@ Standard stack — do not replace these:
 
 ## Related
 
-`recording-studio-getting-started`, `recording-studio-data-shape`, `recording-studio-access`, `recording-studio-new-gem`.
+`recording-studio-getting-started`, `recording-studio-gems`, `recording-studio-data-shape`, `recording-studio-access`, `recording-studio-new-gem`.

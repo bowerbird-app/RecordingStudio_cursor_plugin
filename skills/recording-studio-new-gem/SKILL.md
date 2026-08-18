@@ -29,7 +29,8 @@ Dummy login (`admin@admin.com`) can stay in dummy; it is not product copy.
 
 ## 2. Then follow the other skills
 
-- Mixin vs addon: `recording-studio-capabilities` / `recording-studio-getting-started`
+- Mixin vs addon: `recording-studio-capabilities` / `recording-studio-gems`
+- Add the new gem to the approved kit in `recording-studio-gems`
 - Screens and helpers: `recording-studio-ui`
 - Same domain action on the API if there is an API: `recording-studio-api`
 - Admin only if staff operate this capability: `recording-studio-admin`

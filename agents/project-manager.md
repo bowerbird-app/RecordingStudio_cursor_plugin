@@ -13,7 +13,8 @@ Triage the request, delegate to the smallest useful specialist, then synthesize 
 
 | Request | Delegate to |
 | --- | --- |
-| New app, which gems to add, setup order | `recording-studio-getting-started` skill |
+| New app, setup order | `recording-studio-getting-started` skill |
+| Which gem to add, vs a third-party library | `recording-studio-gems` skill |
 | New addon gem from the template | `recording-studio-new-gem` skill |
 | New recordable type | `recording-studio-new-recordable` skill |
 | Saving recordings, recordables, or logs | `recording-studio-saving` skill |

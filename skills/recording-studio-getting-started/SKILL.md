@@ -1,6 +1,6 @@
 ---
 name: recording-studio-getting-started
-description: Map a new Recording Studio app from first decisions through core setup, Accessible, and which addons to include. Use when starting a product, adding Recording Studio to a Rails app, or choosing gems. Prefer this skill over jumping into a single addon. For a new addon gem, use recording-studio-new-gem.
+description: Map a new Recording Studio app from first decisions through core setup, Accessible, and which addons to include. Use when starting a product, adding Recording Studio to a Rails app, or choosing setup order. Prefer this skill over jumping into a single addon. For which gem to add, use recording-studio-gems. For a new addon gem, use recording-studio-new-gem.
 ---
 
 # Getting started with Recording Studio
@@ -35,21 +35,7 @@ Add it as soon as more than one actor can see a root. Grants, actors, and “sto
 
 ## 4. Choose addons
 
-Add a gem for a **need**, not because it exists. If that need has UI or API, expose the **same domain action** — do not add a dashboard or JSON surface “for completeness.”
-
-| Need | Addon | Follow |
-|---|---|---|
-| Sign-in, invitations | **Users** (or host auth) | Auth identifies the actor; Accessible still authorizes |
-| Grants | **Accessible** | `recording-studio-access` |
-| Switch workspace/site | **Root switchable** | Host picks current root. Switcher is a helper/component (`recording-studio-ui`) |
-| Staff operations UI | **Admin** | Admin root + Accessible (`recording-studio-admin`) |
-| HTTP API / AI agents | **API** | `recording-studio-api` |
-| Plans and usage | **Billing** | On the **root**, never `plan_id` on `User` |
-| Menus | **Navigation** | Gems register items; one host menu — no second sidebar |
-| Type icons | **Icons** | Reuse shared icons |
-| Move, trash, attach, … | Mixins | Opt-in per type (`recording-studio-capabilities`) |
-| Webhook endpoints | **Webhooks** | Endpoints are recordings; deliveries are logs (`recording-studio-data-shape`) |
-| Notices / threads | **Notifications**, **Messages** | |
+Pick from the approved kit (`recording-studio-gems`). Do not reach for a third-party gem that does the same job. Add a gem for a **need**, not because it exists. If that need has UI or API, expose the **same domain action**.
 
 Typical first slice: **core → Accessible → auth → tree UI → API if agents → Admin if staff → Billing when you charge the root.**
 
