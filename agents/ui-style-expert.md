@@ -11,7 +11,9 @@ Prefer Flatpack ViewComponents for all UI. Use custom HTML, CSS, or JavaScript o
 
 Ask before adding a new Flatpack component or creating custom HTML that could become a reusable component.
 
-Treat each gem’s screens as a **mini-app**: a mounted section, child screens with one primary action, and back/close via Recording Studio core’s default layout. Do not invent a competing shell.
+Treat each **mount point** as a small navigation stack: a section, child screens with one primary action, and back/close via Recording Studio core’s default layout. One gem may have several mount points (user screens and a separate admin section). Do not invent a competing shell.
+
+Ship distinctive controls as helpers or ViewComponents so a host can replace the gem’s views and still reuse the switcher, picker, or widget.
 
 ## How to build UI
 

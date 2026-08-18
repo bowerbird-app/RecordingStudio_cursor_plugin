@@ -125,13 +125,14 @@ You do not need this whole list on day one. A typical first slice is:
 
 Follow `recording-studio-ui` for the screen shape:
 
-- Each gem ships a **UI slice** — a mini-app the host mounts, with a section screen that links to child actions.
+- A gem may ship **several UI slices** (user screens and a separate admin section are two mount points, not one app).
+- Each mount point navigates like a small app: a section screen, child actions, then back/close.
+- Default views live in the gem, but hosts can **replace views and controllers**. Distinctive UI (for example a root switcher) ships as a **helper or ViewComponent**.
 - **Pages do one job.** Prefer a screen that moves a folder over a dashboard of unrelated actions.
 - Use Recording Studio core’s **default layout** (back and close). A typical page is title, subtitle, optional buttons, then a form.
 - Use **Flatpack** ViewComponents (`flatpack-ui`). Avoid custom CSS and JavaScript unless there is no other path.
 - Put behaviour in **core methods** on the recordable. The UI calls them. The API calls them. Overrides call them.
-- Gems should ship **views and controllers**. The **host app owns routes** and mounts engines.
-- Override gem views only when the product must diverge. Prefer helpers, slots, and configuration.
+- The **host app owns routes** and mounts engines.
 
 If the UI can do it, the API should usually be able to do it too (`recording-studio-api`).
 
@@ -164,7 +165,7 @@ Use this as the default path for a new app:
 - Build admin as "this person is an admin" instead of an admin root.
 - Expose UI actions that the API cannot perform (or the reverse) without a deliberate reason.
 - Hand-roll buttons, forms, and nav when Flatpack already has them.
-- Invent a competing layout or dashboard inside an addon instead of a mounted mini-app (`recording-studio-ui`).
+- Invent a competing layout or dashboard inside a slice instead of a mount point with back/close (`recording-studio-ui`).
 - Skip Accessible because "it's only one workspace for now" if more than one actor will ever share it.
 
 ## Related skills

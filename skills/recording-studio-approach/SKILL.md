@@ -96,21 +96,22 @@ Ship features in three layers so gems stay upgradable and apps stay in control:
 | --- | --- | --- |
 | **Core methods / services** | Gem (or core) | Stable domain API that UI, API, and custom host code can call |
 | **Controllers and views** | Gem | Fast default implementation; upgrades improve every host app |
-| **Routes and overrides** | Host app | Choose mount paths / route helpers; replace views or controllers only when needed |
+| **Routes and overrides** | Host app | Choose mount paths; replace views or controllers; reuse gem helpers/components |
 
 Guidelines:
 
 - Put business rules in **core methods** (and capability APIs), not only in controllers.
 - Prefer **gem-owned controllers and views** so bugfixes and UI improvements ship with the gem.
 - Let the **host app decide routes** (where the feature is mounted, path helpers, which surfaces appear).
-- Allow the host to **override views and controllers** when product-specific behavior is required — without forking the gem’s domain logic.
+- Allow the host to **override or replace views and controllers** — without forking the gem’s domain logic. Default screens are a working slice, not a locked-in UI.
+- Extract distinctive UI (a root switcher, a grant widget, a picker) as a **helper or ViewComponent** so host layouts and custom screens can reuse it. Do not hide it only inside a gem template.
 - Custom host controllers should call the same core methods the gem controllers use, so behavior stays consistent with the UI and API slices.
 
-Avoid copying gem controllers into the host “just in case.” Start with the gem implementation, mount the routes the app wants, and override only the pieces that must differ.
+Avoid copying gem controllers into the host “just in case.” Start with the gem implementation, mount the routes the app wants, and override only the pieces that must differ. Follow `recording-studio-ui`.
 
 ## UI strategy
 
-Follow `recording-studio-ui`. Gems ship **UI slices** the host can mount as small, independent mini-apps. Screens stay **one primary action**, use Recording Studio core’s default layout (back and close), and compose with **Flatpack** ViewComponents — not custom CSS, JavaScript, or a competing shell.
+Follow `recording-studio-ui`. Gems ship **working UI slices** the host can mount — often more than one (user screens and a separate admin section). Each **mount point** navigates like a small app (section, child screens, back/close). Default views stay in the gem, but hosts can replace them; distinctive controls ship as helpers or ViewComponents. Screens stay **one primary action**, use Recording Studio core’s default layout, and compose with **Flatpack** — not custom CSS, JavaScript, or a competing shell.
 
 That keeps the ecosystem mobile-first and stops addons colliding on chrome. For which component to render, use `flatpack-ui`.
 
@@ -148,10 +149,10 @@ When adding a feature, ask:
 5. Can another app reuse it, or is it truly one-product logic?
 6. Does the UI stay a single-purpose page that fits the default layout?
 7. Are core methods reusable by gem UI, API, and host customizations?
-8. Is the gem keeping views/controllers while the app owns routes (and overrides only when needed)?
+8. Is distinctive UI available as a helper or ViewComponent, not only inside a gem template?
 9. Are we using Flatpack and Recording Studio Accessible instead of a one-off approach?
 10. If Accessible seems insufficient, have we asked how to proceed instead of inventing custom access?
-11. Will a host app work out of the box, then configure or override only what must differ?
+11. Will a host app work out of the box, then replace views only where they must differ?
 
 If the answer points to root-scoped data, reusable gems, simple UI, and defaults first, you are aligned with Recording Studio.
 

@@ -7,7 +7,7 @@ description: Set up Recording Studio Admin via an admin root and Accessible gran
 
 Use **Recording Studio Admin** for reusable admin and reporting screens. Use **Recording Studio Accessible** to grant actors access and to gate those screens.
 
-Admin comes after core and Accessible are in place. For the full setup map, see `getting-started-recording-studio`. Admin is the reference **UI slice**: a mounted mini-app with a section and child screens (`recording-studio-ui`).
+Admin comes after core and Accessible are in place. For the full setup map, see `getting-started-recording-studio`. Admin is one **mount point**: a section and child screens that navigate like a small app (`recording-studio-ui`). Other gems often ship a user slice *and* a separate admin slice.
 
 ## Admin approach: roots, not nominated admins
 
