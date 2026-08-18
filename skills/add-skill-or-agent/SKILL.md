@@ -21,7 +21,7 @@ A skill is a one-shot workflow in the current chat. An agent is an isolated spec
 ## Skill checklist
 
 1. Create `skills/<name>/SKILL.md`.
-2. Use lowercase kebab-case. The folder name must match the frontmatter `name`.
+2. Use lowercase kebab-case. The folder name must match the frontmatter `name`. Product skills are `recording-studio-<topic>`; this plugin’s own workflow is the exception (`add-skill-or-agent`).
 3. Include YAML frontmatter with `name` and `description`.
 4. Put "use when" language in `description` so Cursor can decide to invoke it.
 5. Keep the body actionable: when to use, steps, guardrails.

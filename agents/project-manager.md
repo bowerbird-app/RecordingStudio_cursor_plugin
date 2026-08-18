@@ -13,18 +13,23 @@ Triage the request, delegate to the smallest useful specialist, then synthesize 
 
 | Request | Delegate to |
 | --- | --- |
-| New app, which gems to add, setup order | `getting-started-recording-studio` skill |
-| New addon gem from the template | `build-recording-studio-gem` skill |
+| New app, which gems to add, setup order | `recording-studio-getting-started` skill |
+| New addon gem from the template | `recording-studio-new-gem` skill |
+| New recordable type | `recording-studio-new-recordable` skill |
+| Saving recordings, recordables, or logs | `recording-studio-saving` skill |
 | Mixins (move, trash, attach, …) | `recording-studio-capabilities` skill |
-| Recording vs event vs log | `recording-studio-logs` skill |
-| Architecture and product philosophy | `recording-studio-approach` skill |
+| Tree vs events vs logs | `recording-studio-data-shape` skill |
+| Architecture and product philosophy | `recording-studio-big-picture` skill |
 | Feature implementation, bug fixes, architecture | `rails-expert` |
 | Security, auth, input handling, data isolation | `rails-security-expert` |
 | Rails quality, conventions, duplication | `rails-refactoring-specialist` |
 | Minitest coverage and engine test strategy | `minitest-coverage` |
 | UI slices, mount points, replaceable views | `recording-studio-ui` skill |
-| Admin screens and widgets | `setup-admin-screens` skill |
-| Product copy (titles, buttons, flashes) | `recording-studio-copy` skill |
+| Which Flatpack component | `recording-studio-flatpack` skill |
+| Admin screens and widgets | `recording-studio-admin` skill |
+| Access grants and actors | `recording-studio-access` skill |
+| JSON API / AI access | `recording-studio-api` skill |
+| Product text (titles, buttons, flashes) | `recording-studio-text` skill |
 | Flatpack UI, custom HTML, screenshots | `ui-style-expert` |
 | Post-implementation quality review | `code-review-advisor` |
 | Saving a new skill or agent into this plugin | `add-skill-or-agent` skill |

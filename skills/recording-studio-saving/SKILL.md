@@ -1,13 +1,13 @@
 ---
-name: write-through-recording-studio
-description: Create, revise, or log Recording Studio content through public helpers. Use when writing tree content, appending history, or when tempted to insert Recording or Event rows directly. For webhook deliveries and similar exhaust, use recording-studio-logs instead.
+name: recording-studio-saving
+description: Create, revise, or log Recording Studio content through public helpers. Use when writing tree content, appending history, or when tempted to insert Recording or Event rows directly. For webhook deliveries and similar exhaust, use recording-studio-data-shape instead.
 ---
 
-# Write through Recording Studio
+# Saving
 
 Owned content goes through the public write path. Do not insert `Recording` or `Event` rows by hand, and do not `save!` a recordable to “update” it in place.
 
-If the data is caused activity that does not belong in the tree (deliveries, request traces), it is a **log**, not a `record`. Layers: `recording-studio-logs`.
+If the data is caused activity that does not belong in the tree (deliveries, request traces), it is a **log**, not a `record`. Layers: `recording-studio-data-shape`.
 
 ## Checklist
 

@@ -5,7 +5,7 @@ description: Flatpack-first UI specialist for Recording Studio screens. Use when
 
 # UI style expert
 
-Follow `recording-studio-ui` for page shape, `flatpack-ui` for which component, and `recording-studio-copy` for words. Do not invent a competing shell.
+Follow `recording-studio-ui` for page shape, `recording-studio-flatpack` for which component, and `recording-studio-text` for words. Do not invent a competing shell.
 
 Ask before adding a new Flatpack component or custom HTML that could become one.
 

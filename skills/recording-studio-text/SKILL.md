@@ -1,9 +1,9 @@
 ---
-name: recording-studio-copy
+name: recording-studio-text
 description: Write fun, clear, short product text for Recording Studio screens, buttons, flashes, and mail. Use when adding titles, labels, empty states, errors, tooltips, popovers, admin widget extra info, or any copy people will read. Give the app personality without filling the screen or using expert/AI jargon.
 ---
 
-# Recording Studio copy
+# Recording Studio text
 
 Write like a sharp marketer: **personality, then clarity**. The product should feel human and a little playful. It should never feel like a whitepaper or a chatbot.
 
@@ -72,4 +72,4 @@ A playful empty state is great: “Nothing here yet. Add a page to get going.”
 - Repeat the title in the subtitle.
 - Write a different voice in each gem. Same spark, same shortness.
 
-Page shape: `recording-studio-ui`. Components: `flatpack-ui` (`Tooltip`, `Popover` — not custom hover hacks).
+Page shape: `recording-studio-ui`. Components: `recording-studio-flatpack` (`Tooltip`, `Popover` — not custom hover hacks).

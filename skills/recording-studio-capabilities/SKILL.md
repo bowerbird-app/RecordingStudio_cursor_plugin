@@ -67,4 +67,4 @@ The mixin should expose the **same domain action** the screen uses. UI pieces: `
 
 ## Related
 
-`add-recordable`, `recording-studio-api`, `recording-studio-accessible`.
+`recording-studio-new-recordable`, `recording-studio-api`, `recording-studio-access`.

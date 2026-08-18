@@ -1,17 +1,17 @@
 ---
-name: add-recordable
-description: Add or register a Recording Studio recordable type with hierarchy declarations, product labels, and tests. Use when creating a new content type, root, or nested model — not for webhook deliveries, audit exhaust, or other logs.
+name: recording-studio-new-recordable
+description: Add or register a Recording Studio recordable type with hierarchy declarations, product labels, and tests. Use when creating a new recordable class, root, or nested model — not for webhook deliveries, audit exhaust, or other logs.
 ---
 
-# Add a recordable
+# New recordable
 
 Follow Recording Studio's public API. Do not invent private registrar internals.
 
-First decide whether this is a **recordable at all** (`recording-studio-logs`). Mixins are opt-in later (`recording-studio-capabilities`).
+First decide whether this is a **recordable at all** (`recording-studio-data-shape`). Mixins are opt-in later (`recording-studio-capabilities`).
 
 ## When to use
 
-- Adding a new content type to a host app or addon gem
+- Adding a new recordable type to a host app or addon gem
 - Declaring root vs nested hierarchy rules
 - Wiring labels, table names, and tests for a new type
 
@@ -58,7 +58,7 @@ root.record(Page) { |page| page.title = "Getting started" }
 
 ## Guardrails
 
-- Writes: `write-through-recording-studio`.
+- Writes: `recording-studio-saving`.
 - Prefer public helpers such as `RecordingStudio.root_allowed?` and `RecordingStudio.parent_allowed?`.
 - Cover declaration, root rejection, and parent rejection in Minitest.
-- `label` is product language (`recording-studio-copy`) — never “Recordable.”
+- `label` is product language (`recording-studio-text`) — never “Recordable.”

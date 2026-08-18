@@ -1,11 +1,11 @@
 ---
-name: setup-admin-screens
+name: recording-studio-admin
 description: Set up Recording Studio Admin via an admin root and Accessible grants (not nominated admin users). Use when installing admin, mounting screens, defining sections or widgets, or deciding what belongs on an admin page. Prefer a few high-signal widgets over filling the section.
 ---
 
-# Set up admin screens
+# Recording Studio admin
 
-**Recording Studio Admin** is staff operations UI. Access is **Accessible** (`recording-studio-accessible`) — do not copy that skill’s install here. Page shape: `recording-studio-ui`. Words: `recording-studio-copy`.
+**Recording Studio Admin** is staff operations UI. Access is **Accessible** (`recording-studio-access`) — do not copy that skill’s install here. Page shape: `recording-studio-ui`. Words: `recording-studio-text`.
 
 Install Accessible first, then this gem. Admin is one **mount point**. Other gems often ship a user slice *and* a separate admin slice.
 
@@ -70,7 +70,7 @@ class AdminRoot < ApplicationRecord
 end
 ```
 
-Use the Accessible enablement API from `recording-studio-accessible` / that gem’s README — do not assume every mixin uses `enable_capability`.
+Use the Accessible enablement API from `recording-studio-access` / that gem’s README — do not assume every mixin uses `enable_capability`.
 
 ## Screens and widgets
 
@@ -91,7 +91,7 @@ app/admin/
 |---|---|
 | **Section** | Hub: links + a few signals |
 | **Screen** | One operational job: filter, table, maybe a chart |
-| **Widget** | Card that changes what someone does next (`number`, `list`, `chart`, `progress`). Extra-info when the title is not obvious (`recording-studio-copy`) |
+| **Widget** | Card that changes what someone does next (`number`, `list`, `chart`, `progress`). Extra-info when the title is not obvious (`recording-studio-text`) |
 | **Resource** | Table actions; host owns the mutation controller |
 
 ```ruby
@@ -130,7 +130,7 @@ Newcomer check: can they tell what needs them? Cryptic number → extra-info, no
 ## Guardrails
 
 - Use Admin’s Flatpack rendering. Queries in definitions or services, not ERB.
-- Exhaust belongs in **logs** (`recording-studio-logs`).
+- Exhaust belongs in **logs** (`recording-studio-data-shape`).
 - Mutations: `RecordingStudioAdmin.authorize_resource!` and `perform_recording_studio_admin_action!`.
 - Grant on the **admin root**, not a broad workspace grant to unlock one page.
 

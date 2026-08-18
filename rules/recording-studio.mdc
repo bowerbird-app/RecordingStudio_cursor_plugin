@@ -3,11 +3,11 @@ description: Recording Studio hard constraints for gems and host apps
 alwaysApply: true
 ---
 
-Follow `getting-started-recording-studio` for a new app. Follow `build-recording-studio-gem` for a new addon (start from the gem template, then strip template identity).
+Follow `recording-studio-getting-started` for a new app. Follow `recording-studio-new-gem` for a new addon (start from the gem template, then strip template identity).
 
 Prefer Recording Studio public helpers over private registrar internals.
 
-Recordables are immutable snapshots. Use `revise` to change state and `log_event!` for history. Do not write `Recording` or `Event` rows directly. Use `idempotency_key` on retriable writes. See `write-through-recording-studio` and `recording-studio-logs`.
+Recordables are immutable snapshots. Use `revise` to change state and `log_event!` for history. Do not write `Recording` or `Event` rows directly. Use `idempotency_key` on retriable writes. See `recording-studio-saving` and `recording-studio-data-shape`.
 
 Declare every configured recordable with `recording_studio_recordable`, including `root` and `allowed_parent_types`. Validate declarations in tests.
 
@@ -15,6 +15,6 @@ Roots are the content and billing buckets. Users and other actors get access to 
 
 Capability mixins are opt-in and do not come for free from installing a gem or registering a type (`recording-studio-capabilities`).
 
-For screens, copy, admin taste, and APIs, follow `recording-studio-ui`, `recording-studio-copy`, `setup-admin-screens`, and `recording-studio-api`. Do not restate those skills here.
+For screens, text, admin taste, and APIs, follow `recording-studio-ui`, `recording-studio-text`, `recording-studio-admin`, and `recording-studio-api`. Do not restate those skills here.
 
 Preserve public APIs unless the user asks for a breaking change. Use Conventional Commits when a version bump is required.

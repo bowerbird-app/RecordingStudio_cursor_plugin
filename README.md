@@ -26,21 +26,21 @@ Workflows Cursor can apply in the current chat:
 
 | Skill | Use when |
 | --- | --- |
-| `getting-started-recording-studio` | Mapping a new app: setup order and common addons |
-| `build-recording-studio-gem` | New addon from the gem template, then rename it |
+| `recording-studio-getting-started` | Mapping a new app: setup order and common addons |
+| `recording-studio-new-gem` | New addon from the gem template, then rename it |
 | `add-skill-or-agent` | Saving a new skill or agent into this plugin |
-| `recording-studio-approach` | Architecture, roots/actors, and gem/UI philosophy |
-| `add-recordable` | Adding a Recording Studio content type |
-| `recording-studio-logs` | Recordings vs events vs logs |
-| `write-through-recording-studio` | Creating, revising, or logging history |
+| `recording-studio-big-picture` | Architecture, roots/actors, and gem/UI philosophy |
+| `recording-studio-new-recordable` | Declaring a new recordable type |
+| `recording-studio-data-shape` | How data is structured: tree vs events vs logs |
+| `recording-studio-saving` | Saving recordings, recordables, and log events |
 | `recording-studio-capabilities` | Opt-in mixins (move, trash, attach, …) |
 | `recording-studio-ui` | UI slices, mount points, and replaceable gem views |
-| `recording-studio-copy` | Fun, short product text with a human voice |
-| `flatpack-ui` | Which Flatpack components to render |
-| `setup-admin-screens` | Admin root, Accessible, and high-signal widgets |
-| `recording-studio-accessible` | Hierarchy access grants for any actor |
+| `recording-studio-text` | Fun, short product text with a human voice |
+| `recording-studio-flatpack` | Which Flatpack components to render |
+| `recording-studio-admin` | Admin root, Accessible, and high-signal widgets |
+| `recording-studio-access` | Hierarchy access grants for any actor |
 | `recording-studio-api` | Capability actions, AI access, user vs admin APIs |
-| `minitest-workflow` | Adding or reviewing gem and dummy-app tests |
+| `recording-studio-tests` | Adding or reviewing gem and dummy-app tests |
 
 ### Commands
 

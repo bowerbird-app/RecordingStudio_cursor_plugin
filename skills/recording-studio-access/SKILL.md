@@ -1,11 +1,11 @@
 ---
-name: recording-studio-accessible
+name: recording-studio-access
 description: Explain and use Recording Studio Accessible for hierarchy-based access grants to actors. Use when granting, checking, or designing access for users, API clients, AI agents, or other actor types. Do not invent custom access; ask if Accessible is lacking.
 ---
 
-# Recording Studio Accessible
+# Recording Studio access
 
-**Recording Studio Accessible** is the access-control addon for Recording Studio. Add it right after core on a new product (`getting-started-recording-studio`). Access is always about a **recording in the hierarchy under a root**, granted to an **actor**.
+**Recording Studio Accessible** is the access-control addon for Recording Studio. Add it right after core on a new product (`recording-studio-getting-started`). Access is always about a **recording in the hierarchy under a root**, granted to an **actor**.
 
 The same grant and check path applies whether the actor is a user, an API credential, an AI agent, a workspace, or a future actor type. Predictable results come from treating every actor the same way against recordings — not inventing separate permission systems per actor kind.
 
@@ -184,7 +184,7 @@ Then:
 3. Grant with `grant_access`
 4. Authorize with `authorized?` / `role_for` (and through/action helpers when needed)
 
-For admin screens that rely on Accessible, also follow `setup-admin-screens`.
+For admin screens that rely on Accessible, also follow `recording-studio-admin`.
 
 ## Guardrails
 

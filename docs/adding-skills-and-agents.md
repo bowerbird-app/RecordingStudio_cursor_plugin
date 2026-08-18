@@ -14,7 +14,8 @@ After the plugin is installed or symlinked locally:
 
 1. Create `skills/<name>/SKILL.md`.
 2. Match the folder name to the frontmatter `name`.
-3. Write a `description` that says what it does **and when to use it**. Cursor uses that text to decide whether to invoke the skill.
+3. For Recording Studio product topics, name the skill `recording-studio-<topic>` (human-readable topic, not gem jargon). Use a different prefix only when the skill is about this Cursor plugin (`add-skill-or-agent`).
+4. Write a `description` that says what it does **and when to use it**. Cursor uses that text to decide whether to invoke the skill.
 
 ```markdown
 ---

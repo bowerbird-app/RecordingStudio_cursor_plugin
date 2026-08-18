@@ -1,21 +1,21 @@
 ---
-name: getting-started-recording-studio
-description: Map a new Recording Studio app from first decisions through core setup, Accessible, and which addons to include. Use when starting a product, adding Recording Studio to a Rails app, or choosing gems. Prefer this skill over jumping into a single addon. For a new addon gem, use build-recording-studio-gem.
+name: recording-studio-getting-started
+description: Map a new Recording Studio app from first decisions through core setup, Accessible, and which addons to include. Use when starting a product, adding Recording Studio to a Rails app, or choosing gems. Prefer this skill over jumping into a single addon. For a new addon gem, use recording-studio-new-gem.
 ---
 
 # Getting started with Recording Studio
 
-Treat a product as **gems around a thin host**, not a custom monolith. Philosophy: `recording-studio-approach`.
+Treat a product as **gems around a thin host**, not a custom monolith. Philosophy: `recording-studio-big-picture`.
 
 Order: **shape → core → Accessible → only the addons you need**. Do not invent access control, admin users, or one-off JSON endpoints.
 
 ## 1. Decide the shape
 
-Answer these before generating models. Why: `recording-studio-approach`.
+Answer these before generating models. Why: `recording-studio-big-picture`.
 
 - **Root** — the bucket for content, settings, and **billing**. Not the signed-in user. Team workspace, site, or organisation. Confirm with the team before two types both sit at the top (**shared roots**).
 - **Actors** — people, API clients, AI agents. Not “users only.”
-- **Recordables** — types of tree content (`add-recordable`). Exhaust (deliveries, traces) is a **log** (`recording-studio-logs`).
+- **Recordables** — types of tree content (`recording-studio-new-recordable`). Exhaust (deliveries, traces) is a **log** (`recording-studio-data-shape`).
 
 ## 2. Install core
 
@@ -27,11 +27,11 @@ Answer these before generating models. Why: `recording-studio-approach`.
 
 Core is recordings, recordables, events, logs, and the write path. It is **not** access control.
 
-New addon gem: `build-recording-studio-gem`.
+New addon gem: `recording-studio-new-gem`.
 
 ## 3. Add Accessible
 
-Add it as soon as more than one actor can see a root. Grants, actors, and “stop and ask”: `recording-studio-accessible`. Admin as an admin root, not `user.admin?`: `setup-admin-screens`.
+Add it as soon as more than one actor can see a root. Grants, actors, and “stop and ask”: `recording-studio-access`. Admin as an admin root, not `user.admin?`: `recording-studio-admin`.
 
 ## 4. Choose addons
 
@@ -40,20 +40,20 @@ Add a gem for a **need**, not because it exists. If that need has UI or API, exp
 | Need | Addon | Follow |
 |---|---|---|
 | Sign-in, invitations | **Users** (or host auth) | Auth identifies the actor; Accessible still authorizes |
-| Grants | **Accessible** | `recording-studio-accessible` |
+| Grants | **Accessible** | `recording-studio-access` |
 | Switch workspace/site | **Root switchable** | Host picks current root. Switcher is a helper/component (`recording-studio-ui`) |
-| Staff operations UI | **Admin** | Admin root + Accessible (`setup-admin-screens`) |
+| Staff operations UI | **Admin** | Admin root + Accessible (`recording-studio-admin`) |
 | HTTP API / AI agents | **API** | `recording-studio-api` |
 | Plans and usage | **Billing** | On the **root**, never `plan_id` on `User` |
 | Menus | **Navigation** | Gems register items; one host menu — no second sidebar |
 | Type icons | **Icons** | Reuse shared icons |
 | Move, trash, attach, … | Mixins | Opt-in per type (`recording-studio-capabilities`) |
-| Webhook endpoints | **Webhooks** | Endpoints are recordings; deliveries are logs (`recording-studio-logs`) |
+| Webhook endpoints | **Webhooks** | Endpoints are recordings; deliveries are logs (`recording-studio-data-shape`) |
 | Notices / threads | **Notifications**, **Messages** | |
 
 Typical first slice: **core → Accessible → auth → tree UI → API if agents → Admin if staff → Billing when you charge the root.**
 
-Screens: `recording-studio-ui`. Components: `flatpack-ui`. Words: `recording-studio-copy`. Writes: `write-through-recording-studio`. Tests: `minitest-workflow`.
+Screens: `recording-studio-ui`. Components: `recording-studio-flatpack`. Words: `recording-studio-text`. Writes: `recording-studio-saving`. Tests: `recording-studio-tests`.
 
 ## Sequence
 
@@ -61,7 +61,7 @@ Screens: `recording-studio-ui`. Components: `flatpack-ui`. Words: `recording-stu
 2. Install core; wire `root_recording_for` and the current actor.
 3. Add Accessible; grant access to the root.
 4. Add auth. Still no custom ACL.
-5. Tree UI + write-through.
+5. Tree UI + saving.
 6. Root switchable if people have more than one root.
 7. API when integrations or agents need the same actions.
 8. Admin only for operations — admin root, few widgets.

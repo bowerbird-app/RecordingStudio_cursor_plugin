@@ -36,9 +36,11 @@ Cursor discovers these folders automatically. The manifest does not list each fi
 
 ## Using the Recording Studio skills
 
-For a new app or gem, start with `getting-started-recording-studio`. For a new addon, start with `build-recording-studio-gem`.
+Product skills are named `recording-studio-<topic>` (for example `recording-studio-ui`, `recording-studio-access`). The exception is `add-skill-or-agent`, which is about this Cursor plugin rather than the Rails product.
 
-Each skill owns one topic (setup map, philosophy, UI shape, Flatpack components, copy, access, admin, API, and so on). Follow the matching skill instead of copying doctrine between them.
+For a new app, start with `recording-studio-getting-started`. For a new addon, start with `recording-studio-new-gem`.
+
+Each skill owns one topic (setup map, big picture, UI, Flatpack, text, access, admin, API, and so on). Follow the matching skill instead of copying doctrine between them.
 
 ## Local load path
 

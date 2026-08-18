@@ -1,9 +1,9 @@
 ---
-name: recording-studio-logs
+name: recording-studio-data-shape
 description: Choose recordings, events, or logs for Recording Studio data. Use when modelling webhook deliveries, audit trails, inbound requests, or other caused activity, or when deciding whether something belongs in the tree.
 ---
 
-# Logs vs recordings
+# Data shape
 
 Not everything an actor touches is a recording. The tree stays for **content people navigate**. High-volume caused activity belongs in **logs** so it does not clog recordings.
 
@@ -27,11 +27,11 @@ Webhook **endpoints** (the configuration people create) are recordings. Webhook 
 
 Recordings are the collaboration tree. Filling them with deliveries, processor runs, or raw request dumps makes the hierarchy noisy and mixes owned content with exhaust.
 
-Logs stay queryable (admin tables, retries, debugging) without becoming folders and pages. Admin screens that inspect deliveries should read **logs**, not invent a recordable type per attempt (`setup-admin-screens`).
+Logs stay queryable (admin tables, retries, debugging) without becoming folders and pages. Admin screens that inspect deliveries should read **logs**, not invent a recordable type per attempt (`recording-studio-admin`).
 
 ## Writes
 
-Owned content: `write-through-recording-studio`. Exhaust: the gem’s log API — not `root.record(Delivery)`. Product words: `recording-studio-copy`.
+Owned content: `recording-studio-saving`. Exhaust: the gem’s log API — not `root.record(Delivery)`. Product words: `recording-studio-text`.
 
 ## Do not
 
@@ -41,4 +41,4 @@ Owned content: `write-through-recording-studio`. Exhaust: the gem’s log API �
 
 ## Related
 
-`write-through-recording-studio`, `add-recordable`, `setup-admin-screens`.
+`recording-studio-saving`, `recording-studio-new-recordable`, `recording-studio-admin`.

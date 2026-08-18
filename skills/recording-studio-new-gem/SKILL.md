@@ -1,9 +1,9 @@
 ---
-name: build-recording-studio-gem
+name: recording-studio-new-gem
 description: Start a new Recording Studio addon from RecordingStudio_gem_template, rename it, and strip leftover template identity. Use when creating or extracting a recording-studio-* gem, or when a new gem still says it is a template.
 ---
 
-# Build a Recording Studio gem
+# New Recording Studio gem
 
 Do not start from `rails plugin new`. Start from **[RecordingStudio_gem_template](https://github.com/bowerbird-app/RecordingStudio_gem_template)** (dummy app, Flatpack, v3 declarations, both test suites).
 
@@ -29,10 +29,10 @@ Dummy login (`admin@admin.com`) can stay in dummy; it is not product copy.
 
 ## 2. Then follow the other skills
 
-- Mixin vs addon: `recording-studio-capabilities` / `getting-started-recording-studio`
+- Mixin vs addon: `recording-studio-capabilities` / `recording-studio-getting-started`
 - Screens and helpers: `recording-studio-ui`
 - Same domain action on the API if there is an API: `recording-studio-api`
-- Admin only if staff operate this capability: `setup-admin-screens`
-- Tests: `minitest-workflow`
+- Admin only if staff operate this capability: `recording-studio-admin`
+- Tests: `recording-studio-tests`
 
 Keep dummy as a **host that proves the gem**, not as the product. Bump the gem version once per branch; changelog and upgrade notes with the change.

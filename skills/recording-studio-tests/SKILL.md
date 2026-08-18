@@ -1,9 +1,9 @@
 ---
-name: minitest-workflow
+name: recording-studio-tests
 description: Add or review Minitest coverage for Recording Studio gems and dummy apps. Use when writing tests, checking coverage, or validating engine and host-app wiring before merge.
 ---
 
-# Minitest workflow
+# Recording Studio tests
 
 ## When to use
 

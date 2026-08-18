@@ -5,6 +5,6 @@ description: Minitest coverage specialist for Recording Studio engines and dummy
 
 # Minitest coverage
 
-Follow `minitest-workflow`. Write the tests that skill describes: both suites, ~94% as a working bar, dummy mount and Accessible when wiring is involved.
+Follow `recording-studio-tests`. Write the tests that skill describes: both suites, ~94% as a working bar, dummy mount and Accessible when wiring is involved.
 
 Do not delete, stub out, or bypass production code to make tests pass.
