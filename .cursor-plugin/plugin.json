@@ -1,0 +1,27 @@
+{
+  "name": "recording-studio",
+  "displayName": "Recording Studio",
+  "version": "0.1.0",
+  "description": "Skills and agents for building Recording Studio gems, addons, and Flatpack UI in Cursor.",
+  "author": {
+    "name": "Bowerbird",
+    "email": "nic@bowerbird.io"
+  },
+  "homepage": "https://github.com/bowerbird-app/RecordingStudio_cursor_plugin",
+  "repository": "https://github.com/bowerbird-app/RecordingStudio_cursor_plugin",
+  "license": "MIT",
+  "keywords": [
+    "recording-studio",
+    "rails",
+    "flatpack",
+    "skills",
+    "agents"
+  ],
+  "category": "developer-tools",
+  "tags": [
+    "rails",
+    "recording-studio",
+    "flatpack"
+  ],
+  "logo": "assets/logo.svg"
+}
