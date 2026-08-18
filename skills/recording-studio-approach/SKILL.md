@@ -165,4 +165,5 @@ If the answer points to root-scoped data, reusable gems, simple UI, and defaults
 | Admin root | `setup-admin-screens` |
 | HTTP API | `recording-studio-api` |
 | UI slices and page shape | `recording-studio-ui` |
+| Product copy | `recording-studio-copy` |
 | Flatpack components | `flatpack-ui` |

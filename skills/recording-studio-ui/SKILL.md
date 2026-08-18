@@ -9,7 +9,7 @@ Recording Studio UI is **minimal on purpose**. Gems ship **working UI slices** t
 
 Build with **Flatpack ViewComponents**. Do not add custom CSS or JavaScript unless Flatpack and the core layout truly cannot do the job. If you think you need custom chrome, explain the gap first.
 
-For which component to render, follow `flatpack-ui`. This skill is the shape of the product: slices, mount points, page layout, and ownership.
+For which component to render, follow `flatpack-ui`. For titles, buttons, and other words on the screen, follow `recording-studio-copy`. This skill is the shape of the product: slices, mount points, page layout, and ownership.
 
 ## UI slices
 
@@ -89,7 +89,7 @@ A typical page is:
 
 That is enough. Lists, confirmations, and success/error alerts still belong in Flatpack. They should not grow into a second layout.
 
-User-facing copy must not say "recording" or "recordable". Use product words: workspace, folder, page, webhook, site.
+Keep the words as small as the layout. Follow `recording-studio-copy`.
 
 ## Flatpack, not custom CSS and JS
 
@@ -121,6 +121,7 @@ Rules:
 | Need | Skill |
 |---|---|
 | Which Flatpack component to render | `flatpack-ui` |
+| Titles, buttons, and other copy | `recording-studio-copy` |
 | Setup order | `getting-started-recording-studio` |
 | Philosophy and gem ownership | `recording-studio-approach` |
 | Admin sections and screens | `setup-admin-screens` |

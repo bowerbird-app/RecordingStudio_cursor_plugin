@@ -23,3 +23,4 @@
 - Add a `getting-started-recording-studio` skill that maps first decisions, core setup, Accessible, and common addons.
 - Add a `recording-studio-ui` skill for gem-owned UI slices, mini-apps, one-action screens, and the core default layout.
 - Clarify that hosts can replace gem views/controllers, that distinctive UI ships as helpers or ViewComponents, and that each mount point (not the whole gem) navigates like a small app.
+- Add a `recording-studio-copy` skill for short, plain product text without developer jargon.

@@ -25,7 +25,7 @@ Ship distinctive controls as helpers or ViewComponents so a host can replace the
 
 ## User-facing copy
 
-Do not use backend terms in screens people will see. Words like "recording" and "recordable" belong in developer docs, not product UI.
+Follow `recording-studio-copy`. Short, plain, product words. No developer terms on screens people will see.
 
 ## Examples
 

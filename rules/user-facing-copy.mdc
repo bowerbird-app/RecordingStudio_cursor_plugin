@@ -1,9 +1,9 @@
 ---
-description: Keep user-facing copy free of backend jargon
+description: Keep product copy short, plain, and free of backend jargon
 globs: "**/*.{erb,html,md}"
 alwaysApply: false
 ---
 
-Text that end users will see should not use backend terms they will not understand.
+Write short, everyday words for anything a person will read. Follow `recording-studio-copy`.
 
-Developer words such as recording and recordable belong in code and maintainer docs, not product screens.
+Do not use developer terms such as recording, recordable, actor, or root on product screens.
