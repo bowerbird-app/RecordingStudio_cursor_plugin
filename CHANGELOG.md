@@ -26,3 +26,4 @@
 - Add a `recording-studio-copy` skill for short, plain product text without developer jargon.
 - Refine copy voice: playful and clear, little on-screen text, no expert or AI-speak.
 - Prefer Flatpack tooltips, popovers, and admin widget extra info for details that would puzzle a newcomer, not walls of on-page help.
+- Steer admin sections toward a few high-signal widgets (exceptions, queues, health) instead of vanity totals and a screen per model.

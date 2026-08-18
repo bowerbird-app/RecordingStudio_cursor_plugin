@@ -34,7 +34,7 @@ Workflows Cursor can apply in the current chat:
 | `recording-studio-ui` | UI slices, mount points, and replaceable gem views |
 | `recording-studio-copy` | Fun, short product text with a human voice |
 | `flatpack-ui` | Which Flatpack components to render |
-| `setup-admin-screens` | Admin root + Accessible-gated screens |
+| `setup-admin-screens` | Admin root, Accessible, and high-signal widgets |
 | `recording-studio-accessible` | Hierarchy access grants for any actor |
 | `recording-studio-api` | Capability actions, AI access, user vs admin APIs |
 | `minitest-workflow` | Adding or reviewing gem and dummy-app tests |

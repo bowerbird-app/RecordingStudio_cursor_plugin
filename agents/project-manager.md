@@ -20,6 +20,7 @@ Triage the request, delegate to the smallest useful specialist, then synthesize 
 | Rails quality, conventions, duplication | `rails-refactoring-specialist` |
 | Minitest coverage and engine test strategy | `minitest-coverage` |
 | UI slices, mount points, replaceable views | `recording-studio-ui` skill |
+| Admin screens and widgets | `setup-admin-screens` skill |
 | Product copy (titles, buttons, flashes) | `recording-studio-copy` skill |
 | Flatpack UI, custom HTML, screenshots | `ui-style-expert` |
 | Post-implementation quality review | `code-review-advisor` |

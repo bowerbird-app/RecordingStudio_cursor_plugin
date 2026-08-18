@@ -154,7 +154,7 @@ Use this as the default path for a new app:
 5. Build the first tree UI with **Flatpack** and write-through (`record` / `revise` / `log_event!`).
 6. Add **Root switchable** if people belong to more than one root.
 7. Add **API** when integrations or AI agents need the same actions.
-8. Add **Admin** only when staff need operations UI — as an admin root plus Accessible, not a nominated admin user.
+8. Add **Admin** only when staff need operations UI — as an admin root plus Accessible, not a nominated admin user. Ship a few high-signal widgets (`setup-admin-screens`), not a vanity dashboard.
 9. Add **Billing** on the root when the product charges for the bucket.
 10. Add capability mixins (move, trash, attach, …) as the tree needs them.
 11. Keep domain logic in gem core methods; host stays thin.
