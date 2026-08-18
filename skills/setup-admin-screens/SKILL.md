@@ -194,7 +194,7 @@ Definition roles:
 
 - **Section** — summary page with links and widgets
 - **Screen** — detail page with query, filters, chart, table, widgets
-- **Widget** — reusable card (`number`, `list`, `chart`, `progress`)
+- **Widget** — reusable card (`number`, `list`, `chart`, `progress`). Use the extra-info param when the title or number would puzzle someone new (`recording-studio-copy`).
 - **Resource** — registered admin actions linked from tables; host app owns the mutation controller
 
 Link with context helpers:

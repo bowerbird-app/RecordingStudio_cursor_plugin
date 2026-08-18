@@ -25,3 +25,4 @@
 - Clarify that hosts can replace gem views/controllers, that distinctive UI ships as helpers or ViewComponents, and that each mount point (not the whole gem) navigates like a small app.
 - Add a `recording-studio-copy` skill for short, plain product text without developer jargon.
 - Refine copy voice: playful and clear, little on-screen text, no expert or AI-speak.
+- Prefer Flatpack tooltips, popovers, and admin widget extra info for details that would puzzle a newcomer, not walls of on-page help.

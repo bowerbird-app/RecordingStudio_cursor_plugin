@@ -89,7 +89,7 @@ A typical page is:
 
 That is enough. Lists, confirmations, and success/error alerts still belong in Flatpack. They should not grow into a second layout.
 
-Keep the words as small as the layout, with a bit of personality. Follow `recording-studio-copy`.
+Keep the words as small as the layout, with a bit of personality. Follow `recording-studio-copy`. Extra explanation belongs in a tooltip, popover, or admin extra-info — not a paragraph on the page.
 
 ## Flatpack, not custom CSS and JS
 

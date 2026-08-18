@@ -22,7 +22,7 @@ For **page shape** — UI slices, mount points, replaceable gem views, one-actio
 3. Semantic layout markup is fine when Flatpack has no structure for it.
 4. If Flatpack cannot support the requirement, explain the gap before adding custom UI.
 5. Do not rewrite unrelated legacy UI just because it is in a touched file. Migrate a legacy element only when the change is local and behavior stays the same.
-6. Write titles, buttons, and flashes with `recording-studio-copy`.
+6. Write titles, buttons, and flashes with `recording-studio-copy`. Use Flatpack `Tooltip` and `Popover` for extra explanation when a visible label is not obvious.
 
 ## Validation
 

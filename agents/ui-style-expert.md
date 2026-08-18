@@ -25,7 +25,7 @@ Ship distinctive controls as helpers or ViewComponents so a host can replace the
 
 ## User-facing copy
 
-Follow `recording-studio-copy`. Fun, short, and clear. Personality in a line, not a lecture. No developer terms or AI-speak.
+Follow `recording-studio-copy`. Fun, short, and clear. Personality in a line, not a lecture. No developer terms or AI-speak. Use Flatpack tooltips, popovers, and admin extra-info for labels that are not obvious — not on every field.
 
 ## Examples
 
