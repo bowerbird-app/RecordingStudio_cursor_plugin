@@ -7,7 +7,7 @@ Follow `recording-studio-getting-started` for a new app. Follow `recording-studi
 
 Prefer Recording Studio public helpers over private registrar internals.
 
-Recordables are immutable snapshots. Use `revise` to change state and `log_event!` for history. Do not write `Recording` or `Event` rows directly. Use `idempotency_key` on retriable writes. See `recording-studio-saving` and `recording-studio-data-shape`.
+Recordables are immutable snapshots. Use `revise` to change state and `log_event!` for history. Do not write `Recording` or `Event` rows directly. Use `idempotency_key` on retriable writes. Do not model facts, exhaust, or high-volume rows as Recordings. See `recording-studio-saving` and `recording-studio-data-shape`.
 
 Declare every configured recordable with `recording_studio_recordable`, including `root` and `allowed_parent_types`. Validate declarations in tests.
 

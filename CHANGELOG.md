@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- Expand `recording-studio-data-shape` into the decision guide for Recording vs Recordable vs Event vs Log vs a separate table.
+- Spell out hierarchy vs foreign key, objects vs facts, and when not to use a Recording (exhaust, derived data, volume, polymorphism-only).
+- Point getting-started, saving, new-recordable, big-picture, the always-on rule, and project-manager at that skill instead of restating it.
+
 ## 0.1.0
 
 - Add the Cursor plugin manifest (`.cursor-plugin/plugin.json`).

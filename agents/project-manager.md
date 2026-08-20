@@ -19,7 +19,7 @@ Triage the request, delegate to the smallest useful specialist, then synthesize 
 | New recordable type | `recording-studio-new-recordable` skill |
 | Saving recordings, recordables, or logs | `recording-studio-saving` skill |
 | Mixins (move, trash, attach, …) | `recording-studio-capabilities` skill |
-| Tree vs events vs logs | `recording-studio-data-shape` skill |
+| Recording vs Event vs Log, hierarchy vs foreign key | `recording-studio-data-shape` skill |
 | Architecture and product philosophy | `recording-studio-big-picture` skill |
 | Feature implementation, bug fixes, architecture | `rails-expert` |
 | Security, auth, input handling, data isolation | `rails-security-expert` |

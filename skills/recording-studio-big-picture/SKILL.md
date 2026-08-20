@@ -1,6 +1,6 @@
 ---
 name: recording-studio-big-picture
-description: Explain Recording Studio philosophy: roots as buckets, actors not only users, recordings vs events vs logs, and reusable gems. Use when designing the data model or deciding where behaviour belongs. For setup order use recording-studio-getting-started.
+description: Explain Recording Studio philosophy: roots as buckets, actors not only users, recordings vs events vs logs, and reusable gems. Use when designing the data model or deciding where behaviour belongs. For whether something is a Recording at all, use recording-studio-data-shape. For setup order use recording-studio-getting-started.
 ---
 
 # Recording Studio big picture
@@ -18,7 +18,7 @@ Core is a Basecamp-style `delegated_type` model:
 | **Event** | Append-only history of that recording |
 | **Log** | Caused-but-unowned exhaust that must not clog the tree |
 
-Prefer public helpers on `RecordingStudio` and `RecordingStudio::Recording`. Writes: `recording-studio-saving`. Which layer: `recording-studio-data-shape`.
+Prefer public helpers on `RecordingStudio` and `RecordingStudio::Recording`. Writes: `recording-studio-saving`. Whether something is a Recording at all — vs Event, Log, hierarchy vs foreign key — is `recording-studio-data-shape`.
 
 **Roots** are recordings declared as the top-level **bucket**. Content, settings, and **billing** live on the root — not on the user. People and systems get **access** to the bucket (`recording-studio-access`). Hierarchy is natural: nested recordings inherit the bucket.
 

@@ -7,7 +7,7 @@ description: Create, revise, or log Recording Studio content through public help
 
 Owned content goes through the public write path. Do not insert `Recording` or `Event` rows by hand, and do not `save!` a recordable to “update” it in place.
 
-If the data is caused activity that does not belong in the tree (deliveries, request traces), it is a **log**, not a `record`. Layers: `recording-studio-data-shape`.
+If the data is caused activity that does not belong in the tree (deliveries, request traces), it is a **log** or a plain table — not `record` / `revise`. Layers: `recording-studio-data-shape`.
 
 ## Checklist
 

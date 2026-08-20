@@ -15,7 +15,7 @@ Answer these before generating models. Why: `recording-studio-big-picture`.
 
 - **Root** — the bucket for content, settings, and **billing**. Not the signed-in user. Team workspace, site, or organisation. Confirm with the team before two types both sit at the top (**shared roots**).
 - **Actors** — people, API clients, AI agents. Not “users only.”
-- **Recordables** — types of tree content (`recording-studio-new-recordable`). Exhaust (deliveries, traces) is a **log** (`recording-studio-data-shape`).
+- **Recordables** — types of tree content (`recording-studio-new-recordable`). Decide object vs fact, and hierarchy vs foreign key, before generating models (`recording-studio-data-shape`). Exhaust (deliveries, traces) is a **log**, not a child recording.
 
 ## 2. Install core
 
