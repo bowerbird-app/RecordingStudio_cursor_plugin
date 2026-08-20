@@ -32,7 +32,7 @@ Workflows Cursor can apply in the current chat:
 | `add-skill-or-agent` | Saving a new skill or agent into this plugin |
 | `recording-studio-big-picture` | Architecture, roots/actors, and gem/UI philosophy |
 | `recording-studio-new-recordable` | Declaring a new recordable type |
-| `recording-studio-data-shape` | How data is structured: tree vs events vs logs |
+| `recording-studio-data-shape` | Whether something is a Recording, Event, Log, or a separate table |
 | `recording-studio-saving` | Saving recordings, recordables, and log events |
 | `recording-studio-capabilities` | Opt-in mixins (move, trash, attach, …) |
 | `recording-studio-ui` | UI slices, mount points, and replaceable gem views |

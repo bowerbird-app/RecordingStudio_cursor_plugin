@@ -38,9 +38,28 @@ Cursor discovers these folders automatically. The manifest does not list each fi
 
 Product skills are named `recording-studio-<topic>` (for example `recording-studio-ui`, `recording-studio-access`). The exception is `add-skill-or-agent`, which is about this Cursor plugin rather than the Rails product.
 
-For a new app, start with `recording-studio-getting-started`. For which gem to add, use `recording-studio-gems`. For a new addon, start with `recording-studio-new-gem`.
+For a new app, start with `recording-studio-getting-started`. For which gem to add, use `recording-studio-gems`. For a new addon, start with `recording-studio-new-gem`. For whether something belongs in the tree at all, use `recording-studio-data-shape`.
 
-Each skill owns one topic (setup map, approved gems, big picture, UI, Flatpack, text, access, admin, API, and so on). Follow the matching skill instead of copying doctrine between them.
+Each skill owns one topic. Follow the matching skill instead of copying doctrine between them.
+
+| Need | Skill |
+| --- | --- |
+| Setup order for a new app | `recording-studio-getting-started` |
+| Philosophy: roots, actors, gems | `recording-studio-big-picture` |
+| Recording vs Event vs Log vs a table | `recording-studio-data-shape` |
+| Declaring a new type | `recording-studio-new-recordable` |
+| `record` / `revise` / `log_event!` | `recording-studio-saving` |
+| Approved gems vs third-party | `recording-studio-gems` |
+| New addon from the template | `recording-studio-new-gem` |
+| Opt-in mixins | `recording-studio-capabilities` |
+| Access grants | `recording-studio-access` |
+| Screens and mount points | `recording-studio-ui` |
+| Which Flatpack component | `recording-studio-flatpack` |
+| Product copy | `recording-studio-text` |
+| Admin | `recording-studio-admin` |
+| JSON / AI APIs | `recording-studio-api` |
+| Tests | `recording-studio-tests` |
+| Saving a skill or agent here | `add-skill-or-agent` |
 
 ## Local load path
 

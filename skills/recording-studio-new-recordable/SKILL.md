@@ -7,7 +7,7 @@ description: Add or register a Recording Studio recordable type with hierarchy d
 
 Follow Recording Studio's public API. Do not invent private registrar internals.
 
-First decide whether this is a **recordable at all** (`recording-studio-data-shape`). Mixins are opt-in later (`recording-studio-capabilities`).
+First decide whether this belongs in the tree at all (`recording-studio-data-shape`). Facts, exhaust, derived data, and high-volume rows are logs or separate tables — not a new recordable type. Mixins are opt-in later (`recording-studio-capabilities`).
 
 ## When to use
 
