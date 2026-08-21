@@ -17,23 +17,37 @@ Do not invent a custom move, trash, or comment system when an ecosystem mixin al
 4. Mount the gem’s UI (and API actions) from the host. Follow `recording-studio-ui` and `recording-studio-api`.
 5. Authorize through **Accessible** when the mixin needs access checks. Do not add a second ACL.
 
-Patterns you will see (use the addon’s public API, not a guessed one):
+Mixin enablement is **only** this include:
+
+```ruby
+include RecordingStudio::Capabilities::<Name>.to(**opts)
+```
+
+Do not use `.enabled`, `.with`, a bare `RecordingStudioCommentable::Commentable`, or `Exportable.enabled(Type)`.
+
+Accessible is the exception. Enable it with:
 
 ```ruby
 # Accessible on a root that should hold grants
 RecordingStudio.enable_capability(:accessible, on: Workspace)
+```
 
+Do not convert Accessible to `.to`.
+
+```ruby
 # Moveable on types that can move
 class Folder < ApplicationRecord
   recording_studio_recordable label: "Folder",
                               root: false,
                               allowed_parent_types: ["Workspace", "Folder"]
 
-  include RecordingStudio::Capabilities::Moveable.enabled
+  include RecordingStudio::Capabilities::Moveable.to(allow_cross_root: false)
 end
 ```
 
-Read that gem’s README for the exact include or `enable_capability` call. Do not copy a pattern from a different mixin if the README disagrees.
+`allow_cross_root` is keyword-only.
+
+When a skill or API mentions a mixin as a symbol, use `:attachable`, `:trashable`, `:movable` (not `:moveable`), `:duplicatable`, `:commentable`, `:exportable`.
 
 ## Common mixins
 
@@ -64,6 +78,7 @@ The mixin should expose the **same domain action** the screen uses. UI pieces: `
 - Enable a mixin on every type “for completeness.”
 - Hand-roll move/trash/comments because the host wants slightly different copy — change the view or extra-info, not the domain.
 - Put destination/parent rules only in the mixin when they belong in `allowed_parent_types`.
+- Enable mixins with `.enabled`, `.with`, or a gem-namespaced include.
 
 ## Related
 

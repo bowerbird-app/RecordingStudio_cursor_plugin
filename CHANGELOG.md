@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2
+
+- Document mixin enablement as `include RecordingStudio::Capabilities::<Name>.to(**opts)` only.
+- Keep Accessible on `RecordingStudio.enable_capability(:accessible, on: …)`.
+- Show Moveable as `.to(allow_cross_root: …)` (keyword-only). Drop `.enabled` / `.with` examples.
+
+Upgrade: enable recordable mixins with `.to`. Accessible still uses `enable_capability`. Do not follow older `.enabled` / `.with` examples.
+
 ## 0.1.1
 
 - Expand `recording-studio-data-shape` into the decision guide for Recording vs Recordable vs Event vs Log vs a separate table.
