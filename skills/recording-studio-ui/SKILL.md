@@ -1,6 +1,6 @@
 ---
 name: recording-studio-ui
-description: Design Recording Studio screens as mountable UI slices with reusable helpers and view components. Use when adding or changing views, choosing page shape, mounting a gem's screens, replacing gem UI, or deciding layout. For which Flatpack component to render, use recording-studio-flatpack. For taste, composition, and kit evolution, use recording-studio-taste. For words on the screen, use recording-studio-text.
+description: Design Recording Studio screens as mountable UI slices with reusable helpers and view components. Use when adding or changing views, choosing page shape, mounting a gem's screens, replacing gem UI, or deciding layout. For which Flatpack component to render, use recording-studio-flatpack. For taste, composition, kit evolution, and the pre-flight, use recording-studio-taste. For words on the screen, use recording-studio-text.
 ---
 
 # Recording Studio UI
