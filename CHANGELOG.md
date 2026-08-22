@@ -5,6 +5,7 @@
 - Add a `recording-studio-taste` skill for judging Flatpack composition and when a missing look belongs in Flatpack, not the caller.
 - Point `recording-studio-flatpack` and `recording-studio-ui` at that skill for taste, kit evolution, and third-party design packs.
 - Thicken `recording-studio-taste` after review: design read, product dials (3 / 2 / 5), Flatpack tokens, interactive cycles, AI tells, and a mechanical pre-flight.
+- Make kit review and host named themes first-class in `recording-studio-taste` (Featured In is a Flatpack theme, not a stop).
 
 Upgrade: reload the plugin so Cursor can invoke `recording-studio-taste`. Do not install `leonxlnx/taste-skill` or other generic frontend taste packs.
 
