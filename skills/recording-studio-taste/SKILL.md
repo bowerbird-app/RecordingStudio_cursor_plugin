@@ -249,3 +249,5 @@ Tick every box on the shared list, then the track you are on. One fail = not don
 ## Related
 
 `recording-studio-flatpack`, `recording-studio-ui`, `recording-studio-text`, `recording-studio-admin`.
+
+`recording-studio-minimalist` (separate PR, in flight) is the opt-in editorial look for host themes that want warm bone / tight type / no gradients. It is not compulsory. Dummy / gem / Admin stay this skill + rounded.
