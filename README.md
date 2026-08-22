@@ -38,6 +38,7 @@ Workflows Cursor can apply in the current chat:
 | `recording-studio-ui` | UI slices, mount points, and replaceable gem views |
 | `recording-studio-text` | Fun, short product text with a human voice |
 | `recording-studio-flatpack` | Which Flatpack components to render |
+| `recording-studio-taste` | Whether the page looks good while staying on Flatpack |
 | `recording-studio-admin` | Admin root, Accessible, and high-signal widgets |
 | `recording-studio-access` | Hierarchy access grants for any actor |
 | `recording-studio-api` | Capability actions, AI access, user vs admin APIs |

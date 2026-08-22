@@ -1,13 +1,13 @@
 ---
 name: recording-studio-flatpack
-description: Build Recording Studio screens with Flatpack ViewComponents instead of custom HTML or Tailwind. Use when adding or changing UI, forms, alerts, cards, or navigation. For the words on the screen, use recording-studio-text.
+description: Build Recording Studio screens with Flatpack ViewComponents instead of custom HTML or Tailwind. Use when adding or changing UI, forms, alerts, cards, or navigation. For whether the page looks good, evolving the kit, or when tempted to add custom CSS or a third-party design skill, use recording-studio-taste. For the words on the screen, use recording-studio-text.
 ---
 
 # Flatpack UI
 
 Flatpack is the Recording Studio UI library. Search for an existing component before writing markup.
 
-For **page shape** — UI slices, mount points, replaceable gem views, one-action screens, and the core default layout — follow `recording-studio-ui` first. This skill is which Flatpack component to render.
+For **page shape** — UI slices, mount points, replaceable gem views, one-action screens, and the core default layout — follow `recording-studio-ui` first. This skill is which Flatpack component to render. For whether the page looks good, evolving the kit, or when tempted to add custom CSS or a third-party design skill, use `recording-studio-taste`.
 
 ## When to use
 

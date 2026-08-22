@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3
+
+- Add a `recording-studio-taste` skill for judging Flatpack composition and when a missing look belongs in Flatpack, not the caller.
+- Point `recording-studio-flatpack` and `recording-studio-ui` at that skill for taste, kit evolution, and third-party design packs.
+
+Upgrade: reload the plugin so Cursor can invoke `recording-studio-taste`. Do not install `leonxlnx/taste-skill` or other generic frontend taste packs.
+
 ## 0.1.2
 
 - Document mixin enablement as `include RecordingStudio::Capabilities::<Name>.to(**opts)` only.
