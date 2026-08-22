@@ -38,6 +38,16 @@ Workflows Cursor can apply in the current chat:
 | `recording-studio-ui` | UI slices, mount points, and replaceable gem views |
 | `recording-studio-text` | Fun, short product text with a human voice |
 | `recording-studio-flatpack` | Which Flatpack components to render |
+| `recording-studio-taste` | Critique and compose screens so they do not look templated (Flatpack execution) |
+| `recording-studio-redesign` | Audit an existing screen and upgrade it in Flatpack |
+| `recording-studio-output` | Finish the whole deliverable; no truncated screens or critiques |
+| `recording-studio-image-to-code` | Generate section images, then build the page in Flatpack |
+| `recording-studio-soft` | Opt-in soft / expensive host theme direction |
+| `recording-studio-minimalist` | Opt-in editorial host theme (dummy / gem / Admin stay rounded) |
+| `recording-studio-brutalist` | Opt-in Swiss-print or terminal host theme |
+| `recording-studio-brandkit` | Brand-kit image boards; Flatpack only on handoff to code |
+| `recording-studio-imagegen-web` | One horizontal marketing-section image per section |
+| `recording-studio-imagegen-mobile` | Mobile app screen images only |
 | `recording-studio-admin` | Admin root, Accessible, and high-signal widgets |
 | `recording-studio-access` | Hierarchy access grants for any actor |
 | `recording-studio-api` | Capability actions, AI access, user vs admin APIs |
@@ -101,3 +111,5 @@ Cloud Agents use `.cursor/environment.json`. The default image already includes 
 ## License
 
 MIT
+
+Taste and branding skills are adapted from [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) (MIT, Leonxlnx). Attribution: [docs/taste-skill-attribution.md](docs/taste-skill-attribution.md).

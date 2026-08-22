@@ -7,7 +7,7 @@ description: Build Recording Studio screens with Flatpack ViewComponents instead
 
 Flatpack is the Recording Studio UI library. Search for an existing component before writing markup.
 
-For **page shape** — UI slices, mount points, replaceable gem views, one-action screens, and the core default layout — follow `recording-studio-ui` first. This skill is which Flatpack component to render.
+For **page shape** — UI slices, mount points, replaceable gem views, one-action screens, and the core default layout — follow `recording-studio-ui` first. This skill is which Flatpack component to render. For taste critique and named-theme direction, use `recording-studio-taste`.
 
 ## When to use
 
