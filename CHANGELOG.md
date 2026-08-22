@@ -6,6 +6,7 @@
 - Keep the useful half of those skills (design read, dials, audit, completeness, anti-slop, brand and image direction). Strip Tailwind, shadcn, GSAP, and “use any CSS framework” implementation.
 - Add always-on rule `rules/flatpack-is-the-system.mdc`: other skills may give taste or branding; code is always Flatpack ViewComponents, tokens, and named themes.
 - Attribute the source in `docs/taste-skill-attribution.md` and in each cloned skill.
+- Taste and redesign notes now require three rules: name the owner (Flatpack, mixin gem, core layout, or this gem/host); look up https://flatpack.bowerbird.io/ before naming a part; product screens stay on core `UsesDefaultLayout` with no extra card around a title plus one-action form.
 
 Upgrade: reload the plugin so Cursor can invoke the new skills. Do not install `leonxlnx/taste-skill` as a Cursor plugin. Dummy, gem, and Admin stay `data-theme="rounded"` plus core `UsesDefaultLayout` unless a direction pack is opted in. Hosts get a named theme, not forked CSS.
 

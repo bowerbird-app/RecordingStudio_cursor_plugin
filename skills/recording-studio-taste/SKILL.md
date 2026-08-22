@@ -26,10 +26,31 @@ A Taste review must return all four parts. Checklist-only is a fail.
 
 1. **Design read** - one line: page kind, audience, vibe, and which Flatpack theme or token family it should lean on.
 2. **What already looks good** - keep these. Do not restyle for sport.
-3. **3-7 specific notes** - each is "this would look better if…" plus the Flatpack token or component to use. Type, space, color, or weight. Not "improve hierarchy."
+3. **3-7 specific notes** - each is "this would look better if…" plus a named owner (see Ownership). Type, space, color, or weight. Not "improve hierarchy."
 4. **One highest-leverage change** - the single edit that would lift the screen most.
 
 Pre-flight is the fence after that critique, not a substitute for it.
+
+## Ownership
+
+Every "would look better if…" note must name the owner:
+
+- a Flatpack token or component (looked up first)
+- a mixin gem (for example Attachable, Publishable)
+- core default layout (`UsesDefaultLayout`)
+- this gem or host
+
+If the chrome is a mixin screen (Attachable replace, Publishable badge), say so. Do not recommend a one-off restyle in the reviewing gem.
+
+## Look up Flatpack first
+
+Before naming `PageTitle`, `ButtonGroup`, `Card::Footer`, or any other part, check the live demo at https://flatpack.bowerbird.io/ and follow `recording-studio-flatpack`.
+
+If it is not there, the note is "add this token or component to Flatpack," not a minted helper name.
+
+## Product screens stay on core UsesDefaultLayout
+
+Product screens stay on core `UsesDefaultLayout`. Do not wrap a title plus one-action form in an extra `Card::Component`. Cards only when there is real grouping (for example a photo plus its file actions). Dummy, gem, and Admin stay `data-theme="rounded"` unless opted in.
 
 ## Design read (before code)
 
@@ -101,7 +122,7 @@ Page has one theme. Sections do not invert from light to dark mid-scroll unless 
 
 ## Space and layout
 
-Core product pages follow `recording-studio-ui`: default layout, one primary action, no competing shell. Do not invent a sidebar or kitchen-sink dashboard.
+Core product pages follow `recording-studio-ui` and stay on `UsesDefaultLayout`: title, optional subtitle, one primary action, no competing shell. Do not wrap that page in an extra `Card::Component`. Do not invent a sidebar or kitchen-sink dashboard.
 
 Hero or first viewport (host marketing only): headline two lines max, supporting line about 20 words, primary action visible without scroll. Max four text elements in that first moment (optional eyebrow, headline, support, actions). Trust logos live under the hero, not inside it.
 
@@ -149,7 +170,9 @@ Run after the four-part critique. If a box fails, the page is not done.
 
 - [ ] Design read declared
 - [ ] Dials explicit and reasoned
-- [ ] Critique has 3-7 "would look better if…" notes with Flatpack tokens or components
+- [ ] Critique has 3-7 "would look better if…" notes, each with a named owner
+- [ ] Named parts exist on https://flatpack.bowerbird.io/ or the note is "add this to Flatpack"
+- [ ] Product screens stay on `UsesDefaultLayout`; no extra card around a title plus one-action form
 - [ ] Dummy / gem / Admin still rounded plus `UsesDefaultLayout` unless opted in
 - [ ] Host look is a named theme, not forked CSS
 - [ ] No Tailwind, shadcn, GSAP, or custom CSS kit

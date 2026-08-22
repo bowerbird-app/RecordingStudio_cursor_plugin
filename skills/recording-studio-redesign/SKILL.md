@@ -19,6 +19,27 @@ Direction and critique: `recording-studio-taste`. Completeness: `recording-studi
 
 Do not migrate stacks. Do not "use any CSS framework." Stay on Flatpack.
 
+## Ownership
+
+Every "would look better if…" note must name the owner:
+
+- a Flatpack token or component (looked up first)
+- a mixin gem (for example Attachable, Publishable)
+- core default layout (`UsesDefaultLayout`)
+- this gem or host
+
+If the chrome is a mixin screen (Attachable replace, Publishable badge), say so. Do not recommend a one-off restyle in the reviewing gem.
+
+## Look up Flatpack first
+
+Before naming `PageTitle`, `ButtonGroup`, `Card::Footer`, or any other part, check the live demo at https://flatpack.bowerbird.io/ and follow `recording-studio-flatpack`.
+
+If it is not there, the note is "add this token or component to Flatpack," not a minted helper name.
+
+## Product screens stay on core UsesDefaultLayout
+
+Product screens stay on core `UsesDefaultLayout`. Do not wrap a title plus one-action form in an extra `Card::Component`. Cards only when there is real grouping (for example a photo plus its file actions). Dummy, gem, and Admin stay `data-theme="rounded"` unless opted in.
+
 ## Sequence
 
 1. **Scan** - Read the views and the active theme (`data-theme` on `html`, layout helper, Flatpack components in use).
@@ -49,7 +70,7 @@ Dummy, gem, and Admin stay on rounded plus `UsesDefaultLayout` unless this chat 
 
 ## Design audit
 
-Each finding must say what would look better and which Flatpack token or component to use.
+Each finding must say what would look better and name the owner (Flatpack token or component, mixin gem, core default layout, or this gem/host). Look up Flatpack first.
 
 ### Typography
 
@@ -81,7 +102,8 @@ Each finding must say what would look better and which Flatpack token or compone
 - Uniform radius with no rule → one theme radius scale
 - Missing whitespace on a marketing page → larger gap and padding tokens
 - Product screen fighting the default layout → return to `UsesDefaultLayout` and one primary action
-- Misaligned titles, prices, or buttons across a row → shared Flatpack card or table structure
+- Title plus one-action form wrapped in `Card::Component` → drop the extra card; the default layout is the chrome
+- Misaligned titles, prices, or buttons across a row → shared Flatpack list or table, or a card only when items are a real group
 
 ### States
 
@@ -102,7 +124,8 @@ Each finding must say what would look better and which Flatpack token or compone
 
 ### Components
 
-- Card used only because every block is a card → spacing or a divider
+- Card used only because every block is a card → spacing, a divider, or `UsesDefaultLayout`
+- Mixin chrome (Attachable replace, Publishable badge) looking off → fix the mixin gem, not a one-off in the reviewing gem
 - Accordion FAQ as the only help pattern → list, search, or one extra-info popover
 - Modal for a one-field edit → inline or a small dedicated screen
 - Footer link farm → main paths plus legal links
@@ -138,6 +161,8 @@ Copy voice stays unless asked for a rewrite. Visual modernisation is not a conte
 ## Rules
 
 - Work in Flatpack. Do not add Tailwind, shadcn, GSAP, or a CSS kit "because the old file used CSS."
+- Look up https://flatpack.bowerbird.io/ before naming a component. Missing parts go to Flatpack, not a minted helper.
 - Do not break jobs. Exercise the flow after each change.
 - Keep diffs reviewable. Small targeted improvements over a rewrite.
 - Host looks ship as a named theme. Dummy / gem / Admin stay rounded unless opted in.
+- Product screens stay on `UsesDefaultLayout`. Cards only for real grouping.
