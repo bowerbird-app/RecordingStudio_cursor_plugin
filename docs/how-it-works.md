@@ -22,7 +22,7 @@ This repo uses the **Cursor Plugin** format so it can ship agents as well as ski
 | `skills/*/SKILL.md` | Skills | Listed under Customize → Skills. Cursor can auto-invoke them from the description, or you can run `/skill-name`. |
 | `agents/*.md` | Agents | Custom subagents. The parent agent can delegate, or you can invoke `/agent-name`. |
 | `commands/*.md` | Commands | Slash commands such as `/add-skill`. |
-| `rules/*.mdc` | Rules | Persistent guidance. `alwaysApply: true` is included in every chat. |
+| `rules/*.mdc` | Rules | Persistent guidance. `alwaysApply: true` is included in every chat. Taste skills may set direction; `flatpack-is-the-system` keeps implementation on Flatpack. |
 | `assets/logo.svg` | Logo | Marketplace and Customize listing. |
 
 Cursor discovers these folders automatically. The manifest does not list each file.
@@ -55,6 +55,12 @@ Each skill owns one topic. Follow the matching skill instead of copying doctrine
 | Access grants | `recording-studio-access` |
 | Screens and mount points | `recording-studio-ui` |
 | Which Flatpack component | `recording-studio-flatpack` |
+| Taste critique and composition | `recording-studio-taste` |
+| Audit an existing screen | `recording-studio-redesign` |
+| Finish the whole deliverable | `recording-studio-output` |
+| Image then Flatpack | `recording-studio-image-to-code` |
+| Opt-in host look (soft / editorial / brutalist) | `recording-studio-soft`, `recording-studio-minimalist`, `recording-studio-brutalist` |
+| Brand or section images | `recording-studio-brandkit`, `recording-studio-imagegen-web`, `recording-studio-imagegen-mobile` |
 | Product copy | `recording-studio-text` |
 | Admin | `recording-studio-admin` |
 | JSON / AI APIs | `recording-studio-api` |

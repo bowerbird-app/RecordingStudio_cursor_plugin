@@ -7,7 +7,7 @@ description: Design Recording Studio screens as mountable UI slices with reusabl
 
 Gems ship **working UI slices** the host can mount, plus the **pieces** of that UI so a host can replace views and controllers without losing the capability. Screens stay small, one-job, and independent so they work on phones and so addons do not fight over layout.
 
-Components: `recording-studio-flatpack`. Words: `recording-studio-text`.
+Components: `recording-studio-flatpack`. Words: `recording-studio-text`. Taste: `recording-studio-taste`.
 
 ## Three layers
 

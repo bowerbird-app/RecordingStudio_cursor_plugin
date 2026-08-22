@@ -15,6 +15,6 @@ Roots are the content and billing buckets. Users and other actors get access to 
 
 Capability mixins are opt-in and do not come for free from installing a gem or registering a type (`recording-studio-capabilities`).
 
-For screens, text, admin taste, and APIs, follow `recording-studio-ui`, `recording-studio-text`, `recording-studio-admin`, and `recording-studio-api`. Do not restate those skills here.
+For screens, text, admin taste, and APIs, follow `recording-studio-ui`, `recording-studio-flatpack`, `recording-studio-taste`, `recording-studio-text`, `recording-studio-admin`, and `recording-studio-api`. Do not restate those skills here. Code is always Flatpack (`rules/flatpack-is-the-system.mdc`).
 
 Preserve public APIs unless the user asks for a breaking change. Use Conventional Commits when a version bump is required.
