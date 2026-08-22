@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.4
+
+- Add a `recording-studio-minimalist` skill for an opt-in editorial Flatpack named theme (warm bone paper, tight type, no gradients) on host marketing and brand surfaces.
+- Keep dummy, gem, and Admin product chrome on `recording-studio-taste` + `data-theme="rounded"` + core `recording_studio/default_layout`. This skill is not always-on and does not change `rounded`.
+
+Upgrade: reload the plugin so Cursor can invoke `recording-studio-minimalist`. Do not install generic frontend packs. Dummy and gem stay rounded + Taste.
+
 ## 0.1.2
 
 - Document mixin enablement as `include RecordingStudio::Capabilities::<Name>.to(**opts)` only.

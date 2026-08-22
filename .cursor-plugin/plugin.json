@@ -1,7 +1,7 @@
 {
   "name": "recording-studio",
   "displayName": "Recording Studio",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Skills and agents for building Recording Studio gems, addons, and Flatpack UI in Cursor.",
   "author": {
     "name": "Bowerbird",

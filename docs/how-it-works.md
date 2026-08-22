@@ -55,6 +55,7 @@ Each skill owns one topic. Follow the matching skill instead of copying doctrine
 | Access grants | `recording-studio-access` |
 | Screens and mount points | `recording-studio-ui` |
 | Which Flatpack component | `recording-studio-flatpack` |
+| Opt-in editorial host theme | `recording-studio-minimalist` |
 | Product copy | `recording-studio-text` |
 | Admin | `recording-studio-admin` |
 | JSON / AI APIs | `recording-studio-api` |
