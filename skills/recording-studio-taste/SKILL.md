@@ -1,6 +1,6 @@
 ---
 name: recording-studio-taste
-description: Judge and improve how Recording Studio screens look while staying on Flatpack. Use when composing gem, dummy, or Admin UI, reviewing or restyling a Flatpack component or theme, adding a host named theme, reviewing screenshots, running a pre-flight before screenshots leave the bot, or when tempted to add custom CSS, Tailwind, or a third-party design skill. For which component to render, use recording-studio-flatpack. For page shape, use recording-studio-ui. For words, use recording-studio-text.
+description: Judge and improve how Recording Studio screens look while staying on Flatpack. Use when composing gem, dummy, or Admin UI, reviewing screenshots, restyling a Flatpack component or theme, adding a host named theme, or when tempted to add custom CSS, Tailwind, or a third-party design skill. A review must return a four-part critique (not only a checklist). For which component to render, use recording-studio-flatpack. For page shape, use recording-studio-ui. For words, use recording-studio-text.
 ---
 
 # Recording Studio taste
@@ -12,15 +12,15 @@ Two jobs, both first-class:
 1. **Compose** gem, dummy, and Admin product UI on rounded + core `recording_studio/default_layout`.
 2. **Review and improve Flatpack** (the kit), including a host named theme when a full app needs its own look.
 
-This is not a Tailwind / GSAP restyle pack. Do not invent a parallel visual language.
+A Taste review says how the **actual page** would look better. Pre-flight is the fence after that, not the review. This is not a Tailwind / GSAP restyle pack. Do not invent a parallel visual language.
 
 ## When to use
 
 - Composing gem, dummy, or Admin UI
 - Reviewing or restyling a Flatpack component or theme (the kit)
 - Adding a host named theme (Featured In, later hosts)
-- Reviewing screenshots
-- Running the pre-flight before screenshots leave the bot
+- Reviewing screenshots (return the four-part critique, not only ticks)
+- Running the pre-flight after the critique
 - Tempted to add custom CSS, Tailwind, or a third-party design skill
 
 ## Design read
@@ -31,7 +31,24 @@ Before composing or reviewing, name the surface in one line, then proceed. Do no
 - **Kit review:** reading this as Flatpack itself (component or theme), not a gem screen.
 - **Host theme / marketing:** reading this as a host named theme (for example `data-theme="featured-in"`). Product chrome stays `default_layout`. Marketing pages may use Flatpack `Hero` / `Carousel` under that theme.
 
-Gem screens, dummy, and Admin stay product. Public slices use the same `default_layout`. Dummy Devise login may keep `layouts/application`. `recording_studio_publishable/application` is not a second public shell.
+Gem screens, dummy, and Admin stay product. Public slices use the same `default_layout`. Dummy Devise login may keep `layouts/application`. `recording_studio_publishable/application` is not a second public shell. Kitchen-sink `/demo` pages are not product screens.
+
+## Critique (required)
+
+A Taste review is this four-part output. Required when composing a page, reviewing a screenshot, or doing kit / host work. A checklist-only review is a fail. Pre-flight comes after this.
+
+1. **One-line design read**
+2. **What already looks good**
+3. **3–7 specific “this would look better if…” notes**, each naming the Flatpack token or component to use
+4. **One highest-leverage change**
+
+Grain (point at the actual page):
+
+- This title is too light vs body — `PageTitle` / `--surface-content-color`, not `--surface-muted-content-color`
+- This stack gap is gallery, not density 5 — `--stack-gap-md` / `--stack-gap-lg`
+- This is the one primary; that second button should be `Button` `style: :ghost`
+
+“Tokens present / slot empty / rounded set” is fence, not a note. Do not restyle Flatpack or `rounded` to make the note true. Do not flatten `--gradient-*`. Do not cite `--surface-border-hover-color` on rounded as a visual win (no-op).
 
 ## Instructions
 
@@ -71,9 +88,9 @@ Admin uses the same dials. A few high-signal widgets (`recording-studio-admin`).
 
 ### Type, color, radius, space
 
-Use Flatpack tokens. Look them up in `docs/theming.md` / `variables.css`. Do not invent parallel tokens.
+Use Flatpack tokens. Look them up in `docs/theming.md` / `variables.css`. For rounded, read the `[data-theme="rounded"]` block in `variables.css`, not the `docs/theming.md` `:root` table. Do not invent parallel tokens.
 
-**Theme (product).** Dummy and gem screens stay `html data-theme="rounded"`. Missing rounded on dummy is a reject. Do not copy `default_layout` into dummy and edit it.
+**Theme (product).** Dummy and gem screens stay `html data-theme="rounded"`. Missing rounded on dummy is a reject. Do not copy `default_layout` into dummy and edit it. Kitchen-sink `/demo` pages are not product screens.
 
 **Type.** Use the kit’s type as shipped. Titles through `PageTitle` / `PageHeader`: `--page-title-h1-size` … `--page-title-h6-size`. Body is `--surface-content-color`. Secondary is `--surface-muted-content-color`. Tooltips are `--tooltip-font-size`. No new font stack in the gem, dummy, or host. No serif heroes. No Inter / Geist shopping. If a brand needs type or radius, it lands in the Flatpack theme.
 
@@ -87,9 +104,16 @@ Use Flatpack tokens. Look them up in `docs/theming.md` / `variables.css`. Do not
 
 No beige+brass marketing palette on product screens. No second accent in the gem. Brand primitives (`--brand-hue`, `--brand-chroma`, `--brand-lightness`) live in Flatpack. Do not fork them in the gem.
 
-**Radius (rounded).** `--radius-sm` 0.75rem, `--radius-md` 1rem, `--radius-lg` 1.5rem, `--radius-xl` 2rem. Buttons, alerts, inputs inherit `--radius-md` (`--button-border-radius`, `--alert-border-radius`, `--popover-radius`). Do not pick a new corner language in the caller.
+**Radius (rounded).** Read the theme block, not the `:root` table in `docs/theming.md`. Rounded is `--radius-sm` 0.75rem, `--radius-md` 1rem, `--radius-lg` 1.5rem, `--radius-xl` 2rem. Buttons, alerts, inputs inherit `--radius-md` (`--button-border-radius`, `--alert-border-radius`, `--popover-radius`). Do not pick a new corner language in the caller.
 
 **Space.** `--stack-gap-*`, `--form-control-padding`, `--table-padding`. Density 5 uses those gaps. Not gallery padding. Not cockpit packing.
+
+**Rounded facts** (from `[data-theme="rounded"]` in `variables.css`):
+
+- Do not flatten `--gradient-1` … `--gradient-4`. Rounded ships them (slate, amber, green, violet).
+- Hover-border is a no-op: `--surface-border-hover-color` and `--surface-border-color` are both `#d1d5db`. Do not cite hover-border as a look fix. Use `--color-*-hover`, `Card` `hover:`, `--shadow-button-active`.
+- Warning text stays dark on amber: `--color-warning-text: #1f1f1f` on `--color-warning-background-color: oklch(0.80 0.15 83)`. Do not “fix” it to white (`:root` warning text is white; rounded is not).
+- Muted `--surface-muted-content-color: #666` needs an AA check against the actual fill (`--surface-background-color` `#f8f9fa` vs `--surface-muted-background-color` `#e5e5e5`).
 
 ### Slot
 
@@ -102,7 +126,7 @@ Every control people can use needs the Flatpack cycle: **loading, empty, error, 
 - **Loading:** `Button` `loading:`, `Skeleton`, pagination loading text.
 - **Empty:** `EmptyState` (title, one line, one action). If an addon is not built, the screen is just the real record — no fake empty theatre.
 - **Error:** input `error` / `help_text`, `Alert` (`style:` info / success / warning / danger). Copy: `recording-studio-text`.
-- **Hover / active:** Flatpack `Card` `hover:`, `--color-*-hover`, `--surface-border-hover-color`, `--shadow-button-active`. Duration tokens only.
+- **Hover / active:** Flatpack `Card` `hover:`, `--color-*-hover`, `--shadow-button-active`. Duration tokens only. On rounded, `--surface-border-hover-color` is a no-op (same as `--surface-border-color`).
 - **Flash:** one. Core `default_layout` already paints flash. Do not render notice again in the view. Do not add a second `Toast` for the same notice.
 
 **Contrast (WCAG AA).** Button text on button fill (`--color-primary-text` on `--color-primary`). Form label, value, placeholder, helper, error, and `--color-ring` against `--surface-background-color`. Fail: white-on-white, grey-on-grey, ghost with no stroke.
@@ -178,6 +202,7 @@ Reject before Nic sees it:
 - CSS/JS not loaded, unstyled HTML
 - Default layout missing on product pages
 - Dummy home/login/sidebar instead of the gem screen
+- Kitchen-sink `/demo` pages treated as product screens
 - Missing rounded on dummy / gem product screens (a host named theme is not this fail)
 - Sign out or Root Switchable in the slot
 - Double flash, empty glyphs, empty editor, placeholder sections
@@ -187,12 +212,13 @@ Featured In theme work is not a fail.
 
 ## Pre-flight
 
-Tick every box on the shared list, then the track you are on. One fail = not done.
+Tick every box on the shared list, then the track you are on. One fail = not done. This is the fence after the critique, not the review itself.
 
 ### Shared
 
+- [ ] Four-part critique returned (design read, what looks good, 3–7 specific notes with tokens/components, one highest-leverage change). Checklist-only is a fail
 - [ ] Design read declared (product / kit review / host theme — then proceed)
-- [ ] Flatpack looked up (https://flatpack.bowerbird.io/ + `docs/theming.md`)
+- [ ] Flatpack looked up (https://flatpack.bowerbird.io/ + `docs/theming.md`; rounded radii from the theme block, not the `:root` table)
 - [ ] CSS/JS loaded; not unstyled HTML
 - [ ] No generic frontend pack installed (`leonxlnx/taste-skill`, minimalist-ui, GSAP, Motion, shadcn, Geist, Fluent, Carbon, Material, Phosphor)
 - [ ] Product chrome is still `default_layout` (publishable application is not a second public shell)
@@ -201,7 +227,7 @@ Tick every box on the shared list, then the track you are on. One fail = not don
 
 - [ ] Dials stated: `DESIGN_VARIANCE 3` / `MOTION_INTENSITY 2` / `VISUAL_DENSITY 5`
 - [ ] `html data-theme="rounded"` present (dummy missing rounded = reject)
-- [ ] Product pages use core `default_layout` — not dummy home, login, or sidebar
+- [ ] Product pages use core `default_layout` — not dummy home, login, sidebar, or kitchen-sink `/demo`
 - [ ] Dummy Devise login may keep `layouts/application`; everything else does not
 - [ ] Slot holds only page actions (Access ok if Accessible; never Sign out or Root Switchable)
 - [ ] `default_layout` was not copied into dummy and edited
@@ -245,6 +271,9 @@ Tick every box on the shared list, then the track you are on. One fail = not don
 - Drop landing-only devices onto product UI: marquees, GSAP sticky-stack / horizontal-pan, image-gen heroes, Liquid Glass, beige+brass, Inter / Geist shopping, shadcn / Fluent / Carbon / GOV.UK maps.
 - Special-case `rounded` for one host. Add a named theme instead.
 - Add a parallel host stylesheet to restyle the kit.
+- Treat Flatpack kitchen-sink `/demo` pages as product screens.
+- Flatten `--gradient-*` on rounded, or cite `--surface-border-hover-color` as a rounded visual fix.
+- Return only pre-flight ticks. The critique is the review.
 
 ## Related
 

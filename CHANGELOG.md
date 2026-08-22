@@ -7,6 +7,7 @@
 - Thicken `recording-studio-taste` after review: design read, product dials (3 / 2 / 5), Flatpack tokens, interactive cycles, AI tells, and a mechanical pre-flight.
 - Make kit review and host named themes first-class in `recording-studio-taste` (Featured In is a Flatpack theme, not a stop).
 - Point `recording-studio-taste` at opt-in `recording-studio-minimalist` for host editorial look. Dummy / gem / Admin stay Taste + rounded.
+- Require a four-part Taste critique (what looks good, 3–7 specific notes, one highest-leverage change). Pre-flight is the fence after that.
 
 Upgrade: reload the plugin so Cursor can invoke `recording-studio-taste`. Do not install `leonxlnx/taste-skill` or other generic frontend taste packs.
 
