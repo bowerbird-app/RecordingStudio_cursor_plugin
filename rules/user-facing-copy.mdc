@@ -4,8 +4,8 @@ globs: "**/*.{erb,html,md}"
 alwaysApply: false
 ---
 
-Write like a marketer who keeps things simple: a little personality, very little text. Follow `recording-studio-text`.
+Do not put backend terms on screens people use. No recording, recordable, actor, or root.
 
-Keep labels obvious. Use Flatpack tooltips, popovers, and admin widget extra info only when a newcomer would not understand the visible text.
+Follow `recording-studio-text`. Labels are short, fun, and obvious. Use a tooltip only when a newcomer would not get the visible text.
 
-Do not fill the screen. Do not use developer terms (recording, recordable, actor, root) or AI-speak.
+No AI-speak. Do not fill the screen.

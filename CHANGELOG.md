@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.4
+
+- Expand the rules catalog so Cloud Agents and desktop installs share the same standing guidance.
+- Keep hard constraints and Flatpack-as-system as they are. Rewrite the Flatpack UI and product copy rules so they point at skills instead of restating them.
+- Add always-on rules for verify-in-browser, gem version and release, CI and review, docs, secrets, and parameter names.
+
+Upgrade: reload the plugin. New always-on rules apply on the next chat.
+
 ## 0.1.3
 
 - Add ten taste and branding skills adapted from [leonxlnx/taste-skill](https://github.com/leonxlnx/taste-skill) (MIT): `recording-studio-taste`, `recording-studio-redesign`, `recording-studio-output`, `recording-studio-image-to-code`, `recording-studio-soft`, `recording-studio-minimalist`, `recording-studio-brutalist`, `recording-studio-brandkit`, `recording-studio-imagegen-web`, and `recording-studio-imagegen-mobile`.

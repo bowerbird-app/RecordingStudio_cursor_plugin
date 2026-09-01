@@ -4,14 +4,16 @@ globs: "**/*.{erb,html,css,js}"
 alwaysApply: false
 ---
 
-Use Flatpack ViewComponents for new UI whenever an appropriate component exists.
+Flatpack is the Rails ViewComponent library. Recording Studio uses it exclusively.
 
-Do not recreate buttons, forms, alerts, cards, modals, or navigation with custom markup or CSS.
+Search https://flatpack.bowerbird.io/ and this repo before you write custom CSS or markup. Compose existing components. Do not rebuild buttons, forms, alerts, cards, modals, or nav.
 
-Prefer the Recording Studio core default layout and one primary action per page (`recording-studio-ui`). Keep titles and buttons fun, short, and clear (`recording-studio-text`).
+Semantic layout markup is fine when Flatpack has no structure for that part of the page.
 
-Check https://flatpack.bowerbird.io/ and existing repo usage before adding UI.
+If you need a piece Flatpack does not have, ask whether to add it to Flatpack or (rarely) build custom. Do not invent custom UI in silence.
 
-Semantic layout markup is acceptable when Flatpack does not provide the structure.
+Do not rewrite unrelated legacy UI just because you opened the file. When you touch a legacy element, migrate that element if the change is local and safe.
 
-If Flatpack cannot support a requirement, explain the gap before introducing custom UI.
+Use the core default layout. One primary action per page.
+
+Page shape: `recording-studio-ui`. Copy: `recording-studio-text`. Which component: `recording-studio-flatpack`. Do not restate those skills here.
