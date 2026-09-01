@@ -1,0 +1,9 @@
+{
+  "sources": [
+    {
+      "name": "pstack",
+      "contents_api": "https://api.github.com/repos/cursor/plugins/contents/pstack/skills?ref=main&per_page=100",
+      "raw_base": "https://raw.githubusercontent.com/cursor/plugins/main/pstack/skills"
+    }
+  ]
+}
