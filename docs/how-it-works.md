@@ -22,10 +22,12 @@ This repo uses the **Cursor Plugin** format so it can ship agents as well as ski
 | `skills/*/SKILL.md` | Skills | Listed under Customize → Skills. Cursor can auto-invoke them from the description, or you can run `/skill-name`. |
 | `agents/*.md` | Agents | Custom subagents. The parent agent can delegate, or you can invoke `/agent-name`. |
 | `commands/*.md` | Commands | Slash commands such as `/add-skill`. |
-| `rules/*.mdc` | Rules | Persistent guidance. `alwaysApply: true` is included in every chat. Taste skills may set direction; `flatpack-is-the-system` keeps implementation on Flatpack. |
+| `rules/*.mdc` | Rules | Persistent guidance. `alwaysApply: true` is included in every chat. File-glob rules attach when you touch matching files. |
 | `assets/logo.svg` | Logo | Marketplace and Customize listing. |
 
 Cursor discovers these folders automatically. The manifest does not list each file.
+
+Rules are the shared catalog for Cloud Agents and desktop installs. They cover Flatpack, product copy, verify-in-browser, gem versioning, CI and review, docs, secrets, and parameter names. Skills still own the how-to; rules do not restate them. Taste skills may set direction; `flatpack-is-the-system` keeps implementation on Flatpack.
 
 ## Skill vs agent vs command vs rule
 

@@ -1,6 +1,6 @@
 # Recording Studio Cursor plugin
 
-A Cursor plugin that stores **skills** and **agents** for Recording Studio work, so they can be installed from git or submitted to the [Cursor Marketplace](https://cursor.com/marketplace).
+A Cursor plugin that stores **skills**, **agents**, and **rules** for Recording Studio work, so they can be installed from git or submitted to the [Cursor Marketplace](https://cursor.com/marketplace).
 
 This is not a Rails gem and not a VS Code extension. Cursor loads the markdown and JSON in this repo as reusable AI components.
 
@@ -58,13 +58,17 @@ Workflows Cursor can apply in the current chat:
 - `/add-skill` — scaffold a new skill in this repo
 - `/add-agent` — scaffold a new specialist agent
 
+### Rules
+
+Standing guidance Cursor includes in chats. Always-on rules cover Flatpack as the UI system, gem versioning, verify-in-browser, CI and review, docs, secrets, and parameter names. File-scoped rules cover Flatpack composition and product copy. Skills still own the workflows.
+
 ## Install locally while authoring
 
 ```bash
 ln -s /path/to/RecordingStudio_cursor_plugin ~/.cursor/plugins/local/recording-studio
 ```
 
-Reload the Cursor window. Open **Customize** and confirm the plugin's skills and agents are listed.
+Reload the Cursor window. Open **Customize** and confirm the plugin's skills, agents, and rules are listed.
 
 ## Save a new skill or agent
 

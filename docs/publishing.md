@@ -44,4 +44,4 @@ Teams plans get one team marketplace. Enterprise plans can have more.
 
 Install from **Customize** or https://cursor.com/marketplace at project or user scope.
 
-When you change skills or agents, bump `version` in `.cursor-plugin/plugin.json`, update `CHANGELOG.md`, and resubmit. Marketplace listings do not auto-update.
+When you change skills, agents, or rules, bump `version` in `.cursor-plugin/plugin.json`, update `CHANGELOG.md`, and resubmit. Marketplace listings do not auto-update.

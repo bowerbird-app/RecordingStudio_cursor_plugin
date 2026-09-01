@@ -60,7 +60,7 @@ Optional frontmatter used by Cursor subagents: `model` (default `inherit`), `rea
 ## Add a command or rule
 
 - Commands: `commands/<name>.md` with `name` and `description`. These become slash commands.
-- Rules: `rules/<name>.mdc` with `description` and `alwaysApply` or `globs`.
+- Rules: `rules/<name>.mdc` with `description` and `alwaysApply` or `globs`. Cursor discovers `rules/` automatically. Keep one topic per file; point at skills instead of restating them.
 
 ## After you add something
 
