@@ -5,4 +5,4 @@ alwaysApply: true
 
 After every push on a pull request, wait for GitHub checks. Read review comments from people and bots (Bugbot, Copilot, and the rest). Fix failures and outstanding feedback, push, and repeat.
 
-You are not done until checks are green and review issues are resolved, or the user explicitly defers them.
+You are not done until checks are green, review issues are resolved or the user explicitly defers them, and the change has new or updated tests (see `tests.mdc`).

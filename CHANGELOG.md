@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.5
+
+- Add always-on rule `rules/tests.mdc`. Behavior changes need tests in the same PR. Follow `/recording-studio-tests` for how. Green CI is not enough without those tests.
+- Point `rules/ci-and-review.mdc` at that tests gate.
+
+Upgrade: reload the plugin. The tests rule applies on the next chat.
+
 ## 0.1.4
 
 - Expand the rules catalog so Cloud Agents and desktop installs share the same standing guidance.

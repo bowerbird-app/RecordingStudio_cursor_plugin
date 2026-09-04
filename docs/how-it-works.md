@@ -27,7 +27,7 @@ This repo uses the **Cursor Plugin** format so it can ship agents as well as ski
 
 Cursor discovers these folders automatically. The manifest does not list each file.
 
-Rules are the shared catalog for Cloud Agents and desktop installs. They cover Flatpack, product copy, verify-in-browser, gem versioning, CI and review, docs, secrets, and parameter names. Skills still own the how-to; rules do not restate them. Taste skills may set direction; `flatpack-is-the-system` keeps implementation on Flatpack.
+Rules are the shared catalog for Cloud Agents and desktop installs. They cover Flatpack, product copy, verify-in-browser, tests, gem versioning, CI and review, docs, secrets, and parameter names. Skills still own the how-to; rules do not restate them. Taste skills may set direction; `flatpack-is-the-system` keeps implementation on Flatpack.
 
 ## Skill vs agent vs command vs rule
 

@@ -60,7 +60,7 @@ Workflows Cursor can apply in the current chat:
 
 ### Rules
 
-Standing guidance Cursor includes in chats. Always-on rules cover Flatpack as the UI system, gem versioning, verify-in-browser, CI and review, docs, secrets, and parameter names. File-scoped rules cover Flatpack composition and product copy. Skills still own the workflows.
+Standing guidance Cursor includes in chats. Always-on rules cover Flatpack as the UI system, gem versioning, verify-in-browser, tests, CI and review, docs, secrets, and parameter names. File-scoped rules cover Flatpack composition and product copy. Skills still own the workflows.
 
 ## Install locally while authoring
 

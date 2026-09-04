@@ -1,0 +1,16 @@
+---
+description: Require tests for behavior changes before calling the work done
+alwaysApply: true
+---
+
+Behavior changes need tests in the same PR. Do not call the work done without them.
+
+Follow `/recording-studio-tests` for suites, procedure, and the ~94% working coverage bar (gem suite under `test/` plus dummy under `test/dummy/test/`).
+
+Prefer meaningful coverage of changed behavior over chasing the number. Never delete, stub out, or bypass production code to inflate coverage.
+
+Green CI is not enough if the change did not add or update tests for the new behavior.
+
+UI still needs `verify-ui` browser verification and screenshots. Tests do not replace that.
+
+Upgrade and behavior changes still need the upgrade tests in `gem-version-and-release.mdc`.
