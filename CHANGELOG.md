@@ -2,12 +2,13 @@
 
 ## 0.1.6
 
-- Teach `RecordingStudio.record!` / `revise` as the write path; instance helpers wrap it (`recording-studio-saving`).
-- Expand `recording-studio-gems` with Cache (`RateLimiter`), Metrics (`register` + `api_authorize`), Logs, Oauth, MCP, MCP UI, Attachable `authorize_provider_upload!`, and the API / MCP / MCP UI widget split.
+- Prefer `Recording` helpers `recording.record` / `#revise` / `#log_event!`; they wrap the low-level `RecordingStudio.record!` (`recording-studio-saving`).
+- Expand `recording-studio-gems` with Cache (`RateLimiter`), Metrics (`register` + `api_authorize`), Logs, Oauth, MCP, MCP UI, Attachable (provider controllers call `authorize_provider_upload!`), and the API / MCP / MCP UI widget split.
 - Align admin sample and security-agent auth with Accessible (`enable_capability`, `grant_access` / `authorized?`). Point API MCP/MCP UI concerns at those gems.
 - Limit `rules/user-facing-copy.mdc` to product ERB/HTML (not this plugin’s skills, rules, docs, or agents).
+- The user-facing-copy glob no longer covers `.md`.
 
-Upgrade: reload the plugin. Tag `v0.1.5` / `v0.1.6` needs Marikit.
+Upgrade: reload the plugin.
 
 ## 0.1.5
 

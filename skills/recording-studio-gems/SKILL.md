@@ -56,7 +56,7 @@ Opt-in **per recordable type**. Installing the gem does not enable it everywhere
 |---|---|
 | Move in the tree | [`recording_studio_moveable`](https://github.com/bowerbird-app/RecordingStudio_moveable) |
 | Duplicate | [`recording_studio_duplicatable`](https://github.com/bowerbird-app/RecordingStudio_duplicatable) |
-| Attach files | [`recording_studio_attachable`](https://github.com/bowerbird-app/RecordingStudio_attachable) — upload gate `authorize_provider_upload!` (not raw ActiveStorage) |
+| Attach files | [`recording_studio_attachable`](https://github.com/bowerbird-app/RecordingStudio_attachable) — provider controllers call `authorize_provider_upload!` |
 | Comments | [`recording_studio_commentable`](https://github.com/bowerbird-app/RecordingStudio_commentable) |
 | Trash / restore | [`recording_studio_trashable`](https://github.com/bowerbird-app/RecordingStudio_trashable) |
 | Publish | [`recording_studio_publishable`](https://github.com/bowerbird-app/RecordingStudio_publishable) |
@@ -79,7 +79,7 @@ Do not `rails plugin new`. Copy **[RecordingStudio_gem_template](https://github.
 - One-off `app/controllers/api` that skips capability actions — use API.
 - Homemade rate limiters or counters — use Cache `RateLimiter` and Metrics `register`.
 - A second MCP server, raw `ui://` handler, or widget HTML outside MCP UI.
-- Direct ActiveStorage upload routes that skip Attachable’s upload gate.
+- Direct ActiveStorage upload routes that skip Attachable’s own direct-upload route and its checks.
 - A second admin gem or `RecordingStudio_admin_depreciated`.
 - `RecordingStudio_users_broken`.
 - Devise-only ownership of the tree — Users identifies the actor; Accessible authorizes.
