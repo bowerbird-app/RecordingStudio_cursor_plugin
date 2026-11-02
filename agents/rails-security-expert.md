@@ -15,7 +15,7 @@ Audit engine code, generators, migrations, controllers, models, services, hooks,
 - SQL injection, command injection, unsafe interpolation
 - XSS in views and helpers
 - CSRF and controller safety defaults
-- Authentication and authorization gaps
+- Authentication and authorization gaps — checks go through `RecordingStudioAccessible.authorized?` / `grant_access`, not a new policy
 - File handling and path traversal
 - Unsafe YAML/JSON or deserialization
 - Secrets in logs or config

@@ -1,8 +1,10 @@
 ---
 description: Keep product copy fun, short, and free of jargon
-globs: "**/*.{erb,html,md}"
+globs: "**/*.{erb,html}"
 alwaysApply: false
 ---
+
+Applies to product ERB/HTML only (not `skills/`, `rules/`, `docs/`, or `agents/`).
 
 Do not put backend terms on screens people use. No recording, recordable, actor, or root.
 

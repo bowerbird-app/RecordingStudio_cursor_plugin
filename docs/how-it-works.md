@@ -50,7 +50,7 @@ Each skill owns one topic. Follow the matching skill instead of copying doctrine
 | Philosophy: roots, actors, gems | `recording-studio-big-picture` |
 | Recording vs Event vs Log vs a table | `recording-studio-data-shape` |
 | Declaring a new type | `recording-studio-new-recordable` |
-| `record` / `revise` / `log_event!` | `recording-studio-saving` |
+| Write with the `Recording` helpers `recording.record` / `#revise` / `#log_event!`; they wrap the low-level `RecordingStudio.record!`, which you use directly only when you need the returned event or lower-level control. | `recording-studio-saving` |
 | Approved gems vs third-party | `recording-studio-gems` |
 | New addon from the template | `recording-studio-new-gem` |
 | Opt-in mixins | `recording-studio-capabilities` |

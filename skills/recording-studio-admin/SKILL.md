@@ -57,11 +57,10 @@ Enable sections on the admin root recordable:
 ```ruby
 class AdminRoot < ApplicationRecord
   include RecordingStudio::Recordable
-  include RecordingStudioAccessible::AllowsAccessibleChildren
   include RecordingStudioAdmin::AllowsAdminSections
 
   recording_studio_recordable label: "Admin", root: true
-  recording_studio_accessible_children :access
+  RecordingStudio.enable_capability(:accessible, on: self)
 
   recording_studio_admin_sections do
     section :root
@@ -70,7 +69,7 @@ class AdminRoot < ApplicationRecord
 end
 ```
 
-Use the Accessible enablement API from `recording-studio-access` / that gem’s README — do not assume every mixin uses `enable_capability`.
+Access is Accessible: `grant_access` / `authorized?` (`recording-studio-access`). Do not add `AllowsAccessibleChildren` or homemade `admin?`.
 
 ## Screens and widgets
 

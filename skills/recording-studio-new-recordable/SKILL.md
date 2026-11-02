@@ -47,7 +47,7 @@ end
 RecordingStudio.validate_recordable_declarations!
 ```
 
-5. Write through the root recording API, not by inserting recordings by hand:
+5. Write with the `Recording` helpers `recording.record` / `#revise` / `#log_event!`; they wrap the low-level `RecordingStudio.record!`, which you use directly only when you need the returned event or lower-level control. Do not insert recordings by hand.
 
 ```ruby
 root = RecordingStudio.root_recording_for(workspace)

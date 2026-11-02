@@ -1,6 +1,6 @@
 # Recording Studio Cursor plugin
 
-A Cursor plugin that stores **skills**, **agents**, and **rules** for Recording Studio work, so they can be installed from git or submitted to the [Cursor Marketplace](https://cursor.com/marketplace).
+A Cursor plugin that stores **skills**, **agents**, and **rules** for Recording Studio work, so they can be installed from git or submitted to the [Cursor Marketplace](https://cursor.com/marketplace). Version **0.1.6** (see [CHANGELOG.md](CHANGELOG.md)).
 
 This is not a Rails gem and not a VS Code extension. Cursor loads the markdown and JSON in this repo as reusable AI components.
 
