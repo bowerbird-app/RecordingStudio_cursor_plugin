@@ -20,7 +20,13 @@ Repos live under [bowerbird-app](https://github.com/bowerbird-app). Ruby names a
 | Recordings, recordables, events, logs | [`recording_studio`](https://github.com/bowerbird-app/RecordingStudio) | `recording-studio-saving`, `recording-studio-data-shape` |
 | Access grants to any actor | [`recording_studio_accessible`](https://github.com/bowerbird-app/RecordingStudio_accessible) | `recording-studio-access` |
 | Staff operations UI | [`recording_studio_admin`](https://github.com/bowerbird-app/RecordingStudio_admin) | `recording-studio-admin` |
-| JSON / AI HTTP API | [`recording_studio_api`](https://github.com/bowerbird-app/RecordingStudio_api) | `recording-studio-api` |
+| JSON / AI HTTP API | [`recording_studio_api`](https://github.com/bowerbird-app/RecordingStudio_api) | Wrapper with Accessible. Stores MCP widget ids (`ui:`); does not serve `ui://` (`recording-studio-api`) |
+| App / API payload cache and rate limits | [`recording_studio_cache`](https://github.com/bowerbird-app/RecordingStudio_cache) | `RecordingStudioCache::RateLimiter` (and `fetch` / tree invalidation). Do not invent a limiter |
+| Shared metrics | [`recording_studio_metrics`](https://github.com/bowerbird-app/RecordingStudio_metrics) | `RecordingStudioMetrics.register` / `execute`. API gate is that gem’s `api_authorize`. Do not teach Metrics Accessible or Admin auth |
+| High-volume exhaust tables | [`recording_studio_logs`](https://github.com/bowerbird-app/RecordingStudio_logs) | `RecordingStudioLogs.register` / `aggregate`. Not recordings; not `log_event!` (`recording-studio-data-shape`) |
+| OAuth authorization server (Connect, third-party apps) | [`recording_studio_oauth`](https://github.com/bowerbird-app/RecordingStudio_Oauth) | Resource server stays API. Accessible still authorizes |
+| Remote MCP HTTP adapter | [`recording_studio_mcp`](https://github.com/bowerbird-app/RecordingStudio_MCP) | Protocol adapter over API + Accessible. Serves `ui://` when MCP UI is loaded. Not a second API |
+| MCP Apps widgets | [`recording_studio_mcp_ui`](https://github.com/bowerbird-app/RecordingStudio_MCP_UI) | Register widgets; package HTML (FlatPack CSS/components). API stores the widget id; MCP serves `ui://` |
 | Sign-in, invitations, people as actors | [`recording_studio_users`](https://github.com/bowerbird-app/RecordingStudio_users) | Auth identifies; Accessible still authorizes |
 | Plans and usage on the **root** | [`recording_studio_billing`](https://github.com/bowerbird-app/RecordingStudio_billing) | Never `plan_id` on User |
 | Switch workspace / site | [`recording_studio_root_switchable`](https://github.com/bowerbird-app/RecordingStudio_root_switchable) | Switcher is a helper/component (`recording-studio-ui`) |
@@ -36,6 +42,12 @@ Repos live under [bowerbird-app](https://github.com/bowerbird-app). Ruby names a
 
 Add a gem for a **need**, not because it exists. If it has UI or API, expose the **same domain action**.
 
+MCP Apps split (do not collapse these into the API gem):
+
+1. **API** stores widget ids (`ui:` on registrations).
+2. **MCP** serves `ui://` resources when MCP UI is loaded.
+3. **MCP UI** registers widgets and packages FlatPack HTML.
+
 ## Mixins
 
 Opt-in **per recordable type**. Installing the gem does not enable it everywhere. How: `recording-studio-capabilities`.
@@ -44,7 +56,7 @@ Opt-in **per recordable type**. Installing the gem does not enable it everywhere
 |---|---|
 | Move in the tree | [`recording_studio_moveable`](https://github.com/bowerbird-app/RecordingStudio_moveable) |
 | Duplicate | [`recording_studio_duplicatable`](https://github.com/bowerbird-app/RecordingStudio_duplicatable) |
-| Attach files | [`recording_studio_attachable`](https://github.com/bowerbird-app/RecordingStudio_attachable) |
+| Attach files | [`recording_studio_attachable`](https://github.com/bowerbird-app/RecordingStudio_attachable) — upload gate `authorize_provider_upload!` (not raw ActiveStorage) |
 | Comments | [`recording_studio_commentable`](https://github.com/bowerbird-app/RecordingStudio_commentable) |
 | Trash / restore | [`recording_studio_trashable`](https://github.com/bowerbird-app/RecordingStudio_trashable) |
 | Publish | [`recording_studio_publishable`](https://github.com/bowerbird-app/RecordingStudio_publishable) |
@@ -65,6 +77,9 @@ Do not `rails plugin new`. Copy **[RecordingStudio_gem_template](https://github.
 - A generic webhook engine (including `captain_hook`) — use `recording_studio_webhooks`.
 - A user-centric billing gem or `plan_id` on User — use Billing on the root.
 - One-off `app/controllers/api` that skips capability actions — use API.
+- Homemade rate limiters or counters — use Cache `RateLimiter` and Metrics `register`.
+- A second MCP server, raw `ui://` handler, or widget HTML outside MCP UI.
+- Direct ActiveStorage upload routes that skip Attachable’s upload gate.
 - A second admin gem or `RecordingStudio_admin_depreciated`.
 - `RecordingStudio_users_broken`.
 - Devise-only ownership of the tree — Users identifies the actor; Accessible authorizes.

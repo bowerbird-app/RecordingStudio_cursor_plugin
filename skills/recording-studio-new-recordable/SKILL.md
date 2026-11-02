@@ -47,11 +47,11 @@ end
 RecordingStudio.validate_recordable_declarations!
 ```
 
-5. Write through the root recording API, not by inserting recordings by hand:
+5. Write through `RecordingStudio.record!` / `revise`, not by inserting recordings by hand. Instance helpers wrap that path:
 
 ```ruby
 root = RecordingStudio.root_recording_for(workspace)
-root.record(Page) { |page| page.title = "Getting started" }
+root.record(Page) { |page| page.title = "Getting started" } # wraps RecordingStudio.record!
 ```
 
 6. Enable only the mixins this type needs (`recording-studio-capabilities`).

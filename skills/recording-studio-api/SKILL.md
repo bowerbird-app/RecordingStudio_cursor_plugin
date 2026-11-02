@@ -199,6 +199,16 @@ Then:
 
 For Accessible details, follow `recording-studio-access`. For admin API screens, follow `recording-studio-admin`.
 
+## MCP and MCP UI are other gems
+
+This gem is the JSON wrapper. Authorization stays Accessible / `AccessGrant`. It is not a second ACL and not an MCP server.
+
+- **API** may store a widget id (`ui:` on `register_endpoint` / `register_capability_action`). Lookups: `ui_for` / `actions_for_ui`. It does not serve `ui://`.
+- **MCP** (`recording_studio_mcp`) is the protocol adapter over this API. When MCP UI is loaded, it serves `ui://` resources.
+- **MCP UI** (`recording_studio_mcp_ui`) registers widgets and packages FlatPack HTML.
+
+Need MCP Apps? Add those gems (`recording-studio-gems`). Do not grow `DEFAULT_OPERATIONS` or invent widget serving here.
+
 ## Guardrails
 
 - One domain action → UI + API. Do not duplicate business logic in API-only controllers.
